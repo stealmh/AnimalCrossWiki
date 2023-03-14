@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		163C5B2729C0E09B00A38F3E /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C5B2629C0E09B00A38F3E /* CustomImageView.swift */; };
 		16C2457429C02D1000A937C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2457329C02D1000A937C7 /* AppDelegate.swift */; };
 		16C2457629C02D1000A937C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2457529C02D1000A937C7 /* SceneDelegate.swift */; };
 		16C2457829C02D1000A937C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2457729C02D1000A937C7 /* ViewController.swift */; };
@@ -16,9 +17,13 @@
 		16C2459129C02FE300A937C7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2459029C02FE300A937C7 /* Model.swift */; };
 		16C2459329C02FF200A937C7 /* AnimalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2459229C02FF200A937C7 /* AnimalTableViewCell.swift */; };
 		16C2459529C0387B00A937C7 /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2459429C0387B00A937C7 /* Extension+UIViewController.swift */; };
+		77B60FFDFCB396667A77DB79 /* Pods_AnimalCrossWiki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 017EAFB4E9B574160095B6CF /* Pods_AnimalCrossWiki.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		017EAFB4E9B574160095B6CF /* Pods_AnimalCrossWiki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnimalCrossWiki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		11BEA51F67F1C1E246AF6C90 /* Pods-AnimalCrossWiki.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossWiki.release.xcconfig"; path = "Target Support Files/Pods-AnimalCrossWiki/Pods-AnimalCrossWiki.release.xcconfig"; sourceTree = "<group>"; };
+		163C5B2629C0E09B00A38F3E /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		16C2457029C02D1000A937C7 /* AnimalCrossWiki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimalCrossWiki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16C2457329C02D1000A937C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16C2457529C02D1000A937C7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,6 +35,7 @@
 		16C2459029C02FE300A937C7 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		16C2459229C02FF200A937C7 /* AnimalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalTableViewCell.swift; sourceTree = "<group>"; };
 		16C2459429C0387B00A937C7 /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
+		B169AF0D67EA066A5A5497FD /* Pods-AnimalCrossWiki.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossWiki.debug.xcconfig"; path = "Target Support Files/Pods-AnimalCrossWiki/Pods-AnimalCrossWiki.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77B60FFDFCB396667A77DB79 /* Pods_AnimalCrossWiki.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +55,8 @@
 			children = (
 				16C2457229C02D1000A937C7 /* AnimalCrossWiki */,
 				16C2457129C02D1000A937C7 /* Products */,
+				A31861F58882D811F3EBF057 /* Pods */,
+				A68B04249C6668E264978EFD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,8 +81,26 @@
 				16C2459029C02FE300A937C7 /* Model.swift */,
 				16C2459229C02FF200A937C7 /* AnimalTableViewCell.swift */,
 				16C2459429C0387B00A937C7 /* Extension+UIViewController.swift */,
+				163C5B2629C0E09B00A38F3E /* CustomImageView.swift */,
 			);
 			path = AnimalCrossWiki;
+			sourceTree = "<group>";
+		};
+		A31861F58882D811F3EBF057 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B169AF0D67EA066A5A5497FD /* Pods-AnimalCrossWiki.debug.xcconfig */,
+				11BEA51F67F1C1E246AF6C90 /* Pods-AnimalCrossWiki.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A68B04249C6668E264978EFD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				017EAFB4E9B574160095B6CF /* Pods_AnimalCrossWiki.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,9 +110,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 16C2458429C02D1300A937C7 /* Build configuration list for PBXNativeTarget "AnimalCrossWiki" */;
 			buildPhases = (
+				F63FEA5D43A8A30FA54C6DFF /* [CP] Check Pods Manifest.lock */,
 				16C2456C29C02D1000A937C7 /* Sources */,
 				16C2456D29C02D1000A937C7 /* Frameworks */,
 				16C2456E29C02D1000A937C7 /* Resources */,
+				68E6FF0B31C01D7A15F59E36 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -141,12 +170,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		68E6FF0B31C01D7A15F59E36 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AnimalCrossWiki/Pods-AnimalCrossWiki-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AnimalCrossWiki/Pods-AnimalCrossWiki-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AnimalCrossWiki/Pods-AnimalCrossWiki-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F63FEA5D43A8A30FA54C6DFF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AnimalCrossWiki-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		16C2456C29C02D1000A937C7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				16C2459129C02FE300A937C7 /* Model.swift in Sources */,
+				163C5B2729C0E09B00A38F3E /* CustomImageView.swift in Sources */,
 				16C2459529C0387B00A937C7 /* Extension+UIViewController.swift in Sources */,
 				16C2457829C02D1000A937C7 /* ViewController.swift in Sources */,
 				16C2457429C02D1000A937C7 /* AppDelegate.swift in Sources */,
@@ -286,6 +358,7 @@
 		};
 		16C2458529C02D1300A937C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B169AF0D67EA066A5A5497FD /* Pods-AnimalCrossWiki.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -314,6 +387,7 @@
 		};
 		16C2458629C02D1300A937C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11BEA51F67F1C1E246AF6C90 /* Pods-AnimalCrossWiki.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

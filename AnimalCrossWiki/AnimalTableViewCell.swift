@@ -10,12 +10,7 @@ import UIKit
 class AnimalTableViewCell: UITableViewCell {
     static let identifier = "AnimalTableViewCell"
     
-    let photo: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "person")
-        imageView.clipsToBounds = true
-        return imageView
-    }()
+    let photo = CustomImageView()
     
     let name: UILabel = {
         let label = UILabel()
