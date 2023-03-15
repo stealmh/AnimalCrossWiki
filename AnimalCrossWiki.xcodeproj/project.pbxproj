@@ -54,6 +54,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16AA0B7D29C1DC4B002FB416 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				16C2458E29C02FDA00A937C7 /* ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		16AA0B7E29C1DC4D002FB416 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				16C2459229C02FF200A937C7 /* AnimalTableViewCell.swift */,
+				16C2457729C02D1000A937C7 /* ViewController.swift */,
+				163C5B2629C0E09B00A38F3E /* CustomImageView.swift */,
+				16AA0B7929C1D3AF002FB416 /* TabBarViewController.swift */,
+				16AA0B7B29C1D593002FB416 /* HomeViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		16AA0B7F29C1DC4F002FB416 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				16C2459029C02FE300A937C7 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		16AA0B8029C1DC83002FB416 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				16C2457C29C02D1300A937C7 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		16AA0B8129C1DC85002FB416 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				16C2457E29C02D1300A937C7 /* LaunchScreen.storyboard */,
+				16C2457329C02D1000A937C7 /* AppDelegate.swift */,
+				16C2457529C02D1000A937C7 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		16AA0B8229C1DCB1002FB416 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				16C2459429C0387B00A937C7 /* Extension+UIViewController.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		16C2456729C02D1000A937C7 = {
 			isa = PBXGroup;
 			children = (
@@ -75,19 +129,13 @@
 		16C2457229C02D1000A937C7 /* AnimalCrossWiki */ = {
 			isa = PBXGroup;
 			children = (
-				16C2457E29C02D1300A937C7 /* LaunchScreen.storyboard */,
-				16C2457329C02D1000A937C7 /* AppDelegate.swift */,
-				16C2457529C02D1000A937C7 /* SceneDelegate.swift */,
+				16AA0B8129C1DC85002FB416 /* Application */,
+				16AA0B8229C1DCB1002FB416 /* Extension */,
+				16AA0B7F29C1DC4F002FB416 /* Model */,
+				16AA0B7E29C1DC4D002FB416 /* View */,
+				16AA0B7D29C1DC4B002FB416 /* ViewModel */,
+				16AA0B8029C1DC83002FB416 /* Resource */,
 				16C2458129C02D1300A937C7 /* Info.plist */,
-				16C2457C29C02D1300A937C7 /* Assets.xcassets */,
-				16C2457729C02D1000A937C7 /* ViewController.swift */,
-				16C2458E29C02FDA00A937C7 /* ViewModel.swift */,
-				16C2459029C02FE300A937C7 /* Model.swift */,
-				16C2459229C02FF200A937C7 /* AnimalTableViewCell.swift */,
-				16C2459429C0387B00A937C7 /* Extension+UIViewController.swift */,
-				163C5B2629C0E09B00A38F3E /* CustomImageView.swift */,
-				16AA0B7929C1D3AF002FB416 /* TabBarViewController.swift */,
-				16AA0B7B29C1D593002FB416 /* HomeViewController.swift */,
 			);
 			path = AnimalCrossWiki;
 			sourceTree = "<group>";
