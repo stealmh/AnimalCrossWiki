@@ -44,7 +44,7 @@ class AnimalTableViewCell: UITableViewCell {
 }
 
 import SwiftUI
-struct ViewController_preview: PreviewProvider {
+struct AnimalTableViewCell_preview: PreviewProvider {
     static var previews: some View {
         ViewController().toPreview()
     }

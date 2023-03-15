@@ -20,8 +20,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         let mainViewController = ViewController()
         let navigation = UINavigationController(rootViewController: mainViewController)
-        navigation.title = "ss"
-        window?.rootViewController = navigation
+        
+        let initialViewController = TabBarViewController()
+        // 홈화면부터 시작할 수 있게 TabBar의 인덱스번호 지정
+        initialViewController.selectedIndex = 1
+        initialViewController.tabBar.backgroundColor = .white
+        window?.rootViewController = initialViewController
         window?.makeKeyAndVisible()
     }
 
