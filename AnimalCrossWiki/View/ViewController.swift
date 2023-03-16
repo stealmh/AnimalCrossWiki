@@ -15,47 +15,12 @@ class ViewController: UIViewController {
     let disposebag = DisposeBag()
     
     let tableView: UITableView = {
-        let tv = UITableView()
+        let tv = UITableView(frame: CGRect.zero, style: .grouped)
         tv.register(AnimalTableViewCell.self, forCellReuseIdentifier: AnimalTableViewCell.identifier)
+        
+        tv.register(CustomHeaderView.self, forHeaderFooterViewReuseIdentifier: CustomHeaderView.identifier)
         return tv
     }()
-    
-    lazy var tableViewHeader: UIView = {
-        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 150))
-        return header
-    }()
-    //
-//    lazy var headerHStack: UIStackView = {
-//        let stack = UIStackView(arrangedSubviews: [genderLabel])
-//        tableViewHeader.addSubview(stack)
-//        stack.axis = .horizontal
-//        stack.translatesAutoresizingMaskIntoConstraints = false
-//
-//        stack.leadingAnchor.constraint(equalTo: tableViewHeader.leadingAnchor).isActive = true
-//        stack.trailingAnchor.constraint(equalTo: tableViewHeader.trailingAnchor).isActive = true
-//        stack.widthAnchor.constraint(equalToConstant: tableViewHeader.frame.width).isActive = true
-//
-//        stack.bottomAnchor.constraint(equalTo: tableViewHeader.bottomAnchor).isActive = true
-//        stack.topAnchor.constraint(equalTo: tableViewHeader.topAnchor, constant: 40).isActive = true
-////        stack.heightAnchor.constraint(equalToConstant: tableViewHeader.frame.height).isActive = true
-//
-//
-//
-//        return stack
-//    }()
-    
-    lazy var genderLabel: UILabel = {
-        let gender = UILabel()
-        gender.text = "성별"
-        gender.textColor = .white
-        gender.backgroundColor = .red
-        gender.translatesAutoresizingMaskIntoConstraints = false
-//        gender.leadingAnchor.constraint(equalTo: headerHStack.leadingAnchor).isActive = true
-//        gender.topAnchor.constraint(equalTo: headerHStack.topAnchor).isActive = true
-//        gender.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        return gender
-    }()
-    //
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,10 +44,6 @@ class ViewController: UIViewController {
         
         tableView.frame = view.bounds
         tableView.rowHeight = 70
-        
-        tableViewHeader.backgroundColor = .link
-        tableViewHeader.layer.cornerRadius = 20
-        tableView.tableHeaderView = tableViewHeader
     }
 }
 
@@ -102,11 +63,12 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
     }
     // Header
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20.0
+        return 150.0
     }
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        return headerHStack
-//    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: CustomHeaderView.identifier) as? CustomHeaderView else {return UIView()}
+        return headerView
+    }
 }
 import SwiftUI
 struct ViewController_preview: PreviewProvider {
