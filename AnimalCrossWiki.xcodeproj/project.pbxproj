@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		163C5B2729C0E09B00A38F3E /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C5B2629C0E09B00A38F3E /* CustomImageView.swift */; };
+		166932C729C42B440030B12B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166932C629C42B440030B12B /* HeaderView.swift */; };
 		16AA0B7A29C1D3B0002FB416 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AA0B7929C1D3AF002FB416 /* TabBarViewController.swift */; };
 		16AA0B7C29C1D593002FB416 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AA0B7B29C1D593002FB416 /* HomeViewController.swift */; };
 		16C2457429C02D1000A937C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2457329C02D1000A937C7 /* AppDelegate.swift */; };
@@ -27,6 +28,7 @@
 		017EAFB4E9B574160095B6CF /* Pods_AnimalCrossWiki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnimalCrossWiki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		11BEA51F67F1C1E246AF6C90 /* Pods-AnimalCrossWiki.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossWiki.release.xcconfig"; path = "Target Support Files/Pods-AnimalCrossWiki/Pods-AnimalCrossWiki.release.xcconfig"; sourceTree = "<group>"; };
 		163C5B2629C0E09B00A38F3E /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		166932C629C42B440030B12B /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		16AA0B7929C1D3AF002FB416 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		16AA0B7B29C1D593002FB416 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		16C2457029C02D1000A937C7 /* AnimalCrossWiki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimalCrossWiki.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +75,7 @@
 				16AA0B7929C1D3AF002FB416 /* TabBarViewController.swift */,
 				16AA0B7B29C1D593002FB416 /* HomeViewController.swift */,
 				16E4330F29C2BBAB004437D3 /* CustomHeaderView.swift */,
+				166932C629C42B440030B12B /* HeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				16AA0B7A29C1D3B0002FB416 /* TabBarViewController.swift in Sources */,
 				16AA0B7C29C1D593002FB416 /* HomeViewController.swift in Sources */,
 				16C2457429C02D1000A937C7 /* AppDelegate.swift in Sources */,
+				166932C729C42B440030B12B /* HeaderView.swift in Sources */,
 				16C2459329C02FF200A937C7 /* AnimalTableViewCell.swift in Sources */,
 				16E4331029C2BBAB004437D3 /* CustomHeaderView.swift in Sources */,
 				16C2458F29C02FDA00A937C7 /* ViewModel.swift in Sources */,

@@ -15,15 +15,19 @@ class ViewController: UIViewController {
     let disposebag = DisposeBag()
     
     let tableView: UITableView = {
-        let tv = UITableView(frame: CGRect.zero, style: .grouped)
+        let tv = UITableView(frame: CGRect(x: 100, y: 100, width: 200, height: 200), style: .grouped)
         tv.register(AnimalTableViewCell.self, forCellReuseIdentifier: AnimalTableViewCell.identifier)
         
-        tv.register(CustomHeaderView.self, forHeaderFooterViewReuseIdentifier: CustomHeaderView.identifier)
+//        tv.register(CustomHeaderView.self, forHeaderFooterViewReuseIdentifier: CustomHeaderView.identifier)
         return tv
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let header2 = CustomHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: tableView.rowHeight * 2))
+        header2.backgroundColor = .white
+        view.backgroundColor = .white
+        view.addSubview(header2)
         view.addSubview(tableView)
         makeTableView()
         //Set NavigationTitle Text & Color
@@ -43,7 +47,14 @@ class ViewController: UIViewController {
         self.tableView.contentInsetAdjustmentBehavior = .never
         
         tableView.frame = view.bounds
+        tableView.frame = CGRect(x: 0, y: 100, width: view.frame.size.width, height: view.frame.size.height)
         tableView.rowHeight = 70
+        let header = HeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: tableView.rowHeight * 2))
+        header.imageView.image = UIImage(systemName: "person")
+//        tableView.tableHeaderView = header
+        let header2 = CustomHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: tableView.rowHeight * 2))
+        view.addSubview(header2)
+
     }
 }
 
@@ -61,15 +72,23 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
         cell.name.text = viewModel.data[indexPath.row].name
         return cell
     }
-    // Header
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 150.0
-    }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: CustomHeaderView.identifier) as? CustomHeaderView else {return UIView()}
-        return headerView
-    }
+//    // Header
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 150.0
+//    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: CustomHeaderView.identifier) as? CustomHeaderView else {return UIView()}
+//        return headerView
+//    }
 }
+
+//extension ViewController: UIScrollViewDelegate {
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        guard let header = tableView.tableHeaderView as? HeaderView else {return}
+//        header.scrollViewDidScroll(scrollView: tableView)
+//    }
+//}
+
 import SwiftUI
 struct ViewController_preview: PreviewProvider {
     static var previews: some View {
