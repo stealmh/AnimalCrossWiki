@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DropDown
 
 class CustomHeaderView: UITableViewHeaderFooterView {
     static let identifier = "CustomHeaderView"
@@ -49,6 +50,7 @@ class CustomHeaderView: UITableViewHeaderFooterView {
     
     private var firstHStackImage: UIImageView = {
         let img = UIImageView(image: UIImage(systemName: "magnifyingglass"))
+        img.contentMode = .scaleAspectFit
         return img
     }()
     
@@ -65,6 +67,25 @@ class CustomHeaderView: UITableViewHeaderFooterView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    let dropDown: DropDown = {
+        let dropDown = DropDown()
+        dropDown.dataSource = ["남자","여자"]
+        return dropDown
+    }()
+    
+    private var mybutton: UIButton = {
+        let button = UIButton()
+        button.setTitle("성별선택", for: .normal)
+        button.addTarget(self, action: #selector(openMenu), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func openMenu() {
+        print(#function)
+        dropDown.show()
+    }
+    
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -87,6 +108,7 @@ class CustomHeaderView: UITableViewHeaderFooterView {
         //SecondHStack addView
         secondHStackView.addArrangedSubview(name)
         secondHStackView.addArrangedSubview(name2)
+        secondHStackView.addArrangedSubview(mybutton)
         
         //VStack addStack
         vStack.addSubview(firstHStackView)
@@ -97,33 +119,36 @@ class CustomHeaderView: UITableViewHeaderFooterView {
     }
     
     func vStackLayout() {
+        vStack.backgroundColor = #colorLiteral(red: 0.07395900041, green: 0.3695197701, blue: 0, alpha: 1)
+        vStack.layer.cornerRadius = 20
+        
         vStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         vStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         vStack.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         vStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         vStack.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        vStack.backgroundColor = .link
-        vStack.layer.cornerRadius = 20
     }
     
     func firstHStackLayout() {
-        firstHStackView.widthAnchor.constraint(equalTo: vStack.widthAnchor).isActive = true
-        firstHStackView.heightAnchor.constraint(equalTo: vStack.heightAnchor, multiplier: 0.5).isActive = true
-        firstHStackView.leadingAnchor.constraint(equalTo: vStack.leadingAnchor, constant: 10).isActive = true
-        firstHStackView.trailingAnchor.constraint(equalTo: vStack.trailingAnchor, constant: -10).isActive = true
+        firstHStackView.widthAnchor.constraint(equalToConstant: vStack.frame.width - 40).isActive = true
+        firstHStackView.heightAnchor.constraint(equalTo: vStack.heightAnchor, multiplier: 0.25).isActive = true
+        firstHStackView.leadingAnchor.constraint(equalTo: vStack.leadingAnchor, constant: 20).isActive = true
+        firstHStackView.trailingAnchor.constraint(equalTo: vStack.trailingAnchor, constant: -20).isActive = true
+        firstHStackView.topAnchor.constraint(equalTo: vStack.topAnchor, constant: 50).isActive = true
         
-        firstHStackTextField.backgroundColor = .green
-        firstHStackTextField.widthAnchor.constraint(equalTo: vStack.widthAnchor, multiplier: 0.7).isActive = true
+        firstHStackTextField.backgroundColor = .white
+        firstHStackTextField.widthAnchor.constraint(equalTo: vStack.widthAnchor, multiplier: 0.8).isActive = true
         
-        firstHStackImage.backgroundColor = .orange
+        firstHStackImage.backgroundColor = .clear
     }
     
     func secondHStackLayout() {
-        secondHStackView.widthAnchor.constraint(equalTo: vStack.widthAnchor).isActive = true
-        secondHStackView.heightAnchor.constraint(equalTo: vStack.heightAnchor, multiplier: 0.5).isActive = true
-        secondHStackView.bottomAnchor.constraint(equalTo: vStack.bottomAnchor).isActive = true
-        secondHStackView.leadingAnchor.constraint(equalTo: vStack.leadingAnchor, constant: 10).isActive = true
-        secondHStackView.trailingAnchor.constraint(equalTo: vStack.trailingAnchor).isActive = true
+        secondHStackView.backgroundColor = #colorLiteral(red: 0.5036697984, green: 0.7757260203, blue: 0.3441850245, alpha: 1)
+        secondHStackView.topAnchor.constraint(equalTo: firstHStackView.bottomAnchor, constant: 10).isActive = true
+        secondHStackView.widthAnchor.constraint(equalToConstant: vStack.frame.width - 40).isActive = true
+        secondHStackView.heightAnchor.constraint(equalTo: vStack.heightAnchor, multiplier: 0.25).isActive = true
+        secondHStackView.leadingAnchor.constraint(equalTo: vStack.leadingAnchor, constant: 20).isActive = true
+        secondHStackView.trailingAnchor.constraint(equalTo: vStack.trailingAnchor,constant: -20).isActive = true
     }
 }
 

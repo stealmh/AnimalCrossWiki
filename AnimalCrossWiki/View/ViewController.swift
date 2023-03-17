@@ -49,9 +49,6 @@ class ViewController: UIViewController {
         tableView.frame = view.bounds
         tableView.frame = CGRect(x: 0, y: 100, width: view.frame.size.width, height: view.frame.size.height)
         tableView.rowHeight = 70
-        let header = HeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: tableView.rowHeight * 2))
-        header.imageView.image = UIImage(systemName: "person")
-//        tableView.tableHeaderView = header
         let header2 = CustomHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: tableView.rowHeight * 2))
         view.addSubview(header2)
 
