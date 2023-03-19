@@ -6,28 +6,35 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class HomeViewController: UIViewController {
-
-    let testLabel: UILabel = {
-        let label = UILabel()
-        label.text = "hello world!"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+class HomeViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(testLabel)
-        textLayout()
-        view.backgroundColor = .white
+        
+        navigationItem.style = .navigator
+        navigationItem.title = "Home"
+        collectionView?.backgroundColor = UIColor.white
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellID")
+        
     }
     
-    func textLayout() {
-        
-        testLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        testLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath)
+        cell.backgroundColor = UIColor.red
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSizeMake(view.frame.width, 200)
+    }
+
 
 
 }

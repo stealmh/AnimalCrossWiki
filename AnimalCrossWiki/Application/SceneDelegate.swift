@@ -18,14 +18,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let mainViewController = ViewController()
-        let navigation = UINavigationController(rootViewController: mainViewController)
         
         let initialViewController = TabBarViewController()
         // 홈화면부터 시작할 수 있게 TabBar의 인덱스번호 지정
         initialViewController.selectedIndex = 1
         initialViewController.tabBar.backgroundColor = .white
         window?.rootViewController = initialViewController
+        UINavigationBar.appearance().barTintColor = .red
+        
+        window?.backgroundColor = .red
+        UINavigationBar.appearance().backgroundColor = .red
         window?.makeKeyAndVisible()
     }
 

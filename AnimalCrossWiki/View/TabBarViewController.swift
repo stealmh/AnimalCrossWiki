@@ -7,16 +7,25 @@
 
 import UIKit
 
-class TabBarViewController: UITabBarController {
+class TabBarViewController: UITabBarController,UITabBarControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTabBar()
+        self.delegate = self
     }
     
-    func setUpTabBar() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //View 1
         let animalListView = ViewController()
-        let homeView = HomeViewController()
+        
+        //View 2
+        let layout = UICollectionViewFlowLayout()
+        let homeView = HomeViewController(collectionViewLayout: layout)
+        
+        //View 3
         let fishView = ViewController()
 
         animalListView.tabBarItem = UITabBarItem(title: "주민",
@@ -37,16 +46,23 @@ class TabBarViewController: UITabBarController {
         
         let nav1 = UINavigationController(rootViewController: animalListView)
         let home = UINavigationController(rootViewController: homeView)
+//        UINavigationBar.appearance().barTintColor = UIColor.red
         let nav2 = UINavigationController(rootViewController: fishView)
         
-        nav1.navigationBar.prefersLargeTitles = true
-        home.navigationBar.prefersLargeTitles = true
+        nav1.navigationBar.prefersLargeTitles = false
+        home.navigationBar.prefersLargeTitles = false
         nav2.navigationBar.prefersLargeTitles = true
         
-        setViewControllers([nav1,home,nav2], animated: false)
+//        setViewControllers([nav1,home,nav2], animated: false)
+        self.viewControllers = [nav1,home,nav2]
         
         //투명도 해제
         tabBar.isTranslucent = false
+    }
+    
+    
+    
+    func setUpTabBar() {
     }
 
 
