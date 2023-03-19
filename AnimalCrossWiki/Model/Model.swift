@@ -10,4 +10,7 @@ struct AnimalModel: Codable,Hashable {
     var name: String
     var image_url: String
     var gender: String
+    var species: String
+    var birthday_month: String
+    var birthday_day: String
 }

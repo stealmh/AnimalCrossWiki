@@ -25,7 +25,8 @@ class ViewModel {
         
         let (data, _) = try await URLSession.shared.data(for: request)
         let result = try JSONDecoder().decode([AnimalModel].self, from: data)
-        print(result.count)
+        print(result[0].birthday_month)
+        print(result[0].birthday_day)
         self.data = result
         self.users.onNext(result)
     }

@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import DropDown
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate {
 
     private let viewModel = ViewModel()
     let disposebag = DisposeBag()
@@ -37,7 +37,36 @@ class ViewController: UIViewController {
             try await viewModel.getData()
             tableView.reloadData()
         }
+        
+        bindTableView()
+        tableViewCellTap()
     }
+    
+    func bindTableView() {
+        tableView.rx.setDelegate(self).disposed(by: disposebag)
+        viewModel.users.bind(to: tableView.rx.items(cellIdentifier: AnimalTableViewCell.identifier, cellType:AnimalTableViewCell.self)) {row, element, cell in
+            cell.name.text = element.name
+            if let url = URL(string: element.image_url) {
+                cell.photo.loadImage(from: url)
+            }
+        }.disposed(by: disposebag)
+    }
+    
+    func tableViewCellTap() {
+        tableView
+            .rx
+            .modelSelected(AnimalModel.self)
+            .subscribe { data in
+                print("\(data)")
+                let detail = AnimalDetailView()
+                detail.modalTransitionStyle = .crossDissolve
+                detail.modalPresentationStyle = .overFullScreen
+                detail.name.onNext(data.name)
+                detail.imageURL.onNext(data.image_url)
+                self.present(detail,animated:true)
+            }.disposed(by: disposebag)
+    }
+    
     
     @objc func searchTapped() {
         print("Tapped")
@@ -67,8 +96,8 @@ class ViewController: UIViewController {
     }
     //MARK: TableView
     func makeTableView() {
-        tableView.dataSource = self
-        tableView.delegate = self
+//        tableView.dataSource = self
+//        tableView.delegate = self
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -84,34 +113,37 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDataSource,UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.data.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: AnimalTableViewCell.identifier, for: indexPath) as! AnimalTableViewCell
-        
-        if let url = URL(string: viewModel.data[indexPath.row].image_url) {
-            cell.photo.loadImage(from: url)
-        }
-        cell.name.text = viewModel.data[indexPath.row].name
-        return cell
-    }
-    // Header
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-    }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: CustomHeaderView.identifier) as? CustomHeaderView else {return UIView()}
-        return headerView
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailView = AnimalDetailView()
-        self.navigationController?.pushViewController(detailView, animated: true)
-    }
-}
+//extension ViewController: UITableViewDataSource,UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return viewModel.data.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: AnimalTableViewCell.identifier, for: indexPath) as! AnimalTableViewCell
+//
+//        if let url = URL(string: viewModel.data[indexPath.row].image_url) {
+//            cell.photo.loadImage(from: url)
+//        }
+////        cell.name.text = viewModel.data[indexPath.row].name
+//        return cell
+//    }
+//    // Header
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 0
+//    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: CustomHeaderView.identifier) as? CustomHeaderView else {return UIView()}
+//        return headerView
+//    }
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let detailView = AnimalDetailView()
+//        detailView.modalTransitionStyle = .crossDissolve
+//        detailView.modalPresentationStyle = .overFullScreen
+////        self.navigationController?.pushViewController(detailView, animated: true)
+//        self.present(detailView,animated:true)
+//    }
+//}
 
 
 import SwiftUI
