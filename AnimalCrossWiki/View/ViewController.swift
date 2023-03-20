@@ -61,8 +61,9 @@ class ViewController: UIViewController, UITableViewDelegate {
                 let detail = AnimalDetailView()
                 detail.modalTransitionStyle = .crossDissolve
                 detail.modalPresentationStyle = .overFullScreen
-                detail.name.onNext(data.name)
-                detail.imageURL.onNext(data.image_url)
+//                detail.name.onNext(data.name)
+//                detail.imageURL.onNext(data.image_url)
+                detail.detailInfo.accept(data)
                 self.present(detail,animated:true)
             }.disposed(by: disposebag)
     }
@@ -74,7 +75,11 @@ class ViewController: UIViewController, UITableViewDelegate {
     
     //MARK: Navigation 관련 세팅
     func naivationSetting() {
-        navigationItem.style = .navigator
+        if #available(iOS 16.0, *) {
+            navigationItem.style = .navigator
+        } else {
+            // Fallback on earlier versions
+        }
         navigationItem.title = "주민목록"
         
         //MARK: 이 속성을 사용하면 top area 설정가능

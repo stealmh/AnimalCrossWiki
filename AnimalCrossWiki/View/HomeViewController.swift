@@ -14,7 +14,11 @@ class HomeViewController: UICollectionViewController,UICollectionViewDelegateFlo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.style = .navigator
+        if #available(iOS 16.0, *) {
+            navigationItem.style = .navigator
+        } else {
+            // Fallback on earlier versions
+        }
         navigationItem.title = "Home"
         collectionView?.backgroundColor = UIColor.white
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellID")

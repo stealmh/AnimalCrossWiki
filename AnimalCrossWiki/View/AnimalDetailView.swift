@@ -13,7 +13,8 @@ import RxGesture
 class AnimalDetailView: UIViewController {
     
     let dispose = DisposeBag()
-    var name: BehaviorSubject<String> = BehaviorSubject(value: "")
+    let detailInfo: BehaviorRelay<AnimalModel> = BehaviorRelay(value: AnimalModel(name: "뽀삐", image_url: "https://dodo.ac/np/images/9/94/Ribbot_NH.png", gender: "남자", species: "개구리", birthday_month: "May", birthday_day: "5"))
+    let name: BehaviorSubject<String> = BehaviorSubject(value: "")
     var imageURL: BehaviorSubject<String> = BehaviorSubject(value: "")
     let activity: UIActivityIndicatorView = {
         let act = UIActivityIndicatorView()
@@ -47,6 +48,42 @@ class AnimalDetailView: UIViewController {
         return photo
     }()
     
+    let genderLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    let speciesLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    let birthday_month: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    let birthday_day: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let contentsStack: UIStackView = {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.distribution = .fillEqually
+        return stack
+    }()
+    
+//    var name: String #Done
+//    var image_url: String #Done
+//    var gender: String #Done
+//    var species: String
+//    var birthday_month: String
+//    var birthday_day: String
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.4)
@@ -56,6 +93,7 @@ class AnimalDetailView: UIViewController {
         makeUIView()
         makeCloseButtonLayout()
         makePhotoLayout()
+        contentsStackLayout()
         
         closeButton.rx.tap.bind { _ in
             self.dismiss(animated: true)
@@ -67,7 +105,7 @@ class AnimalDetailView: UIViewController {
             .bind { _ in self.dismiss(animated: true) }
             .disposed(by: dispose)
         
-        name.bind(to: animalName.rx.text).disposed(by: dispose)
+//        name.bind(to: animalName.rx.text).disposed(by: dispose)
         imageURL
             .subscribe(on: ConcurrentDispatchQueueScheduler.init(qos: .default))
             .map {URL(string:$0)}
@@ -78,12 +116,30 @@ class AnimalDetailView: UIViewController {
             .observe(on: MainScheduler.instance)
             .bind(to: animalPhoto.rx.image)
             .disposed(by: dispose)
-
+        
+        detailInfo
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: {data in
+                self.animalName.text = data.name
+                self.imageURL.onNext(data.image_url)
+                self.genderLabel.text = data.gender
+                self.speciesLabel.text = data.species
+                self.birthday_day.text = data.birthday_day
+                self.birthday_month.text = data.birthday_month
+            }).disposed(by: dispose)
     }
     
     func myAddView() {
         myView.addSubview(closeButton)
         myView.addSubview(animalPhoto)
+        
+        contentsStack.addArrangedSubview(animalName)
+        contentsStack.addArrangedSubview(genderLabel)
+        contentsStack.addArrangedSubview(speciesLabel)
+        contentsStack.addArrangedSubview(birthday_day)
+        contentsStack.addArrangedSubview(birthday_month)
+        myView.addSubview(contentsStack)
+        
         view.addSubview(myView)
     }
     
@@ -112,5 +168,28 @@ class AnimalDetailView: UIViewController {
         animalPhoto.heightAnchor.constraint(equalToConstant: 150).isActive = true
         
     }
+    
+    func contentsStackLayout() {
+//        contentsStack.backgroundColor = .red
+        contentsStack.centerXAnchor.constraint(equalTo: myView.centerXAnchor).isActive = true
+        contentsStack.topAnchor.constraint(equalTo: animalPhoto.bottomAnchor, constant: 10).isActive = true
+//        contentsStack.leadingAnchor.constraint(equalTo: animalPhoto.leadingAnchor, constant: 0).isActive = true
+//        contentsStack.trailingAnchor.constraint(equalTo: animalPhoto.trailingAnchor, constant: 0).isActive = true
+        contentsStack.bottomAnchor.constraint(equalTo: myView.bottomAnchor, constant: -10).isActive = true
+        
+    }
+//    var name: String
+//    var image_url: String
+//    var gender: String
+//    var species: String
+//    var birthday_month: String
+//    var birthday_day: String
 
+}
+
+import SwiftUI
+struct AnimalDetail_preview: PreviewProvider {
+    static var previews: some View {
+        AnimalDetailView().toPreview()
+    }
 }
