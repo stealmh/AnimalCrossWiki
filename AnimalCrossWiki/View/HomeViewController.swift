@@ -9,36 +9,45 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class HomeViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
+class HomeViewController: UIViewController {
+    
+    let fishView: HomeCustomView = {
+        let view = HomeCustomView(frame: .zero, myImage: UIImage(systemName: "person")!, whatLabel: "물고기", whatCount: "0/100")
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let bugView: HomeCustomView = {
+        let view = HomeCustomView(frame: .zero, myImage: UIImage(systemName: "ladybug")!, whatLabel: "안뇽", whatCount: "3/200")
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(fishView)
+        view.addSubview(bugView)
+        makeMyView()
+    }
+    
+    func makeMyView() {
         
-        if #available(iOS 16.0, *) {
-            navigationItem.style = .navigator
-        } else {
-            // Fallback on earlier versions
-        }
-        navigationItem.title = "Home"
-        collectionView?.backgroundColor = UIColor.white
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellID")
+        //make fish Section
+        fishView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        fishView.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -10).isActive = true
+        fishView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
+        //make bug Section
+        bugView.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 10).isActive = true
+        bugView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+        bugView.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath)
-        cell.backgroundColor = UIColor.red
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSizeMake(view.frame.width, 200)
-    }
+}
 
-
-
+import SwiftUI
+struct ViewControsller_preview: PreviewProvider {
+    static var previews: some View {
+        HomeViewController().toPreview()
+    }
 }

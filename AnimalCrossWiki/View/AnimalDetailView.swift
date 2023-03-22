@@ -77,12 +77,12 @@ class AnimalDetailView: UIViewController {
         return stack
     }()
     
-//    var name: String #Done
-//    var image_url: String #Done
-//    var gender: String #Done
-//    var species: String
-//    var birthday_month: String
-//    var birthday_day: String
+    //    var name: String #Done
+    //    var image_url: String #Done
+    //    var gender: String #Done
+    //    var species: String
+    //    var birthday_month: String
+    //    var birthday_day: String
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,11 +101,11 @@ class AnimalDetailView: UIViewController {
         
         view.rx.tapGesture()
             .when(.recognized)
-//            .skip(1)
+        //            .skip(1)
             .bind { _ in self.dismiss(animated: true) }
             .disposed(by: dispose)
         
-//        name.bind(to: animalName.rx.text).disposed(by: dispose)
+        //        name.bind(to: animalName.rx.text).disposed(by: dispose)
         imageURL
             .subscribe(on: ConcurrentDispatchQueueScheduler.init(qos: .default))
             .map {URL(string:$0)}
@@ -152,40 +152,41 @@ class AnimalDetailView: UIViewController {
         myView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         myView.heightAnchor.constraint(equalToConstant: 400).isActive = true
     }
-    
-    func makeCloseButtonLayout() {
-        closeButton.backgroundColor = .blue
-        closeButton.topAnchor.constraint(equalTo: myView.topAnchor).isActive = true
-        closeButton.trailingAnchor.constraint(equalTo: myView.trailingAnchor).isActive = true
-        closeButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        closeButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-    }
-    
-    func makePhotoLayout() {
-        animalPhoto.centerXAnchor.constraint(equalTo: myView.centerXAnchor).isActive = true
-        animalPhoto.topAnchor.constraint(equalTo: myView.topAnchor, constant: 10).isActive = true
-        animalPhoto.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        animalPhoto.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        
+        func makeCloseButtonLayout() {
+            closeButton.backgroundColor = .blue
+            closeButton.topAnchor.constraint(equalTo: myView.topAnchor).isActive = true
+            closeButton.trailingAnchor.constraint(equalTo: myView.trailingAnchor).isActive = true
+            closeButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
+            closeButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        }
+        
+        func makePhotoLayout() {
+            animalPhoto.centerXAnchor.constraint(equalTo: myView.centerXAnchor).isActive = true
+            animalPhoto.topAnchor.constraint(equalTo: myView.topAnchor, constant: 10).isActive = true
+            animalPhoto.widthAnchor.constraint(equalToConstant: 100).isActive = true
+            animalPhoto.heightAnchor.constraint(equalToConstant: 150).isActive = true
+            
+        }
+        
+        func contentsStackLayout() {
+            //        contentsStack.backgroundColor = .red
+            contentsStack.centerXAnchor.constraint(equalTo: myView.centerXAnchor).isActive = true
+            contentsStack.topAnchor.constraint(equalTo: animalPhoto.bottomAnchor, constant: 10).isActive = true
+            //        contentsStack.leadingAnchor.constraint(equalTo: animalPhoto.leadingAnchor, constant: 0).isActive = true
+            //        contentsStack.trailingAnchor.constraint(equalTo: animalPhoto.trailingAnchor, constant: 0).isActive = true
+            contentsStack.bottomAnchor.constraint(equalTo: myView.bottomAnchor, constant: -10).isActive = true
+            
+        }
+        //    var name: String
+        //    var image_url: String
+        //    var gender: String
+        //    var species: String
+        //    var birthday_month: String
+        //    var birthday_day: String
         
     }
-    
-    func contentsStackLayout() {
-//        contentsStack.backgroundColor = .red
-        contentsStack.centerXAnchor.constraint(equalTo: myView.centerXAnchor).isActive = true
-        contentsStack.topAnchor.constraint(equalTo: animalPhoto.bottomAnchor, constant: 10).isActive = true
-//        contentsStack.leadingAnchor.constraint(equalTo: animalPhoto.leadingAnchor, constant: 0).isActive = true
-//        contentsStack.trailingAnchor.constraint(equalTo: animalPhoto.trailingAnchor, constant: 0).isActive = true
-        contentsStack.bottomAnchor.constraint(equalTo: myView.bottomAnchor, constant: -10).isActive = true
-        
-    }
-//    var name: String
-//    var image_url: String
-//    var gender: String
-//    var species: String
-//    var birthday_month: String
-//    var birthday_day: String
 
-}
 
 import SwiftUI
 struct AnimalDetail_preview: PreviewProvider {
