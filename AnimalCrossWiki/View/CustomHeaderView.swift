@@ -11,6 +11,7 @@ import RxCocoa
 import RxSwift
 
 class CustomHeaderView: UITableViewHeaderFooterView {
+    
     static let identifier = "CustomHeaderView"
     var disposeBag = DisposeBag()
     
@@ -90,15 +91,19 @@ class CustomHeaderView: UITableViewHeaderFooterView {
         vStackLayout()
         firstHStackLayout()
         secondHStackLayout()
-        dropDown.dataSource = ["남자","여자"]
+        dropDown.dataSource = ["전체","남자","여자"]
         
-        mybutton.setTitle("성별선택", for: .normal)
+        mybutton.setTitle("성별:전체", for: .normal)
         dropDown.anchorView = mybutton
         
         mybutton.rx.tap.bind {
             self.dropDown.show()
             print("tapped")
         }.disposed(by: disposeBag)
+//        dropDown.selectionAction = {[weak self] (index: Int, item: String) in
+//            print("Selected item: \(item) at index: \(index)")
+//            self?.mybutton.setTitle("성별:\(item)", for: .normal)
+//        }
         
     }
     deinit {

@@ -50,6 +50,7 @@ class ViewController: UIViewController, UITableViewDelegate {
                 cell.photo.loadImage(from: url)
             }
         }.disposed(by: disposebag)
+      
     }
     
     func tableViewCellTap() {
@@ -97,6 +98,12 @@ class ViewController: UIViewController, UITableViewDelegate {
         header.translatesAutoresizingMaskIntoConstraints = false
         header.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
         header.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        header.dropDown.selectionAction = {[weak self] (index: Int, item: String) in
+            print("Selected item: \(item) at index: \(index)")
+            self?.header.mybutton.setTitle("성별:\(item)", for: .normal)
+            self?.viewModel.filterGender.onNext(item)
+        }
+
         
     }
     //MARK: TableView

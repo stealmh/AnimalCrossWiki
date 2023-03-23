@@ -11,6 +11,11 @@ import RxSwift
 class ViewModel {
     var data: [AnimalModel] = []
     var users = BehaviorSubject(value: [AnimalModel]())
+    var filterGender = BehaviorSubject(value:"전체")
+    
+    var testUsers = PublishSubject<[AnimalModel]>()
+    var testFilterGender = PublishSubject<String>()
+
     
     private let version: String = "1.5.0"
     let myKey = "4a59aa18-04df-4cae-9a40-6b97b7a29216"
@@ -30,6 +35,11 @@ class ViewModel {
         self.data = result
         self.users.onNext(result)
     }
+    func aaa() {
+
+    }
+    
+    
     
 //    func urlToUIImage(url: String) -> UIImage? {
 //        guard let url = URL(string: url) else {return nil}
