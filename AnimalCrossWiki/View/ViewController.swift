@@ -14,14 +14,17 @@ class ViewController: UIViewController, UITableViewDelegate {
 
     private let viewModel = ViewModel()
     let disposebag = DisposeBag()
-    let header: CustomHeaderView = {
+    
+    //MARK: View
+    private let header: CustomHeaderView = {
         let hd = CustomHeaderView()
+        hd.translatesAutoresizingMaskIntoConstraints = false
         return hd
     }()
-    
-    let tableView: UITableView = {
+    private let tableView: UITableView = {
         let tv = UITableView(frame: CGRect.zero, style: .grouped)
         tv.register(AnimalTableViewCell.self, forCellReuseIdentifier: AnimalTableViewCell.identifier)
+        tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
     }()
     
@@ -29,31 +32,45 @@ class ViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        makeHeader()
+        headerSetting()
         naivationSetting()
-        makeTableView()
+        tableViewSetting()
         
         Task {
             try await viewModel.getData()
             tableView.reloadData()
+            bindTableView()
         }
-        
-        bindTableView()
-        tableViewCellTap()
+        tableViewCellTapped()
+        filterDataInjection()
     }
     
     func bindTableView() {
         tableView.rx.setDelegate(self).disposed(by: disposebag)
         viewModel.users.bind(to: tableView.rx.items(cellIdentifier: AnimalTableViewCell.identifier, cellType:AnimalTableViewCell.self)) {row, element, cell in
-            cell.name.text = element.name
+            cell.name.text = element.gender
             if let url = URL(string: element.image_url) {
                 cell.photo.loadImage(from: url)
             }
         }.disposed(by: disposebag)
-      
     }
     
-    func tableViewCellTap() {
+    func filterDataInjection() {
+        viewModel.filterGender.bind { filterText in
+            switch filterText {
+            case "전체":
+                self.viewModel.users.accept(self.viewModel.data)
+            case "Male":
+                self.viewModel.users.accept(self.viewModel.data.filter{ $0.gender == "Male" })
+            case "Female":
+                self.viewModel.users.accept(self.viewModel.data.filter{ $0.gender == "Female" })
+            default:
+                print("error")
+            }
+        }
+    }
+    
+    func tableViewCellTapped() {
         tableView
             .rx
             .modelSelected(AnimalModel.self)
@@ -92,27 +109,20 @@ class ViewController: UIViewController, UITableViewDelegate {
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
-    //MARK: Header
-    func makeHeader() {
+    //MARK: Header 관련 세팅
+    func headerSetting() {
         view.addSubview(header)
-        header.translatesAutoresizingMaskIntoConstraints = false
         header.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
         header.heightAnchor.constraint(equalToConstant: 50).isActive = true
         header.dropDown.selectionAction = {[weak self] (index: Int, item: String) in
-            print("Selected item: \(item) at index: \(index)")
             self?.header.mybutton.setTitle("성별:\(item)", for: .normal)
             self?.viewModel.filterGender.onNext(item)
         }
-
-        
     }
-    //MARK: TableView
-    func makeTableView() {
-//        tableView.dataSource = self
-//        tableView.delegate = self
+    
+    //MARK: TableView 관련 세팅
+    func tableViewSetting() {
         view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         tableView.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 0).isActive = true
@@ -124,38 +134,6 @@ class ViewController: UIViewController, UITableViewDelegate {
         self.tableView.contentInsetAdjustmentBehavior = .never
     }
 }
-
-//extension ViewController: UITableViewDataSource,UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return viewModel.data.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: AnimalTableViewCell.identifier, for: indexPath) as! AnimalTableViewCell
-//
-//        if let url = URL(string: viewModel.data[indexPath.row].image_url) {
-//            cell.photo.loadImage(from: url)
-//        }
-////        cell.name.text = viewModel.data[indexPath.row].name
-//        return cell
-//    }
-//    // Header
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 0
-//    }
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: CustomHeaderView.identifier) as? CustomHeaderView else {return UIView()}
-//        return headerView
-//    }
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let detailView = AnimalDetailView()
-//        detailView.modalTransitionStyle = .crossDissolve
-//        detailView.modalPresentationStyle = .overFullScreen
-////        self.navigationController?.pushViewController(detailView, animated: true)
-//        self.present(detailView,animated:true)
-//    }
-//}
 
 
 import SwiftUI

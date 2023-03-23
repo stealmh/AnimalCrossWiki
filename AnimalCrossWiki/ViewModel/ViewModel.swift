@@ -7,14 +7,13 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
+
 
 class ViewModel {
     var data: [AnimalModel] = []
-    var users = BehaviorSubject(value: [AnimalModel]())
-    var filterGender = BehaviorSubject(value:"전체")
-    
-    var testUsers = PublishSubject<[AnimalModel]>()
-    var testFilterGender = PublishSubject<String>()
+    var filterGender = BehaviorSubject(value:"")
+    var users = BehaviorRelay(value: [AnimalModel]())
 
     
     private let version: String = "1.5.0"
@@ -30,17 +29,10 @@ class ViewModel {
         
         let (data, _) = try await URLSession.shared.data(for: request)
         let result = try JSONDecoder().decode([AnimalModel].self, from: data)
-        print(result[0].birthday_month)
-        print(result[0].birthday_day)
+        print("== Count: \(result.count) ==")
         self.data = result
-        self.users.onNext(result)
+        self.users.accept(result)
     }
-    func aaa() {
-
-    }
-    
-    
-    
 //    func urlToUIImage(url: String) -> UIImage? {
 //        guard let url = URL(string: url) else {return nil}
 //        guard let data = try? Data(contentsOf: url) else {return nil}

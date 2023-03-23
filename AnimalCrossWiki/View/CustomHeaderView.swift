@@ -91,7 +91,7 @@ class CustomHeaderView: UITableViewHeaderFooterView {
         vStackLayout()
         firstHStackLayout()
         secondHStackLayout()
-        dropDown.dataSource = ["전체","남자","여자"]
+        dropDown.dataSource = ["전체","Male","Female"]
         
         mybutton.setTitle("성별:전체", for: .normal)
         dropDown.anchorView = mybutton
