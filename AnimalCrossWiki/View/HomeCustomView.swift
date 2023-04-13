@@ -40,7 +40,7 @@ final class HomeCustomView: UIView {
         self.countLabel.text = whatCount
         super.init(frame: frame)
         //Add
-        self.backgroundColor = .gray
+        self.backgroundColor = .blue
         self.addSubview(logoImage)
         self.addSubview(logoLabel)
         self.addSubview(countLabel)

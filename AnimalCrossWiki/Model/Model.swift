@@ -14,3 +14,12 @@ struct AnimalModel: Codable,Hashable {
     var birthday_month: String
     var birthday_day: String
 }
+
+struct Fish: Codable {
+    var number: Int
+    var image_url: String
+    var name: String
+    var sell_nook: Int
+    var location: String
+    
+}

@@ -26,7 +26,7 @@ class TabBarViewController: UITabBarController,UITabBarControllerDelegate {
         let homeView = HomeViewController()
         
         //View 3
-        let fishView = ViewController()
+        let fishView = FishViewController()
 
         animalListView.tabBarItem = UITabBarItem(title: "주민",
                                                  image: UIImage(systemName: "pawprint"),

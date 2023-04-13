@@ -33,6 +33,9 @@ class ViewModel {
         self.data = result
         self.users.accept(result)
     }
+
+    
+    
 //    func urlToUIImage(url: String) -> UIImage? {
 //        guard let url = URL(string: url) else {return nil}
 //        guard let data = try? Data(contentsOf: url) else {return nil}
