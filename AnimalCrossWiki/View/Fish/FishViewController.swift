@@ -76,14 +76,15 @@ class FishViewController: UIViewController {
         
         let (data, _) = try await URLSession.shared.data(for: request)
         var result = try JSONDecoder().decode([Fish].self, from: data)
-        result.sort { data1, data2 in
-            return data1.number < data2.number
-        }
-        let a = result.map { data in
-            data.location.replacingOccurrences(of: "Pond", with: "강")
-            return data
-        }
-        myData.accept(a)
+        result.sort { $0.number < $1.number }
+        result.indices.filter{result[$0].location == "Pond"}.forEach{ result[$0].location = "연못" }
+        result.indices.filter{result[$0].location == "River"}.forEach{ result[$0].location = "강" }
+        result.indices.filter{result[$0].location == "Sea"}.forEach{ result[$0].location = "바다" }
+        result.indices.filter{result[$0].location == "River (clifftop)"}.forEach{ result[$0].location = "강(절벽위)" }
+        result.indices.filter{result[$0].location == "River (mouth)"}.forEach{ result[$0].location = "강(하구)" }
+        result.indices.filter{result[$0].location == "Pier"}.forEach{ result[$0].location = "부두" }
+        result.indices.filter{result[$0].location == "Sea (raining)"}.forEach{ result[$0].location = "바다(비)" }
+        myData.accept(result)
 //        items = result
 //        print(items.count)
         
