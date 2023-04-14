@@ -21,5 +21,14 @@ struct Fish: Codable {
     var name: String
     var sell_nook: Int
     var location: String
-    
+}
+
+enum FishCase: String {
+    case Pond = "Pond"
+    case River = "River"
+    case Sea = "Sea"
+    case RiverClifftop = "River (clifftop)"
+    case RiverMouth = "River (mouth)"
+    case Pier = "Pier"
+    case SeaRain = "Sea (raining)"
 }

@@ -24,10 +24,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         initialViewController.selectedIndex = 1
         initialViewController.tabBar.backgroundColor = .white
         window?.rootViewController = initialViewController
-        UINavigationBar.appearance().barTintColor = .red
+//        UINavigationBar.appearance().barTintColor = .red
         
-        window?.backgroundColor = .red
-        UINavigationBar.appearance().backgroundColor = .red
+        window?.backgroundColor = .clear
+        UINavigationBar.appearance().backgroundColor = .clear
         window?.makeKeyAndVisible()
     }
 

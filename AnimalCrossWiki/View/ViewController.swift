@@ -31,7 +31,6 @@ class ViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
         headerSetting()
         naivationSetting()
         tableViewSetting()
@@ -89,6 +88,9 @@ class ViewController: UIViewController, UITableViewDelegate {
     
     @objc func searchTapped() {
         print("Tapped")
+        let v = FishViewController()
+        v.modalPresentationStyle = .fullScreen
+        present(FishViewController(), animated: true)
     }
     
     //MARK: Navigation 관련 세팅

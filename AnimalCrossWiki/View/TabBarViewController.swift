@@ -42,7 +42,7 @@ class TabBarViewController: UITabBarController,UITabBarControllerDelegate {
         
         animalListView.navigationItem.largeTitleDisplayMode = .always
         homeView.navigationItem.largeTitleDisplayMode = .always
-        fishView.navigationItem.largeTitleDisplayMode = .always
+        fishView.navigationItem.largeTitleDisplayMode = .never
         
         let nav1 = UINavigationController(rootViewController: animalListView)
         let home = UINavigationController(rootViewController: homeView)
@@ -51,13 +51,13 @@ class TabBarViewController: UITabBarController,UITabBarControllerDelegate {
         
         nav1.navigationBar.prefersLargeTitles = false
         home.navigationBar.prefersLargeTitles = false
-        nav2.navigationBar.prefersLargeTitles = true
+        nav2.navigationBar.prefersLargeTitles = false
         
 //        setViewControllers([nav1,home,nav2], animated: false)
         self.viewControllers = [nav1,home,nav2]
         
         //투명도 해제
-        tabBar.isTranslucent = false
+        tabBar.isTranslucent = true
     }
     
     

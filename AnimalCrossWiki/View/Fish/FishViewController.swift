@@ -29,18 +29,27 @@ class FishViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+//        UINavigationBar.appearance().backgroundColor = .blue
         view.addSubview(fishView)
         Task {
             try await self.getFish()
         }
         fishView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
+            
             make.left.bottom.right.equalToSuperview()
         }
         bindTableView()
+        self.navigationItem.title = "hello!"
+        self.navigationItem.rightBarButtonItem = .init(barButtonSystemItem: .add, target: self, action: #selector(hello))
     }
     
-    func bindTableView() {
+    @objc func hello() {
+        
+    }
+    
+    private func bindTableView() {
         fishView.tableView.rx.setDelegate(self).disposed(by: disposeBag)
         myData
             .bind(to: fishView.tableView.rx.items(cellIdentifier: Item.reuseIdentifier, cellType: Item.self)) {row, item, cell in
@@ -64,7 +73,7 @@ class FishViewController: UIViewController {
     
     
     
-    func getFish() async throws {
+    private func getFish() async throws {
         print(#function)
         let url = URL(string: "https://api.nookipedia.com/nh/fish")
         let version: String = "1.5.0"
@@ -77,17 +86,39 @@ class FishViewController: UIViewController {
         let (data, _) = try await URLSession.shared.data(for: request)
         var result = try JSONDecoder().decode([Fish].self, from: data)
         result.sort { $0.number < $1.number }
-        result.indices.filter{result[$0].location == "Pond"}.forEach{ result[$0].location = "연못" }
-        result.indices.filter{result[$0].location == "River"}.forEach{ result[$0].location = "강" }
-        result.indices.filter{result[$0].location == "Sea"}.forEach{ result[$0].location = "바다" }
-        result.indices.filter{result[$0].location == "River (clifftop)"}.forEach{ result[$0].location = "강(절벽위)" }
-        result.indices.filter{result[$0].location == "River (mouth)"}.forEach{ result[$0].location = "강(하구)" }
-        result.indices.filter{result[$0].location == "Pier"}.forEach{ result[$0].location = "부두" }
-        result.indices.filter{result[$0].location == "Sea (raining)"}.forEach{ result[$0].location = "바다(비)" }
-        myData.accept(result)
-//        items = result
-//        print(items.count)
+        let filterMyFish = self.filterFish(result)
+        myData.accept(filterMyFish)
         
+    }
+    
+    private func filterFish(_ fish: [Fish]) -> [Fish] {
+        
+        var myFish = fish
+        
+        myFish.indices.forEach { idx in
+            
+            let fishCase = myFish[idx].location
+            switch fishCase {
+            case FishCase.Pond.rawValue:
+                myFish[idx].location = "연못"
+            case FishCase.River.rawValue:
+                myFish[idx].location = "강"
+            case FishCase.Sea.rawValue:
+                myFish[idx].location = "바다"
+            case FishCase.RiverClifftop.rawValue:
+                myFish[idx].location = "강(절벽위)"
+            case FishCase.RiverMouth.rawValue:
+                myFish[idx].location = "강(하구)"
+            case FishCase.Pier.rawValue:
+                myFish[idx].location = "부두"
+            case FishCase.SeaRain.rawValue:
+                myFish[idx].location = "바다(비)"
+            default:
+                break
+            }
+        }
+        
+        return myFish
     }
 
 
