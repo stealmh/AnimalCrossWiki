@@ -22,6 +22,7 @@
 		16C2459329C02FF200A937C7 /* AnimalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2459229C02FF200A937C7 /* AnimalTableViewCell.swift */; };
 		16C2459529C0387B00A937C7 /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2459429C0387B00A937C7 /* Extension+UIViewController.swift */; };
 		16E4331029C2BBAB004437D3 /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E4330F29C2BBAB004437D3 /* CustomHeaderView.swift */; };
+		5A245CDB29ED2ADC00050270 /* AnimalCrossWiki+Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A245CDA29ED2ADC00050270 /* AnimalCrossWiki+Bundle.swift */; };
 		5A68C5FB29E7D36500B7985D /* UIView+nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C5FA29E7D36500B7985D /* UIView+nib.swift */; };
 		5A68C5FD29E7D3D500B7985D /* FishViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C5FC29E7D3D500B7985D /* FishViewHeader.swift */; };
 		5A68C5FF29E7D3E300B7985D /* FishViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C5FE29E7D3E300B7985D /* FishViewCell.swift */; };
@@ -55,6 +56,7 @@
 		16C2459229C02FF200A937C7 /* AnimalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalTableViewCell.swift; sourceTree = "<group>"; };
 		16C2459429C0387B00A937C7 /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
 		16E4330F29C2BBAB004437D3 /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
+		5A245CDA29ED2ADC00050270 /* AnimalCrossWiki+Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnimalCrossWiki+Bundle.swift"; sourceTree = "<group>"; };
 		5A68C5FA29E7D36500B7985D /* UIView+nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+nib.swift"; sourceTree = "<group>"; };
 		5A68C5FC29E7D3D500B7985D /* FishViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishViewHeader.swift; sourceTree = "<group>"; };
 		5A68C5FE29E7D3E300B7985D /* FishViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishViewCell.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				16C2457E29C02D1300A937C7 /* LaunchScreen.storyboard */,
 				16C2457329C02D1000A937C7 /* AppDelegate.swift */,
 				16C2457529C02D1000A937C7 /* SceneDelegate.swift */,
+				5A245CDA29ED2ADC00050270 /* AnimalCrossWiki+Bundle.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				16C2457829C02D1000A937C7 /* ViewController.swift in Sources */,
 				5A68C60829E7DED300B7985D /* UITableViewCell+util.swift in Sources */,
 				167C8BA929C6EB6700727889 /* AnimalDetailView.swift in Sources */,
+				5A245CDB29ED2ADC00050270 /* AnimalCrossWiki+Bundle.swift in Sources */,
 				5A68C60A29E7DEFC00B7985D /* UITableViewHeaderFooterView+util.swift in Sources */,
 				16AA0B7A29C1D3B0002FB416 /* TabBarViewController.swift in Sources */,
 				16AA0B7C29C1D593002FB416 /* HomeViewController.swift in Sources */,

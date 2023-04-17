@@ -17,7 +17,7 @@ class ViewModel {
 
     
     private let version: String = "1.5.0"
-    let myKey = "4a59aa18-04df-4cae-9a40-6b97b7a29216"
+    let myKey = Bundle.main.apiKey
     let url: String = "https://api.nookipedia.com/villagers"
     
     func getData() async throws{

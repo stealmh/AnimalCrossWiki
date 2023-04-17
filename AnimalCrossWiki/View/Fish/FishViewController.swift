@@ -17,6 +17,8 @@ class FishViewController: UIViewController {
     let viewModel = ViewModel()
     let myData = BehaviorRelay<[Fish]>(value: [])
     
+    private var toggleCheck: Bool = false
+    
     typealias Header = FishViewHeader
     typealias Item = FishViewCell
     
@@ -30,8 +32,8 @@ class FishViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-//        UINavigationBar.appearance().backgroundColor = .blue
         view.addSubview(fishView)
+        
         Task {
             try await self.getFish()
         }
@@ -40,12 +42,37 @@ class FishViewController: UIViewController {
             
             make.left.bottom.right.equalToSuperview()
         }
+        
         bindTableView()
-        self.navigationItem.title = "hello!"
-        self.navigationItem.rightBarButtonItem = .init(barButtonSystemItem: .add, target: self, action: #selector(hello))
-    }
-    
-    @objc func hello() {
+        fishView.positionSortButton.rx.tap
+            .bind {
+                var sortValue = self.myData.value
+                sortValue.sort { data1, data2 in
+                    data1.location.count > data2.location.count
+                }
+                self.myData.accept(sortValue)
+            }.disposed(by: disposeBag)
+        
+        fishView.priceSortButton.rx.tap
+            .bind {
+                if self.toggleCheck {
+                    var sortValue = self.myData.value
+                    sortValue.sort { data1, data2 in
+                        data1.sell_nook < data2.sell_nook
+                    }
+                    self.myData.accept(sortValue)
+                    self.toggleCheck.toggle()
+                }
+                else {
+                    var sortValue = self.myData.value
+                    sortValue.sort { data1, data2 in
+                        data1.sell_nook > data2.sell_nook
+                    }
+                    self.myData.accept(sortValue)
+                    self.toggleCheck.toggle()
+                }
+            }.disposed(by: disposeBag)
+        
         
     }
     
@@ -70,14 +97,12 @@ class FishViewController: UIViewController {
             cell.fishPriceLabel.text = "\(item.sell_nook)"
         }.disposed(by: disposeBag)
     }
-    
-    
-    
+ 
     private func getFish() async throws {
         print(#function)
         let url = URL(string: "https://api.nookipedia.com/nh/fish")
         let version: String = "1.5.0"
-        let myKey = "4a59aa18-04df-4cae-9a40-6b97b7a29216"
+        let myKey = Bundle.main.apiKey
         var request = URLRequest(url: url!)
         
         request.setValue(myKey, forHTTPHeaderField: "X-API-KEY")
@@ -117,7 +142,6 @@ class FishViewController: UIViewController {
                 break
             }
         }
-        
         return myFish
     }
 
@@ -133,7 +157,9 @@ extension FishViewController:  UITableViewDelegate {
         let v = tableView.dequeueReusableHeaderFooterView(withIdentifier: Header.reuseIdentifier) as! Header
         return v
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Header.Constant.size.height
     }
 }
+

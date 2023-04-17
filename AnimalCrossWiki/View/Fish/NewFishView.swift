@@ -7,13 +7,13 @@
 
 import UIKit
 
-
 class NewFishView: UIView {
     
-
     @IBOutlet weak var tableView: UITableView!
+
+    @IBOutlet weak var priceSortButton: UIButton!
+    @IBOutlet weak var positionSortButton: UIButton!
     
     override func awakeFromNib() {
-        
     }
 }
