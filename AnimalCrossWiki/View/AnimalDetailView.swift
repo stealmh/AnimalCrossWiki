@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxGesture
+import SnapKit
 
 class AnimalDetailView: UIViewController {
     
@@ -28,16 +29,16 @@ class AnimalDetailView: UIViewController {
         return label
     }()
     
-    let myView: UIView = {
+    let detailView: UIView = {
         let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
         return view
     }()
     
     let closeButton: UIButton = {
         let button = UIButton()
+        button.backgroundColor = .blue
         button.setTitle("닫기", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -77,24 +78,40 @@ class AnimalDetailView: UIViewController {
         return stack
     }()
     
-    //    var name: String #Done
-    //    var image_url: String #Done
-    //    var gender: String #Done
-    //    var species: String
-    //    var birthday_month: String
-    //    var birthday_day: String
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.4)
         view.isOpaque = false
         
-        myAddView()
-        makeUIView()
-        makeCloseButtonLayout()
-        makePhotoLayout()
-        contentsStackLayout()
+        addViewList()
+
+        //MARK: Layout
+        detailView.snp.makeConstraints {
+            $0.left.right.equalToSuperview().inset(40)
+            $0.centerX.centerY.equalToSuperview()
+            $0.width.equalTo(view.frame.width - 80)
+            $0.height.equalTo(400)
+        }
+
+        closeButton.snp.makeConstraints {
+            $0.top.right.equalTo(detailView)
+            $0.width.height.equalTo(40)
+        }
+
+        animalPhoto.snp.makeConstraints {
+            $0.centerX.equalTo(detailView)
+            $0.top.equalTo(detailView).inset(10)
+            $0.width.equalTo(100)
+            $0.height.equalTo(150)
+        }
+
+        contentsStack.snp.makeConstraints {
+            $0.centerX.equalTo(detailView)
+            $0.top.equalTo(animalPhoto.snp.bottom).inset(10)
+            $0.bottom.equalTo(detailView.snp.bottom).inset(10)
+        }
         
+        //MARK: Rx
         closeButton.rx.tap.bind { _ in
             self.dismiss(animated: true)
         }.disposed(by: dispose)
@@ -129,63 +146,21 @@ class AnimalDetailView: UIViewController {
             }).disposed(by: dispose)
     }
     
-    func myAddView() {
-        myView.addSubview(closeButton)
-        myView.addSubview(animalPhoto)
+    func addViewList() {
+        detailView.addSubview(closeButton)
+        detailView.addSubview(animalPhoto)
         
         contentsStack.addArrangedSubview(animalName)
         contentsStack.addArrangedSubview(genderLabel)
         contentsStack.addArrangedSubview(speciesLabel)
         contentsStack.addArrangedSubview(birthday_day)
         contentsStack.addArrangedSubview(birthday_month)
-        myView.addSubview(contentsStack)
+        detailView.addSubview(contentsStack)
         
-        view.addSubview(myView)
+        view.addSubview(detailView)
     }
-    
-    func makeUIView() {
-        myView.backgroundColor = .white
-        myView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40).isActive = true
-        myView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40).isActive = true
-        myView.widthAnchor.constraint(equalToConstant: view.frame.width - 80).isActive = true
-        myView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        myView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        myView.heightAnchor.constraint(equalToConstant: 400).isActive = true
-    }
-        
-        func makeCloseButtonLayout() {
-            closeButton.backgroundColor = .blue
-            closeButton.topAnchor.constraint(equalTo: myView.topAnchor).isActive = true
-            closeButton.trailingAnchor.constraint(equalTo: myView.trailingAnchor).isActive = true
-            closeButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
-            closeButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        }
-        
-        func makePhotoLayout() {
-            animalPhoto.centerXAnchor.constraint(equalTo: myView.centerXAnchor).isActive = true
-            animalPhoto.topAnchor.constraint(equalTo: myView.topAnchor, constant: 10).isActive = true
-            animalPhoto.widthAnchor.constraint(equalToConstant: 100).isActive = true
-            animalPhoto.heightAnchor.constraint(equalToConstant: 150).isActive = true
-            
-        }
-        
-        func contentsStackLayout() {
-            //        contentsStack.backgroundColor = .red
-            contentsStack.centerXAnchor.constraint(equalTo: myView.centerXAnchor).isActive = true
-            contentsStack.topAnchor.constraint(equalTo: animalPhoto.bottomAnchor, constant: 10).isActive = true
-            //        contentsStack.leadingAnchor.constraint(equalTo: animalPhoto.leadingAnchor, constant: 0).isActive = true
-            //        contentsStack.trailingAnchor.constraint(equalTo: animalPhoto.trailingAnchor, constant: 0).isActive = true
-            contentsStack.bottomAnchor.constraint(equalTo: myView.bottomAnchor, constant: -10).isActive = true
-            
-        }
-        //    var name: String
-        //    var image_url: String
-        //    var gender: String
-        //    var species: String
-        //    var birthday_month: String
-        //    var birthday_day: String
-        
-    }
+
+}
 
 
 import SwiftUI

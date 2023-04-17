@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SnapKit
 import DropDown
 
 class ViewController: UIViewController, UITableViewDelegate {
@@ -18,13 +19,11 @@ class ViewController: UIViewController, UITableViewDelegate {
     //MARK: View
     private let header: CustomHeaderView = {
         let hd = CustomHeaderView()
-        hd.translatesAutoresizingMaskIntoConstraints = false
         return hd
     }()
     private let tableView: UITableView = {
         let tv = UITableView(frame: CGRect.zero, style: .grouped)
         tv.register(AnimalTableViewCell.self, forCellReuseIdentifier: AnimalTableViewCell.identifier)
-        tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
     }()
     
@@ -78,8 +77,6 @@ class ViewController: UIViewController, UITableViewDelegate {
                 let detail = AnimalDetailView()
                 detail.modalTransitionStyle = .crossDissolve
                 detail.modalPresentationStyle = .overFullScreen
-//                detail.name.onNext(data.name)
-//                detail.imageURL.onNext(data.image_url)
                 detail.detailInfo.accept(data)
                 self.present(detail,animated:true)
             }.disposed(by: disposebag)
@@ -114,8 +111,11 @@ class ViewController: UIViewController, UITableViewDelegate {
     //MARK: Header 관련 세팅
     func headerSetting() {
         view.addSubview(header)
-        header.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
-        header.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        header.snp.makeConstraints {
+            $0.width.equalTo(view.snp.width)
+            $0.height.equalTo(50)
+        }
         header.dropDown.selectionAction = {[weak self] (index: Int, item: String) in
             self?.header.mybutton.setTitle("성별:\(item)", for: .normal)
             self?.viewModel.filterGender.onNext(item)
@@ -125,12 +125,12 @@ class ViewController: UIViewController, UITableViewDelegate {
     //MARK: TableView 관련 세팅
     func tableViewSetting() {
         view.addSubview(tableView)
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        tableView.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 0).isActive = true
-        tableView.heightAnchor.constraint(equalToConstant: view.frame.height).isActive = true
         tableView.separatorStyle = .none
         tableView.rowHeight = 60
+        tableView.snp.makeConstraints {
+            $0.left.right.height.equalToSuperview()
+            $0.top.equalTo(header.snp.bottom)
+        }
         //tableView SafeArea
         self.tableView.insetsContentViewsToSafeArea = true
         self.tableView.contentInsetAdjustmentBehavior = .never
