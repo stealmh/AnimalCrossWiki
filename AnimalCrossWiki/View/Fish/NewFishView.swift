@@ -2,7 +2,7 @@
 //  NewFishView.swift
 //  AnimalCrossWiki
 //
-//  Created by KindSoft on 2023/04/13.
+//  Created by 김민호 on 2023/04/13.
 //
 
 import UIKit

@@ -2,7 +2,7 @@
 //  AnimalCrossWiki+Bundle.swift
 //  AnimalCrossWiki
 //
-//  Created by KindSoft on 2023/04/17.
+//  Created by 김민호 on 2023/04/17.
 //
 
 import Foundation
