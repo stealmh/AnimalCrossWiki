@@ -32,3 +32,9 @@ enum FishCase: String {
     case Pier = "Pier"
     case SeaRain = "Sea (raining)"
 }
+
+struct Bug: Codable {
+    let image_url: String
+    let name: String
+    
+}

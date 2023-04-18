@@ -124,7 +124,7 @@ class AnimalDetailView: UIViewController {
         
         //        name.bind(to: animalName.rx.text).disposed(by: dispose)
         imageURL
-            .subscribe(on: ConcurrentDispatchQueueScheduler.init(qos: .default))
+            .subscribe(on: ConcurrentDispatchQueueScheduler.init(qos: .background))
             .map {URL(string:$0)}
             .filter{$0 != nil}
             .map {$0!}

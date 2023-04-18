@@ -23,7 +23,8 @@ class TabBarViewController: UITabBarController,UITabBarControllerDelegate {
         
         //View 2
         let layout = UICollectionViewFlowLayout()
-        let homeView = HomeViewController()
+//        let homeView = HomeViewController()
+        let homeView = BugViewController()
         
         //View 3
         let fishView = FishViewController()

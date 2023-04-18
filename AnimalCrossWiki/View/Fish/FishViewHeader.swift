@@ -6,11 +6,8 @@
 //
 
 import UIKit
-import RxCocoa
-import RxSwift
 
 class FishViewHeader: UITableViewHeaderFooterView {
-    let disposeBag = DisposeBag()
     enum Constant {
       static let size: CGSize = .init(width: UIView.noIntrinsicMetric, height: 35)
     }
