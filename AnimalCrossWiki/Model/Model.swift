@@ -33,8 +33,18 @@ enum FishCase: String {
     case SeaRain = "Sea (raining)"
 }
 
-struct Bug: Codable {
+struct Bug: Codable, Equatable {
+    static func == (lhs: Bug, rhs: Bug) -> Bool {
+        return true
+    }
+    
     let image_url: String
     let name: String
     
+    let north, south: Hemisphere
+}
+
+struct Hemisphere: Codable {
+    let months: String
+    let months_array: [Int]
 }

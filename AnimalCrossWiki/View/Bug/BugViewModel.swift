@@ -12,12 +12,13 @@ import RxCocoa
 class BugViewModel {
 
     var filterGender = BehaviorSubject(value:"")
-    var users = BehaviorRelay(value: [Bug]())
+    var users: BehaviorRelay<[Bug]> = BehaviorRelay(value: [Bug]())
+    private(set) var users_copy: [Bug] = []
 
     
-    private let version: String = "1.5.0"
+    let version = AddressConstants.version
     let myKey = Bundle.main.apiKey
-    let url: String = "https://api.nookipedia.com/nh/bugs"
+    let url: String = AddressConstants.url + "/nh/bugs"
     
     func getData() async throws{
         let url = URL(string: self.url)
@@ -28,6 +29,7 @@ class BugViewModel {
         
         let (data, _) = try await URLSession.shared.data(for: request)
         let result = try JSONDecoder().decode([Bug].self, from: data)
+        users_copy = result
         self.users.accept(result)
     }
     

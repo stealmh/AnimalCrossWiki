@@ -45,6 +45,7 @@
 		5A9B0C9129EFA03500737AED /* MyInfoSettingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9B0C9029EFA03500737AED /* MyInfoSettingViewCell.swift */; };
 		5A9B0C9329EFA04200737AED /* MyInfoSettingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A9B0C9229EFA04200737AED /* MyInfoSettingViewCell.xib */; };
 		5A9B0C9529EFA2A900737AED /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9B0C9429EFA2A900737AED /* MyInfoViewController.swift */; };
+		5A9B0C9729EFCFDD00737AED /* AddressConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9B0C9629EFCFDD00737AED /* AddressConstants.swift */; };
 		77B60FFDFCB396667A77DB79 /* Pods_AnimalCrossWiki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 017EAFB4E9B574160095B6CF /* Pods_AnimalCrossWiki.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,7 @@
 		5A9B0C9029EFA03500737AED /* MyInfoSettingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoSettingViewCell.swift; sourceTree = "<group>"; };
 		5A9B0C9229EFA04200737AED /* MyInfoSettingViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyInfoSettingViewCell.xib; sourceTree = "<group>"; };
 		5A9B0C9429EFA2A900737AED /* MyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
+		5A9B0C9629EFCFDD00737AED /* AddressConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressConstants.swift; sourceTree = "<group>"; };
 		B169AF0D67EA066A5A5497FD /* Pods-AnimalCrossWiki.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossWiki.debug.xcconfig"; path = "Target Support Files/Pods-AnimalCrossWiki/Pods-AnimalCrossWiki.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +156,7 @@
 				16C2457329C02D1000A937C7 /* AppDelegate.swift */,
 				16C2457529C02D1000A937C7 /* SceneDelegate.swift */,
 				5A245CDA29ED2ADC00050270 /* AnimalCrossWiki+Bundle.swift */,
+				5A9B0C9629EFCFDD00737AED /* AddressConstants.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				16AA0B7C29C1D593002FB416 /* HomeViewController.swift in Sources */,
 				16C2457429C02D1000A937C7 /* AppDelegate.swift in Sources */,
 				5A9B0C9529EFA2A900737AED /* MyInfoViewController.swift in Sources */,
+				5A9B0C9729EFCFDD00737AED /* AddressConstants.swift in Sources */,
 				16C2459329C02FF200A937C7 /* AnimalTableViewCell.swift in Sources */,
 				16E4331029C2BBAB004437D3 /* CustomHeaderView.swift in Sources */,
 				16C2458F29C02FDA00A937C7 /* ViewModel.swift in Sources */,

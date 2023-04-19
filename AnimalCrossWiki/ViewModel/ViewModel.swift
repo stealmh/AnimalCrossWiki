@@ -14,11 +14,10 @@ class ViewModel {
     var data: [AnimalModel] = []
     var filterGender = BehaviorSubject(value:"")
     var users = BehaviorRelay(value: [AnimalModel]())
-
     
-    private let version: String = "1.5.0"
     let myKey = Bundle.main.apiKey
-    let url: String = "https://api.nookipedia.com/villagers"
+    let version = AddressConstants.version
+    let url: String = AddressConstants.url + "/villagers"
     
     func getData() async throws{
         let url = URL(string: self.url)

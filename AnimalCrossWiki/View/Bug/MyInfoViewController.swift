@@ -10,14 +10,18 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
+protocol BugDelegate: AnyObject {
+    func returnValue(vc: MyInfoViewController, south: Bool?, idx: Int?)
+}
 
 class MyInfoViewController: UIViewController {
     let dispose = DisposeBag()
-
-    let defaultMonths = Observable.just(["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"])
     
-    let buttonSelectOb: BehaviorRelay<Bool> = BehaviorRelay(value: false)
-    let selectedIndex = PublishSubject<Int>()
+    let defaultMonths = Observable.just(["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"])
+    var buttonSelectOb: BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    var selectedIndex = BehaviorRelay<Int>(value: 0)
+    
+    weak var delegate: BugDelegate?
     
     typealias Item = MyInfoSettingViewCell
 
@@ -81,12 +85,14 @@ class MyInfoViewController: UIViewController {
         
         myView.okButton.rx.tap
             .subscribe(onNext: {_ in
-                self.dismiss(animated: true)
+//                self.dismiss(animated: true)
+                self.delegate?.returnValue(vc: self,south: self.buttonSelectOb.value,idx:self.selectedIndex.value)
+                
             }).disposed(by: dispose)
         
         myView.collectionView.rx.itemSelected
             .subscribe(onNext: { indexPath in
-                self.selectedIndex.onNext(indexPath.row)
+                self.selectedIndex.accept(indexPath.row)
             }).disposed(by: dispose)
     }
 }
