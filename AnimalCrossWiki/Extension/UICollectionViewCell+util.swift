@@ -2,7 +2,7 @@
 //  UICollectionViewCell+util.swift
 //  AnimalCrossWiki
 //
-//  Created by KindSoft on 2023/04/18.
+//  Created by 김민호 on 2023/04/18.
 //
 
 import UIKit

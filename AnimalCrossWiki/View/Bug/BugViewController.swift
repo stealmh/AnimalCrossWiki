@@ -2,7 +2,7 @@
 //  BugViewController.swift
 //  AnimalCrossWiki
 //
-//  Created by KindSoft on 2023/04/18.
+//  Created by 김민호 on 2023/04/18.
 //
 
 import UIKit
@@ -25,20 +25,25 @@ class BugViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Task {
-            try await viewModel.getData()
-        }
         view.backgroundColor = .white
         view.addSubview(bugView)
         
+        //곤충데이터 불러오기
+        Task {
+            try await viewModel.getData()
+        }
+        
+        //레이아웃 구성
         bugView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.left.right.equalToSuperview().inset(10)
             $0.bottom.equalToSuperview()
         }
-        
+        //델리게이트 위임
         bugView.collectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
+        
+        //cell 구성
         viewModel.users.bind(to: bugView.collectionView.rx.items(cellIdentifier: Item.resueIdentifier, cellType: Item.self)) { row, item, cell in
             cell.bugLabel.text = "\(item.name)"
             
@@ -49,6 +54,18 @@ class BugViewController: UIViewController {
                 })
         }
         .disposed(by: disposeBag)
+        
+        //
+        bugView.myInfoSettingButton
+            .rx
+            .tap
+            .subscribe { data in
+                print("\(data)")
+                let detail = MyInfoViewController()
+                detail.modalTransitionStyle = .crossDissolve
+                detail.modalPresentationStyle = .overFullScreen
+                self.present(detail,animated:true)
+            }.disposed(by: disposeBag)
         
     }
 }

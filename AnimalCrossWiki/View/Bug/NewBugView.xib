@@ -15,8 +15,26 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8yh-p5-h2V">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="40"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxF-EH-Vcg">
+                            <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="40"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="전체보기"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CVs-bR-c6d">
+                            <rect key="frame" x="196.66666666666663" y="0.0" width="196.33333333333337" height="40"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="우리 섬 설정"/>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="bTI-Bp-h6b"/>
+                    </constraints>
+                </stackView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="yuC-za-2tk">
-                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <rect key="frame" x="0.0" y="40" width="393" height="778"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dVu-h4-fbt">
                         <size key="itemSize" width="128" height="128"/>
@@ -31,14 +49,20 @@
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="yuC-za-2tk" secondAttribute="trailing" id="CKr-RP-yfe"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="yuC-za-2tk" secondAttribute="bottom" id="JzO-zj-u6O"/>
+                <constraint firstItem="8yh-p5-h2V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Re6-7l-rQf"/>
+                <constraint firstItem="8yh-p5-h2V" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="UML-50-pV9"/>
                 <constraint firstItem="yuC-za-2tk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="e0z-by-HZT"/>
-                <constraint firstItem="yuC-za-2tk" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="jkE-xS-lpM"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8yh-p5-h2V" secondAttribute="trailing" id="fa7-AT-BUa"/>
+                <constraint firstItem="yuC-za-2tk" firstAttribute="top" secondItem="8yh-p5-h2V" secondAttribute="bottom" id="fxH-YV-9sI"/>
+                <constraint firstItem="8yh-p5-h2V" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="hs1-jT-OiP"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="allButton" destination="hxF-EH-Vcg" id="WT8-mC-bOG"/>
                 <outlet property="collectionView" destination="yuC-za-2tk" id="XcZ-sf-uEO"/>
+                <outlet property="myInfoSettingButton" destination="CVs-bR-c6d" id="pPq-g5-wTo"/>
             </connections>
-            <point key="canvasLocation" x="116" y="-11"/>
+            <point key="canvasLocation" x="115.26717557251908" y="-11.267605633802818"/>
         </view>
     </objects>
     <resources>

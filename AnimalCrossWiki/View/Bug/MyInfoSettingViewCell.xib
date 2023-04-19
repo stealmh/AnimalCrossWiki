@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="lTp-Re-OLP" customClass="MyInfoSettingViewCell" customModule="AnimalCrossWiki" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="lQb-iP-B2x">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BYo-e8-soB">
+                        <rect key="frame" x="5" y="5" width="40" height="40"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3월" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aKz-np-swd">
+                                <rect key="frame" x="8.9999999999999982" y="11" width="22.333333333333329" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.82899051904678345" green="0.89897012710571289" blue="0.95345586538314819" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="aKz-np-swd" firstAttribute="centerX" secondItem="BYo-e8-soB" secondAttribute="centerX" id="Pe2-tf-kr9"/>
+                            <constraint firstItem="aKz-np-swd" firstAttribute="centerY" secondItem="BYo-e8-soB" secondAttribute="centerY" id="nn6-QB-UEL"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="BYo-e8-soB" firstAttribute="leading" secondItem="lQb-iP-B2x" secondAttribute="leading" constant="5" id="15k-aZ-2E4"/>
+                    <constraint firstAttribute="bottom" secondItem="BYo-e8-soB" secondAttribute="bottom" constant="5" id="30U-8M-S7I"/>
+                    <constraint firstAttribute="trailing" secondItem="BYo-e8-soB" secondAttribute="trailing" constant="5" id="R4c-6R-9Ps"/>
+                    <constraint firstItem="BYo-e8-soB" firstAttribute="top" secondItem="lQb-iP-B2x" secondAttribute="top" constant="5" id="fAr-Y8-u2N"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <connections>
+                <outlet property="monthLabel" destination="aKz-np-swd" id="vo9-DW-zA9"/>
+            </connections>
+            <point key="canvasLocation" x="129" y="-206"/>
+        </collectionViewCell>
+    </objects>
+</document>
