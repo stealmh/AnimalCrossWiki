@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		163C5B2729C0E09B00A38F3E /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C5B2629C0E09B00A38F3E /* CustomImageView.swift */; };
 		167C8BA929C6EB6700727889 /* AnimalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167C8BA829C6EB6700727889 /* AnimalDetailView.swift */; };
-		169F902F29CAF0500034A227 /* HomeCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F902E29CAF04F0034A227 /* HomeCustomView.swift */; };
 		16AA0B7A29C1D3B0002FB416 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AA0B7929C1D3AF002FB416 /* TabBarViewController.swift */; };
-		16AA0B7C29C1D593002FB416 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AA0B7B29C1D593002FB416 /* HomeViewController.swift */; };
 		16C2457429C02D1000A937C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2457329C02D1000A937C7 /* AppDelegate.swift */; };
 		16C2457629C02D1000A937C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2457529C02D1000A937C7 /* SceneDelegate.swift */; };
 		16C2457829C02D1000A937C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2457729C02D1000A937C7 /* ViewController.swift */; };
@@ -20,9 +18,8 @@
 		16C2458F29C02FDA00A937C7 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2458E29C02FDA00A937C7 /* ViewModel.swift */; };
 		16C2459129C02FE300A937C7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2459029C02FE300A937C7 /* Model.swift */; };
 		16C2459329C02FF200A937C7 /* AnimalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2459229C02FF200A937C7 /* AnimalTableViewCell.swift */; };
-		16C2459529C0387B00A937C7 /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2459429C0387B00A937C7 /* Extension+UIViewController.swift */; };
+		16C2459529C0387B00A937C7 /* UIViewController+preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2459429C0387B00A937C7 /* UIViewController+preview.swift */; };
 		16E4331029C2BBAB004437D3 /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E4330F29C2BBAB004437D3 /* CustomHeaderView.swift */; };
-		5A245CDB29ED2ADC00050270 /* AnimalCrossWiki+Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A245CDA29ED2ADC00050270 /* AnimalCrossWiki+Bundle.swift */; };
 		5A3628CA29EF9D4D00D4CAB6 /* MyInfoSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3628C929EF9D4D00D4CAB6 /* MyInfoSettingView.swift */; };
 		5A3628CC29EF9D6D00D4CAB6 /* MyInfoSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3628CB29EF9D6D00D4CAB6 /* MyInfoSettingView.xib */; };
 		5A68C5FB29E7D36500B7985D /* UIView+nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C5FA29E7D36500B7985D /* UIView+nib.swift */; };
@@ -42,10 +39,17 @@
 		5A6EEDD429EE94F500D79822 /* NewBugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6EEDD329EE94F500D79822 /* NewBugView.swift */; };
 		5A6EEDD629EE94FE00D79822 /* NewBugView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6EEDD529EE94FE00D79822 /* NewBugView.xib */; };
 		5A6EEDD829EE98E400D79822 /* BugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6EEDD729EE98E400D79822 /* BugViewModel.swift */; };
+		5A8A0AB829F269F7005C831F /* CitizenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8A0AB729F269F7005C831F /* CitizenTableViewCell.swift */; };
+		5A8A0ABA29F26A27005C831F /* CitizenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8A0AB929F26A27005C831F /* CitizenTableViewCell.xib */; };
+		5A8A0AC029F26C0A005C831F /* CitizenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8A0ABF29F26C0A005C831F /* CitizenViewController.swift */; };
+		5A8A0AC629F27061005C831F /* NewCitizenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8A0AC529F27061005C831F /* NewCitizenView.xib */; };
+		5A8A0AC829F27069005C831F /* NewCitizenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8A0AC729F27069005C831F /* NewCitizenView.swift */; };
 		5A9B0C9129EFA03500737AED /* MyInfoSettingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9B0C9029EFA03500737AED /* MyInfoSettingViewCell.swift */; };
 		5A9B0C9329EFA04200737AED /* MyInfoSettingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A9B0C9229EFA04200737AED /* MyInfoSettingViewCell.xib */; };
 		5A9B0C9529EFA2A900737AED /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9B0C9429EFA2A900737AED /* MyInfoViewController.swift */; };
 		5A9B0C9729EFCFDD00737AED /* AddressConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9B0C9629EFCFDD00737AED /* AddressConstants.swift */; };
+		5AB2E36629F2448900CA4DBF /* Bundle+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB2E36529F2448900CA4DBF /* Bundle+util.swift */; };
+		5AB2E36929F2453A00CA4DBF /* FishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB2E36829F2453A00CA4DBF /* FishViewModel.swift */; };
 		77B60FFDFCB396667A77DB79 /* Pods_AnimalCrossWiki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 017EAFB4E9B574160095B6CF /* Pods_AnimalCrossWiki.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,9 +58,7 @@
 		11BEA51F67F1C1E246AF6C90 /* Pods-AnimalCrossWiki.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossWiki.release.xcconfig"; path = "Target Support Files/Pods-AnimalCrossWiki/Pods-AnimalCrossWiki.release.xcconfig"; sourceTree = "<group>"; };
 		163C5B2629C0E09B00A38F3E /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		167C8BA829C6EB6700727889 /* AnimalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalDetailView.swift; sourceTree = "<group>"; };
-		169F902E29CAF04F0034A227 /* HomeCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCustomView.swift; sourceTree = "<group>"; };
 		16AA0B7929C1D3AF002FB416 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
-		16AA0B7B29C1D593002FB416 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		16C2457029C02D1000A937C7 /* AnimalCrossWiki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimalCrossWiki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16C2457329C02D1000A937C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16C2457529C02D1000A937C7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,9 +69,8 @@
 		16C2458E29C02FDA00A937C7 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		16C2459029C02FE300A937C7 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		16C2459229C02FF200A937C7 /* AnimalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalTableViewCell.swift; sourceTree = "<group>"; };
-		16C2459429C0387B00A937C7 /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
+		16C2459429C0387B00A937C7 /* UIViewController+preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+preview.swift"; sourceTree = "<group>"; };
 		16E4330F29C2BBAB004437D3 /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
-		5A245CDA29ED2ADC00050270 /* AnimalCrossWiki+Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnimalCrossWiki+Bundle.swift"; sourceTree = "<group>"; };
 		5A3628C929EF9D4D00D4CAB6 /* MyInfoSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoSettingView.swift; sourceTree = "<group>"; };
 		5A3628CB29EF9D6D00D4CAB6 /* MyInfoSettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyInfoSettingView.xib; sourceTree = "<group>"; };
 		5A68C5FA29E7D36500B7985D /* UIView+nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+nib.swift"; sourceTree = "<group>"; };
@@ -89,10 +90,17 @@
 		5A6EEDD329EE94F500D79822 /* NewBugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBugView.swift; sourceTree = "<group>"; };
 		5A6EEDD529EE94FE00D79822 /* NewBugView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewBugView.xib; sourceTree = "<group>"; };
 		5A6EEDD729EE98E400D79822 /* BugViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BugViewModel.swift; sourceTree = "<group>"; };
+		5A8A0AB729F269F7005C831F /* CitizenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitizenTableViewCell.swift; sourceTree = "<group>"; };
+		5A8A0AB929F26A27005C831F /* CitizenTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CitizenTableViewCell.xib; sourceTree = "<group>"; };
+		5A8A0ABF29F26C0A005C831F /* CitizenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitizenViewController.swift; sourceTree = "<group>"; };
+		5A8A0AC529F27061005C831F /* NewCitizenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewCitizenView.xib; sourceTree = "<group>"; };
+		5A8A0AC729F27069005C831F /* NewCitizenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCitizenView.swift; sourceTree = "<group>"; };
 		5A9B0C9029EFA03500737AED /* MyInfoSettingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoSettingViewCell.swift; sourceTree = "<group>"; };
 		5A9B0C9229EFA04200737AED /* MyInfoSettingViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyInfoSettingViewCell.xib; sourceTree = "<group>"; };
 		5A9B0C9429EFA2A900737AED /* MyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
 		5A9B0C9629EFCFDD00737AED /* AddressConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressConstants.swift; sourceTree = "<group>"; };
+		5AB2E36529F2448900CA4DBF /* Bundle+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+util.swift"; sourceTree = "<group>"; };
+		5AB2E36829F2453A00CA4DBF /* FishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishViewModel.swift; sourceTree = "<group>"; };
 		B169AF0D67EA066A5A5497FD /* Pods-AnimalCrossWiki.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossWiki.debug.xcconfig"; path = "Target Support Files/Pods-AnimalCrossWiki/Pods-AnimalCrossWiki.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,27 +116,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		16AA0B7D29C1DC4B002FB416 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				16C2458E29C02FDA00A937C7 /* ViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		16AA0B7E29C1DC4D002FB416 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5AB2E36429F2442500CA4DBF /* Citizen */,
+				5AB2E36729F244D500CA4DBF /* ViewModel */,
+				5AB2E36329F2439B00CA4DBF /* TabBar */,
 				5A6EEDC629EE8EA900D79822 /* Bug */,
 				5A68C60629E7DE0D00B7985D /* Fish */,
-				16C2459229C02FF200A937C7 /* AnimalTableViewCell.swift */,
-				16C2457729C02D1000A937C7 /* ViewController.swift */,
 				163C5B2629C0E09B00A38F3E /* CustomImageView.swift */,
-				16AA0B7929C1D3AF002FB416 /* TabBarViewController.swift */,
-				16AA0B7B29C1D593002FB416 /* HomeViewController.swift */,
 				16E4330F29C2BBAB004437D3 /* CustomHeaderView.swift */,
-				167C8BA829C6EB6700727889 /* AnimalDetailView.swift */,
-				169F902E29CAF04F0034A227 /* HomeCustomView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -155,7 +152,6 @@
 				16C2457E29C02D1300A937C7 /* LaunchScreen.storyboard */,
 				16C2457329C02D1000A937C7 /* AppDelegate.swift */,
 				16C2457529C02D1000A937C7 /* SceneDelegate.swift */,
-				5A245CDA29ED2ADC00050270 /* AnimalCrossWiki+Bundle.swift */,
 				5A9B0C9629EFCFDD00737AED /* AddressConstants.swift */,
 			);
 			path = Application;
@@ -164,7 +160,8 @@
 		16AA0B8229C1DCB1002FB416 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				16C2459429C0387B00A937C7 /* Extension+UIViewController.swift */,
+				5AB2E36529F2448900CA4DBF /* Bundle+util.swift */,
+				16C2459429C0387B00A937C7 /* UIViewController+preview.swift */,
 				5A68C5FA29E7D36500B7985D /* UIView+nib.swift */,
 				5A68C60729E7DED300B7985D /* UITableViewCell+util.swift */,
 				5A68C60929E7DEFC00B7985D /* UITableViewHeaderFooterView+util.swift */,
@@ -198,7 +195,6 @@
 				16AA0B8229C1DCB1002FB416 /* Extension */,
 				16AA0B7F29C1DC4F002FB416 /* Model */,
 				16AA0B7E29C1DC4D002FB416 /* View */,
-				16AA0B7D29C1DC4B002FB416 /* ViewModel */,
 				16AA0B8029C1DC83002FB416 /* Resource */,
 				16C2458129C02D1300A937C7 /* Info.plist */,
 			);
@@ -215,6 +211,7 @@
 				5A68C60429E7DE0900B7985D /* FishViewController.swift */,
 				5A68C60D29E7EDCB00B7985D /* NewFishView.xib */,
 				5A68C60F29E7EDD500B7985D /* NewFishView.swift */,
+				5AB2E36829F2453A00CA4DBF /* FishViewModel.swift */,
 			);
 			path = Fish;
 			sourceTree = "<group>";
@@ -235,6 +232,37 @@
 				5A9B0C9429EFA2A900737AED /* MyInfoViewController.swift */,
 			);
 			path = Bug;
+			sourceTree = "<group>";
+		};
+		5AB2E36329F2439B00CA4DBF /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				16AA0B7929C1D3AF002FB416 /* TabBarViewController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		5AB2E36429F2442500CA4DBF /* Citizen */ = {
+			isa = PBXGroup;
+			children = (
+				16C2459229C02FF200A937C7 /* AnimalTableViewCell.swift */,
+				167C8BA829C6EB6700727889 /* AnimalDetailView.swift */,
+				16C2457729C02D1000A937C7 /* ViewController.swift */,
+				5A8A0AB729F269F7005C831F /* CitizenTableViewCell.swift */,
+				5A8A0AB929F26A27005C831F /* CitizenTableViewCell.xib */,
+				5A8A0ABF29F26C0A005C831F /* CitizenViewController.swift */,
+				5A8A0AC529F27061005C831F /* NewCitizenView.xib */,
+				5A8A0AC729F27069005C831F /* NewCitizenView.swift */,
+			);
+			path = Citizen;
+			sourceTree = "<group>";
+		};
+		5AB2E36729F244D500CA4DBF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				16C2458E29C02FDA00A937C7 /* ViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		A31861F58882D811F3EBF057 /* Pods */ = {
@@ -318,10 +346,12 @@
 				5A3628CC29EF9D6D00D4CAB6 /* MyInfoSettingView.xib in Resources */,
 				5A9B0C9329EFA04200737AED /* MyInfoSettingViewCell.xib in Resources */,
 				5A68C60129E7D3EF00B7985D /* FishViewHeader.xib in Resources */,
+				5A8A0ABA29F26A27005C831F /* CitizenTableViewCell.xib in Resources */,
 				5A68C60329E7D3F900B7985D /* FishViewCell.xib in Resources */,
 				16C2457D29C02D1300A937C7 /* Assets.xcassets in Resources */,
 				5A6EEDD629EE94FE00D79822 /* NewBugView.xib in Resources */,
 				5A6EEDCA29EE8EC200D79822 /* BugCell.xib in Resources */,
+				5A8A0AC629F27061005C831F /* NewCitizenView.xib in Resources */,
 				5A68C60E29E7EDCB00B7985D /* NewFishView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,22 +409,24 @@
 				5A9B0C9129EFA03500737AED /* MyInfoSettingViewCell.swift in Sources */,
 				5A68C5FF29E7D3E300B7985D /* FishViewCell.swift in Sources */,
 				5A3628CA29EF9D4D00D4CAB6 /* MyInfoSettingView.swift in Sources */,
+				5AB2E36629F2448900CA4DBF /* Bundle+util.swift in Sources */,
 				5A68C5FB29E7D36500B7985D /* UIView+nib.swift in Sources */,
-				169F902F29CAF0500034A227 /* HomeCustomView.swift in Sources */,
 				16C2459129C02FE300A937C7 /* Model.swift in Sources */,
 				163C5B2729C0E09B00A38F3E /* CustomImageView.swift in Sources */,
+				5A8A0AB829F269F7005C831F /* CitizenTableViewCell.swift in Sources */,
 				5A6EEDD429EE94F500D79822 /* NewBugView.swift in Sources */,
+				5A8A0AC029F26C0A005C831F /* CitizenViewController.swift in Sources */,
 				5A6EEDCC29EE90BE00D79822 /* BugViewController.swift in Sources */,
-				16C2459529C0387B00A937C7 /* Extension+UIViewController.swift in Sources */,
+				16C2459529C0387B00A937C7 /* UIViewController+preview.swift in Sources */,
 				5A68C61029E7EDD500B7985D /* NewFishView.swift in Sources */,
 				5A6EEDD229EE921800D79822 /* UICollectionViewCell+util.swift in Sources */,
 				16C2457829C02D1000A937C7 /* ViewController.swift in Sources */,
+				5AB2E36929F2453A00CA4DBF /* FishViewModel.swift in Sources */,
+				5A8A0AC829F27069005C831F /* NewCitizenView.swift in Sources */,
 				5A68C60829E7DED300B7985D /* UITableViewCell+util.swift in Sources */,
 				167C8BA929C6EB6700727889 /* AnimalDetailView.swift in Sources */,
-				5A245CDB29ED2ADC00050270 /* AnimalCrossWiki+Bundle.swift in Sources */,
 				5A68C60A29E7DEFC00B7985D /* UITableViewHeaderFooterView+util.swift in Sources */,
 				16AA0B7A29C1D3B0002FB416 /* TabBarViewController.swift in Sources */,
-				16AA0B7C29C1D593002FB416 /* HomeViewController.swift in Sources */,
 				16C2457429C02D1000A937C7 /* AppDelegate.swift in Sources */,
 				5A9B0C9529EFA2A900737AED /* MyInfoViewController.swift in Sources */,
 				5A9B0C9729EFCFDD00737AED /* AddressConstants.swift in Sources */,

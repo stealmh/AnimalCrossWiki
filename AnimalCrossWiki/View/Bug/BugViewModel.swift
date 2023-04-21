@@ -11,7 +11,6 @@ import RxCocoa
 
 class BugViewModel {
 
-    var filterGender = BehaviorSubject(value:"")
     var users: BehaviorRelay<[Bug]> = BehaviorRelay(value: [Bug]())
     private(set) var users_copy: [Bug] = []
 

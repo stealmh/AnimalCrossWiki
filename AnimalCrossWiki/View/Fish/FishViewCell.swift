@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FishViewCell: UITableViewCell {
+final class FishViewCell: UITableViewCell {
     
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var fishImageView: UIImageView!

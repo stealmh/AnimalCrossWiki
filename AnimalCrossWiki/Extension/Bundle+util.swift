@@ -1,12 +1,11 @@
 //
-//  AnimalCrossWiki+Bundle.swift
+//  Bundle+util.swift
 //  AnimalCrossWiki
 //
-//  Created by 김민호 on 2023/04/17.
+//  Created by 김민호 on 2023/04/21.
 //
 
 import Foundation
-
 
 extension Bundle {
     var apiKey: String {

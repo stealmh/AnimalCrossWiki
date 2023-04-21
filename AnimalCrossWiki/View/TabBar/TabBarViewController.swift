@@ -19,7 +19,9 @@ class TabBarViewController: UITabBarController,UITabBarControllerDelegate {
         super.viewWillAppear(animated)
         
         //View 1
-        let animalListView = ViewController()
+//        let animalListView = ViewController()
+        
+        let animalListView = CitizenViewController()
         
         //View 2
         let layout = UICollectionViewFlowLayout()

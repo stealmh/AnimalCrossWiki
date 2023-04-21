@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FishViewHeader: UITableViewHeaderFooterView {
+final class FishViewHeader: UITableViewHeaderFooterView {
     enum Constant {
       static let size: CGSize = .init(width: UIView.noIntrinsicMetric, height: 35)
     }
