@@ -10,11 +10,15 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
-
+protocol BugViewControllerDelegate: AnyObject {
+    func didTapSetting(_ viewController: BugViewController)
+}
 
 class BugViewController: UIViewController {
     let disposeBag = DisposeBag()
     let viewModel = BugViewModel()
+    
+    weak var delegate: BugViewControllerDelegate?
     
     typealias Item = BugCell
     
@@ -26,15 +30,10 @@ class BugViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .white
         view.addSubview(bugView)
-        
         //MARK: 곤충데이터 불러오기
-        Task {
-            try await viewModel.getData()
-        }
-        
+        Task { try await viewModel.getData() }
         //MARK: 레이아웃 구성
         bugView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
@@ -44,7 +43,6 @@ class BugViewController: UIViewController {
         //MARK: 델리게이트 위임
         bugView.collectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
-        
         //MARK: cell 구성
         viewModel.users.bind(to: bugView.collectionView.rx.items(cellIdentifier: Item.resueIdentifier, cellType: Item.self)) { row, item, cell in
             cell.bugLabel.text = "\(item.name)"
@@ -54,22 +52,18 @@ class BugViewController: UIViewController {
                 .subscribe(onNext: {data in
                     cell.bugImage.image = data
                 })
-        }
-        .disposed(by: disposeBag)
-        
+        }.disposed(by: disposeBag)
         //MARK: 우리 섬 설정 버튼 클릭
-        bugView.myInfoSettingButton
-            .rx
-            .tap
+        bugView.myInfoSettingButton.rx.tap
             .subscribe { data in
-                print("\(data)")
-                let detail = MyInfoViewController()
-                detail.modalTransitionStyle = .crossDissolve
-                detail.modalPresentationStyle = .overFullScreen
-                detail.delegate = self
-                self.present(detail,animated:true)
+                self.delegate?.didTapSetting(self)
+//                print("\(data)")
+//                let detail = MyInfoViewController()
+//                detail.modalTransitionStyle = .crossDissolve
+//                detail.modalPresentationStyle = .overFullScreen
+//                detail.delegate = self
+//                self.present(detail,animated:true)
             }.disposed(by: disposeBag)
-        
         //MARK: 전체보기 버튼 클릭
         bugView.allButton.rx.tap
             .subscribe(onNext:{

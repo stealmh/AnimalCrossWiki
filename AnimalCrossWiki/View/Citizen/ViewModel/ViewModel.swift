@@ -32,15 +32,6 @@ class ViewModel {
         self.data = result
         self.users.accept(result)
     }
-
-    
-    
-//    func urlToUIImage(url: String) -> UIImage? {
-//        guard let url = URL(string: url) else {return nil}
-//        guard let data = try? Data(contentsOf: url) else {return nil}
-//        let image = UIImage(data: data)
-//        return image
-//    }
     
     func urlToUIImage(myURL: String) async throws -> UIImage? {
         guard let url = URL(string: myURL) else {return nil}
@@ -60,6 +51,25 @@ class ViewModel {
                     emitter.onError(error)
                 }
             }
+            return Disposables.create {
+                task.cancel()
+            }
+        }
+    }
+    
+    func loadImage(_ url: String) -> Observable<UIImage?> {
+        return Observable.create { emitter in
+            let myUrl = URL(string: url)!
+            let task = URLSession.shared.dataTask(with: myUrl) { data, response, error in
+                guard let data else {
+                    emitter.onError(error!)
+                    return
+                }
+                let image = UIImage(data: data)
+                emitter.onNext(image)
+                emitter.onCompleted()
+            }
+            task.resume()
             return Disposables.create {
                 task.cancel()
             }

@@ -14,6 +14,7 @@ protocol BugDelegate: AnyObject {
     func returnValue(vc: MyInfoViewController, south: Bool?, idx: Int?)
 }
 
+
 class MyInfoViewController: UIViewController {
     let dispose = DisposeBag()
     
@@ -21,6 +22,7 @@ class MyInfoViewController: UIViewController {
     var buttonSelectOb: BehaviorRelay<Bool> = BehaviorRelay(value: false)
     var selectedIndex = BehaviorRelay<Int>(value: 0)
     
+//    weak var delegate: BugDelegate?
     weak var delegate: BugDelegate?
     
     typealias Item = MyInfoSettingViewCell
@@ -47,7 +49,7 @@ class MyInfoViewController: UIViewController {
             cell.monthLabel.text = item
             
             self.selectedIndex.subscribe(onNext: {value in
-                cell.backgroundColor =  value == row ? .red : .clear
+                cell.backgroundColor = (value == row) ? .red : .clear
             }).disposed(by: self.dispose)
             
         }
@@ -85,9 +87,7 @@ class MyInfoViewController: UIViewController {
         
         myView.okButton.rx.tap
             .subscribe(onNext: {_ in
-//                self.dismiss(animated: true)
                 self.delegate?.returnValue(vc: self,south: self.buttonSelectOb.value,idx:self.selectedIndex.value)
-                
             }).disposed(by: dispose)
         
         myView.collectionView.rx.itemSelected

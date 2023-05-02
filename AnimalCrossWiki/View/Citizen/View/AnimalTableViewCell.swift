@@ -5,6 +5,8 @@
 //  Created by 김민호 on 2023/03/14.
 //
 
+
+//MARK: Legacy
 import UIKit
 
 class AnimalTableViewCell: UITableViewCell {

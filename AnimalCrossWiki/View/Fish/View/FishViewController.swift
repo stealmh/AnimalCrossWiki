@@ -50,10 +50,11 @@ final class FishViewController: UIViewController {
                     data1.location.count > data2.location.count
                 }
                 self.viewModel.myData.accept(sortValue)
+                print("tapped")
             }.disposed(by: disposeBag)
         
         fishView.priceSortButton.rx.tap
-            .bind {
+            .bind {_ in
                 if self.toggleCheck {
                     var sortValue = self.viewModel.myData.value
                     sortValue.sort { data1, data2 in
@@ -107,7 +108,6 @@ extension FishViewController:  UITableViewDelegate {
         let v = tableView.dequeueReusableHeaderFooterView(withIdentifier: Header.reuseIdentifier) as! Header
         return v
     }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Header.Constant.size.height
     }

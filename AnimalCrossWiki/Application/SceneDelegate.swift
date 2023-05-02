@@ -10,6 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var appCoordinator: AppCoordinator?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -18,17 +19,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
+        appCoordinator = AppCoordinator(window: window!)
+        appCoordinator!.start()
         
-        let initialViewController = TabBarViewController()
-        // 홈화면부터 시작할 수 있게 TabBar의 인덱스번호 지정
-        initialViewController.selectedIndex = 1
-        initialViewController.tabBar.backgroundColor = .white
-        window?.rootViewController = initialViewController
-//        UINavigationBar.appearance().barTintColor = .red
-        
-        window?.backgroundColor = .clear
-        UINavigationBar.appearance().backgroundColor = .clear
-        window?.makeKeyAndVisible()
+//        let initialViewController = TabBarViewController()
+//        // 홈화면부터 시작할 수 있게 TabBar의 인덱스번호 지정
+//        initialViewController.selectedIndex = 1
+//        initialViewController.tabBar.backgroundColor = .white
+//        window?.rootViewController = initialViewController
+//        window?.backgroundColor = .clear
+//        UINavigationBar.appearance().backgroundColor = .clear
+//        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

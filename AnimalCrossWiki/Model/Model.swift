@@ -37,10 +37,8 @@ struct Bug: Codable, Equatable {
     static func == (lhs: Bug, rhs: Bug) -> Bool {
         return true
     }
-    
     let image_url: String
     let name: String
-    
     let north, south: Hemisphere
 }
 

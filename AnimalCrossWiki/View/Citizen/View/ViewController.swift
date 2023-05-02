@@ -11,10 +11,12 @@ import RxCocoa
 import SnapKit
 import DropDown
 
+//MARK: Legacy
 class ViewController: UIViewController, UITableViewDelegate {
 
     private let viewModel = ViewModel()
     let disposebag = DisposeBag()
+    
     
     //MARK: View
     private let header: CustomHeaderView = {
@@ -79,6 +81,7 @@ class ViewController: UIViewController, UITableViewDelegate {
                 detail.modalPresentationStyle = .overFullScreen
                 detail.detailInfo.accept(data)
                 self.present(detail,animated:true)
+//                self.mainCoordinator?.showCitizenDetail(data: data)
             }.disposed(by: disposebag)
     }
     

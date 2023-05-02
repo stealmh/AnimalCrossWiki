@@ -15,8 +15,6 @@ class AnimalDetailView: UIViewController {
     
     let dispose = DisposeBag()
     let detailInfo: BehaviorRelay<AnimalModel> = BehaviorRelay(value: AnimalModel(name: "뽀삐", image_url: "https://dodo.ac/np/images/9/94/Ribbot_NH.png", gender: "남자", species: "개구리", birthday_month: "May", birthday_day: "5"))
-    let name: BehaviorSubject<String> = BehaviorSubject(value: "")
-    var imageURL: BehaviorSubject<String> = BehaviorSubject(value: "")
     let activity: UIActivityIndicatorView = {
         let act = UIActivityIndicatorView()
         act.isHidden = false
@@ -118,27 +116,18 @@ class AnimalDetailView: UIViewController {
         
         view.rx.tapGesture()
             .when(.recognized)
-        //            .skip(1)
             .bind { _ in self.dismiss(animated: true) }
             .disposed(by: dispose)
         
-        //        name.bind(to: animalName.rx.text).disposed(by: dispose)
-        imageURL
-            .subscribe(on: ConcurrentDispatchQueueScheduler.init(qos: .background))
-            .map {URL(string:$0)}
-            .filter{$0 != nil}
-            .map {$0!}
-            .map {try Data(contentsOf: $0)}
-            .map{UIImage(data: $0)}
-            .observe(on: MainScheduler.instance)
-            .bind(to: animalPhoto.rx.image)
+        loadImage(detailInfo.value.image_url)
+            .map { $0! }
+            .bind(to: self.animalPhoto.rx.image)
             .disposed(by: dispose)
         
         detailInfo
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: {data in
                 self.animalName.text = data.name
-                self.imageURL.onNext(data.image_url)
                 self.genderLabel.text = data.gender
                 self.speciesLabel.text = data.species
                 self.birthday_day.text = data.birthday_day
@@ -159,6 +148,33 @@ class AnimalDetailView: UIViewController {
         
         view.addSubview(detailView)
     }
+    
+    func loadImage(_ imageUrl: String) async throws -> UIImage? {
+        guard let url = URL(string: imageUrl) else {return nil}
+        let (data, _) = try await URLSession.shared.data(from: url)
+        guard let image = UIImage(data: data) else {return nil}
+        return image
+    }
+    
+    func loadImage(_ url: String) -> Observable<UIImage?> {
+        return Observable.create { emitter in
+            let myUrl = URL(string: url)!
+            let task = URLSession.shared.dataTask(with: myUrl) { data, response, error in
+                guard let data else {
+                    emitter.onError(error!)
+                    return
+                }
+                let image = UIImage(data: data)
+                emitter.onNext(image)
+                emitter.onCompleted()
+            }
+            task.resume()
+            return Disposables.create {
+                task.cancel()
+            }
+        }
+    }
+    
 
 }
 

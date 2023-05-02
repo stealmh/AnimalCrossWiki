@@ -10,9 +10,15 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
+protocol CitizenViewControllerDelegate: AnyObject {
+    func didTapCell(_ viewController: CitizenViewController, data: ControlEvent<AnimalModel>.Element)
+}
+
 class CitizenViewController: UIViewController {
     let disposeBag = DisposeBag()
     let viewModel = ViewModel()
+    
+    weak var delegate: CitizenViewControllerDelegate?
     
     typealias Item = CitizenTableViewCell
     
@@ -40,17 +46,26 @@ class CitizenViewController: UIViewController {
         
         viewModel.users.bind(to: citizenView.tableView.rx.items(cellIdentifier: Item.reuseIdentifier,cellType: Item.self)) { row, item, cell in
             cell.citizenLabel.text = "\(item.name)"
-            let _ = self.viewModel.loadImageAsyncRx(url: item.image_url)
+            
+            let _ = self.viewModel.loadImage(item.image_url)
                 .observe(on: MainScheduler.instance)
                 .subscribe(onNext: {data in
                     cell.citizenImage.image = data
                 })
-            
         }.disposed(by: disposeBag)
+        
+        citizenView.tableView.rx.modelSelected(AnimalModel.self)
+            .subscribe(onNext: {data in
+                self.delegate?.didTapCell(self, data: data)
+            }).disposed(by: disposeBag)
         
         
     }
 }
 
 
-extension CitizenViewController: UITableViewDelegate {}
+extension CitizenViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 30
+    }
+}
