@@ -15,6 +15,10 @@ final class FishViewCell: UITableViewCell {
     @IBOutlet weak var fishPriceLabel: UILabel!
     @IBOutlet weak var fishLocationLabel: UILabel!
     
+    enum Constants {
+        static let size: CGSize = .init(width: UIView.noIntrinsicMetric, height: 35)
+    }
+    
     override class func awakeFromNib() {
         
     }

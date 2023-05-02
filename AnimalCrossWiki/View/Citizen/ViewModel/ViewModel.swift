@@ -56,9 +56,18 @@ class ViewModel {
             }
         }
     }
-    
+
     func loadImage(_ url: String) -> Observable<UIImage?> {
+        
+        let cache = NSString(string: url)
+        
         return Observable.create { emitter in
+            if let cachedImage = ImageCacheManager.shared.object(forKey: cache) {
+                print("yes")
+                emitter.onNext(cachedImage)
+                emitter.onCompleted()
+            }
+            
             let myUrl = URL(string: url)!
             let task = URLSession.shared.dataTask(with: myUrl) { data, response, error in
                 guard let data else {
@@ -66,6 +75,7 @@ class ViewModel {
                     return
                 }
                 let image = UIImage(data: data)
+                ImageCacheManager.shared.setObject(image!, forKey: cache)
                 emitter.onNext(image)
                 emitter.onCompleted()
             }
@@ -76,3 +86,4 @@ class ViewModel {
         }
     }
 }
+

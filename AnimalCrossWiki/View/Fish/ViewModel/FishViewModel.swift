@@ -57,6 +57,24 @@ final class FishViewModel {
         }
         myData.accept(fish)
     }
-
     
+    func loadImage(_ url: String) -> Observable<UIImage?> {
+        return Observable.create { emitter in
+            let myUrl = URL(string: url)!
+            let task = URLSession.shared.dataTask(with: myUrl) { data, response, error in
+                guard let data else {
+                    emitter.onError(error!)
+                    return
+                }
+                let image = UIImage(data: data)
+                emitter.onNext(image)
+                emitter.onCompleted()
+            }
+            task.resume()
+            return Disposables.create {
+                task.cancel()
+            }
+        }
+    }
+
 }

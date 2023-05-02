@@ -11,12 +11,16 @@ class TabBarViewController: UITabBarController {
     
     private let citizenCoordinator = CitizenCoordinator()
     private let bugCoordinator = BugCoordinator()
+    private let fishCoordinator = FishCoordinator()
     
     private var citizenViewController: UIViewController {
         return citizenCoordinator.rootViewController
     }
     private var bugViewController: UIViewController {
         return bugCoordinator.rootViewController
+    }
+    private var fishViewController: UIViewController {
+        return fishCoordinator.rootViewController
     }
 
     
@@ -25,9 +29,13 @@ class TabBarViewController: UITabBarController {
         
         citizenViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 0)
         bugViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 1)
+        fishViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .mostViewed, tag: 2)
+        
         citizenCoordinator.start()
         bugCoordinator.start()
-        self.viewControllers = [citizenViewController, bugViewController]
+        fishCoordinator.start()
+        
+        self.viewControllers = [citizenViewController, bugViewController, fishViewController]
     }
     
     

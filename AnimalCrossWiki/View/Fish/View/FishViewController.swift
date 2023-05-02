@@ -31,18 +31,21 @@ final class FishViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(fishView)
         
+        //MARK: 데이터 가져오기
         Task {
             try await viewModel.getFish()
             viewModel.filterFish()
         }
+        
+        //MARK: 레이아웃 구성
         fishView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
-            
             make.left.bottom.right.equalToSuperview()
         }
+        //MARK: 테이블 뷰 관련 세팅
+        tableViewSetting()
         
-        bindTableView()
-        
+        //MARK: 위치버튼 눌렀을 때 액션
         fishView.positionSortButton.rx.tap
             .bind {
                 var sortValue = self.viewModel.myData.value
@@ -50,9 +53,9 @@ final class FishViewController: UIViewController {
                     data1.location.count > data2.location.count
                 }
                 self.viewModel.myData.accept(sortValue)
-                print("tapped")
             }.disposed(by: disposeBag)
         
+        //MARK: 가격버튼 눌렀을 때 액션
         fishView.priceSortButton.rx.tap
             .bind {_ in
                 if self.toggleCheck {
@@ -76,31 +79,26 @@ final class FishViewController: UIViewController {
         
     }
     
-    private func bindTableView() {
+    private func tableViewSetting() {
         fishView.tableView.rx.setDelegate(self).disposed(by: disposeBag)
         viewModel.myData
             .bind(to: fishView.tableView.rx.items(cellIdentifier: Item.reuseIdentifier, cellType: Item.self)) {row, item, cell in
+                
+//            let _ = self.viewModel.loadImage(item.image_url)
+//                .observe(on: MainScheduler.instance)
+//                .bind(to: cell.fishImageView.rx.image)
+            cell.fishImageView.setImageUrl(item.image_url)
             cell.numberLabel.text = "\(item.number)"
-    //        cell.fishImageView.image =
-            if let url = URL(string: item.image_url) {
-                let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
-                    guard let data,
-                          let newImage = UIImage(data: data) else {return}
-                    DispatchQueue.main.async {
-                        cell.fishImageView.image = newImage
-                    }
-                }
-                task.resume()
-            }
             cell.fishLocationLabel.text = item.location
             cell.fishNameLabel.text = item.name
             cell.fishPriceLabel.text = "\(item.sell_nook)"
+                
         }.disposed(by: disposeBag)
     }
 }
 
 
-extension FishViewController:  UITableViewDelegate {
+extension FishViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return Header.Constant.size.height
     }
@@ -109,7 +107,7 @@ extension FishViewController:  UITableViewDelegate {
         return v
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Header.Constant.size.height
+        return Item.Constants.size.height
     }
 }
 

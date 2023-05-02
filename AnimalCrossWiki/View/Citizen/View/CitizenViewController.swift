@@ -2,7 +2,7 @@
 //  CitizenViewController.swift
 //  AnimalCrossWiki
 //
-//  Created by KindSoft on 2023/04/21.
+//  Created by 김민호 on 2023/04/21.
 //
 
 import UIKit
@@ -46,12 +46,13 @@ class CitizenViewController: UIViewController {
         
         viewModel.users.bind(to: citizenView.tableView.rx.items(cellIdentifier: Item.reuseIdentifier,cellType: Item.self)) { row, item, cell in
             cell.citizenLabel.text = "\(item.name)"
+            cell.citizenTypeLabel.text = item.species
+//            cell.citizenImage.setImageUrl(item.image_url)
             
             let _ = self.viewModel.loadImage(item.image_url)
                 .observe(on: MainScheduler.instance)
-                .subscribe(onNext: {data in
-                    cell.citizenImage.image = data
-                })
+                .bind(to: cell.citizenImage.rx.image)
+
         }.disposed(by: disposeBag)
         
         citizenView.tableView.rx.modelSelected(AnimalModel.self)
@@ -66,6 +67,6 @@ class CitizenViewController: UIViewController {
 
 extension CitizenViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 30
+        return Item.Constant.size.height
     }
 }
