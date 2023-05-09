@@ -6,12 +6,17 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class CitizenTableViewCell:UITableViewCell {
+    
+    let disposeBag = DisposeBag()
     
     @IBOutlet weak var citizenImage: UIImageView!
     @IBOutlet weak var citizenLabel: UILabel!
     @IBOutlet weak var citizenTypeLabel: UILabel!
+    @IBOutlet weak var citizenFavoriteButton: UIButton!
     
     enum Constant {
         static let size: CGSize = .init(width: 60, height: 55)

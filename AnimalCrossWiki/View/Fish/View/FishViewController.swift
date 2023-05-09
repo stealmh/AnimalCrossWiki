@@ -31,6 +31,7 @@ final class FishViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(fishView)
         
+        
         //MARK: 데이터 가져오기
         Task {
             try await viewModel.getFish()

@@ -10,20 +10,17 @@ import RxSwift
 import RxCocoa
 
 class BugViewModel {
-
     var users: BehaviorRelay<[Bug]> = BehaviorRelay(value: [Bug]())
     private(set) var users_copy: [Bug] = []
-
-    
-    let version = AddressConstants.version
-    let myKey = Bundle.main.apiKey
-    let url: String = AddressConstants.url + "/nh/bugs"
+    let parameter: String = "/nh/bugs"
     
     func getData() async throws{
-        let url = URL(string: self.url)
+        let version = AddressConstants.version
+        let myKey = Bundle.main.apiKey
+        let url = URL(string: AddressConstants.url + parameter)
         var request = URLRequest(url:url!)
         request.httpMethod = "GET"
-        request.setValue(self.myKey, forHTTPHeaderField: "X-API-KEY")
+        request.setValue(myKey, forHTTPHeaderField: "X-API-KEY")
         request.setValue(version, forHTTPHeaderField: "Accept-version")
         
         let (data, _) = try await URLSession.shared.data(for: request)

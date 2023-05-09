@@ -60,6 +60,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="citizenFavoriteButton" destination="i0N-T1-HUo" id="LRF-ft-J54"/>
                 <outlet property="citizenImage" destination="Owl-mM-vlt" id="omr-4o-VcC"/>
                 <outlet property="citizenLabel" destination="hvG-bE-D91" id="vJT-eK-tJz"/>
                 <outlet property="citizenTypeLabel" destination="mFw-gg-uCF" id="SWG-nF-6J7"/>

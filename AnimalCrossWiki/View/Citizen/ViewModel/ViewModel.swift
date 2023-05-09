@@ -14,16 +14,16 @@ class ViewModel {
     var data: [AnimalModel] = []
     var filterGender = BehaviorSubject(value:"")
     var users = BehaviorRelay(value: [AnimalModel]())
-    
-    let myKey = Bundle.main.apiKey
-    let version = AddressConstants.version
-    let url: String = AddressConstants.url + "/villagers"
+    let parameter = "/villagers"
     
     func getData() async throws{
-        let url = URL(string: self.url)
+        let url = URL(string: AddressConstants.url + parameter)
+        let myKey = Bundle.main.apiKey
+        let version = AddressConstants.version
+        
         var request = URLRequest(url:url!)
         request.httpMethod = "GET"
-        request.setValue(self.myKey, forHTTPHeaderField: "X-API-KEY")
+        request.setValue(myKey, forHTTPHeaderField: "X-API-KEY")
         request.setValue(version, forHTTPHeaderField: "Accept-version")
         
         let (data, _) = try await URLSession.shared.data(for: request)

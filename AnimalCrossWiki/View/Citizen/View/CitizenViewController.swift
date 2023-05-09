@@ -52,6 +52,11 @@ class CitizenViewController: UIViewController {
             let _ = self.viewModel.loadImage(item.image_url)
                 .observe(on: MainScheduler.instance)
                 .bind(to: cell.citizenImage.rx.image)
+            
+            let _ = cell.citizenFavoriteButton.rx.tap
+                .subscribe(onNext: {_ in
+                    CoreDataManager.shared.insertContent(content: item)
+                })
 
         }.disposed(by: disposeBag)
         
@@ -59,8 +64,10 @@ class CitizenViewController: UIViewController {
             .subscribe(onNext: {data in
                 self.delegate?.didTapCell(self, data: data)
             }).disposed(by: disposeBag)
-        
-        
+        citizenView.testCheckButton.rx.tap
+            .subscribe(onNext: {_ in
+                CoreDataManager.shared.fetch()
+            }).disposed(by: disposeBag)
     }
 }
 
