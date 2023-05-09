@@ -55,8 +55,13 @@ class CitizenViewController: UIViewController {
                 .bind(to: cell.citizenImage.rx.image)
             
             let _ = cell.citizenFavoriteButton.rx.tap
-                .subscribe(onNext: {_ in
-                    CoreDataManager.shared.insertContent(content: item)
+                .map { CoreDataManager.shared.fetch(animalName: item.name) }
+                .subscribe(onNext: {isExist in
+                    if isExist {
+                        //지우기
+                    } else {
+                        CoreDataManager.shared.insertContent(content: item)
+                    }
                 })
 
         }.disposed(by: disposeBag)
