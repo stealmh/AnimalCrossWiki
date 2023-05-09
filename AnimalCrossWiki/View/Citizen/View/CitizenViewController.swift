@@ -47,6 +47,7 @@ class CitizenViewController: UIViewController {
         viewModel.users.bind(to: citizenView.tableView.rx.items(cellIdentifier: Item.reuseIdentifier,cellType: Item.self)) { row, item, cell in
             cell.citizenLabel.text = "\(item.name)"
             cell.citizenTypeLabel.text = item.species
+            cell.citizenFavoriteButton.setImage(UIImage(systemName: CoreDataManager.shared.fetch(animalName: item.name) ? "star.fill" : "star"), for: .normal)
 //            cell.citizenImage.setImageUrl(item.image_url)
             
             let _ = self.viewModel.loadImage(item.image_url)

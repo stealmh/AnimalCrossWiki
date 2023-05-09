@@ -67,4 +67,19 @@ class CoreDataManager {
         print(dataToString)
         return dataToString
     }
+    
+    func fetch(animalName: String) -> Bool {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: modelName)
+        
+        let result = try! context.fetch(fetchRequest)
+        for data in result {
+            let name = data.value(forKey: "name") as! String
+            if animalName == name {
+                return true
+            }
+        }
+        return false
+    }
 }
