@@ -14,11 +14,11 @@ class CoreDataManager {
     let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
     lazy var context = appDelegate?.persistentContainer.viewContext
     
-    let modelName: String = "Citizen"
+    let modelName: String = "Entity"
     
     func insertContent(content: AnimalModel) -> Bool {
         print(#function)
-        let entity = NSEntityDescription.entity(forEntityName: "Citizen", in: self.context!)
+        let entity = NSEntityDescription.entity(forEntityName: modelName, in: self.context!)
         
         if let entity = entity {
             let managedObject = NSManagedObject(entity: entity, insertInto: self.context)
@@ -42,13 +42,29 @@ class CoreDataManager {
         }
     }
     
-    func fetch() -> [NSManagedObject] {
+    func fetch() -> [AnimalModel] {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Citizen")
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: modelName)
         
         let result = try! context.fetch(fetchRequest)
-        print(result)
-        return result
+        var dataToString = [AnimalModel]()
+        for data in result {
+            let name = data.value(forKey: "name") as! String
+            let day = data.value(forKey: "birthday_day") as! String
+            let month = data.value(forKey: "birthday_month") as! String
+            let gender = data.value(forKey: "gender") as! String
+            let url = data.value(forKey: "image_url") as! String
+            let species = data.value(forKey: "species") as! String
+            
+            dataToString.append(AnimalModel(name: name,
+                                            image_url: url,
+                                            gender: gender,
+                                            species: species,
+                                            birthday_month: month,
+                                            birthday_day: day))
+        }
+        print(dataToString)
+        return dataToString
     }
 }

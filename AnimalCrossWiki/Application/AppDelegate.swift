@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - CoreData
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Citizen")
+        let container = NSPersistentContainer(name: "CitizenList")
         container.loadPersistentStores { (storeDescription, error) in
             if let error = error {
                 fatalError("\((error as NSError).userInfo)")
