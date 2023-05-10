@@ -58,9 +58,16 @@ class CitizenViewController: UIViewController {
                 .map { CoreDataManager.shared.fetch(animalName: item.name) }
                 .subscribe(onNext: {isExist in
                     if isExist {
-                        //지우기
+                        // 이미 즐겨찾기 한 상태에서 터치가 들어옴
+                        // 1.데이터를 삭제
+                        CoreDataManager.shared.delete(animalName: item.name)
+                        // 2.버튼의 색깔 바꾸기
+                        cell.citizenFavoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
                     } else {
+                        // 1.데이터를 추가
                         CoreDataManager.shared.insertContent(content: item)
+                        // 2.버튼의 색깔 바꾸기
+                        cell.citizenFavoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
                     }
                 })
 
@@ -70,9 +77,10 @@ class CitizenViewController: UIViewController {
             .subscribe(onNext: {data in
                 self.delegate?.didTapCell(self, data: data)
             }).disposed(by: disposeBag)
+        
         citizenView.testCheckButton.rx.tap
             .subscribe(onNext: {_ in
-                CoreDataManager.shared.fetch()
+                self.viewModel.users.accept(CoreDataManager.shared.fetch())
             }).disposed(by: disposeBag)
     }
 }

@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import RxSwift
 import CoreData
 
 class CoreDataManager {
     static let shared: CoreDataManager = CoreDataManager()
+    
+    
     
     let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
     lazy var context = appDelegate?.persistentContainer.viewContext
@@ -46,9 +49,9 @@ class CoreDataManager {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: modelName)
-        
         let result = try! context.fetch(fetchRequest)
         var dataToString = [AnimalModel]()
+
         for data in result {
             let name = data.value(forKey: "name") as! String
             let day = data.value(forKey: "birthday_day") as! String
@@ -56,7 +59,7 @@ class CoreDataManager {
             let gender = data.value(forKey: "gender") as! String
             let url = data.value(forKey: "image_url") as! String
             let species = data.value(forKey: "species") as! String
-            
+                
             dataToString.append(AnimalModel(name: name,
                                             image_url: url,
                                             gender: gender,
@@ -64,8 +67,8 @@ class CoreDataManager {
                                             birthday_month: month,
                                             birthday_day: day))
         }
-        print(dataToString)
-        return dataToString
+        
+       return dataToString
     }
     
     func fetch(animalName: String) -> Bool {
@@ -81,5 +84,19 @@ class CoreDataManager {
             }
         }
         return false
+    }
+    
+    func delete(animalName: String) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: modelName)
+        
+        let result = try! context.fetch(fetchRequest)
+        for data in result {
+            let name = data.value(forKey: "name") as! String
+            if animalName == name {
+                context.delete(data)
+            }
+        }
     }
 }
