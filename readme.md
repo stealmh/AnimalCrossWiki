@@ -11,6 +11,7 @@
 - RxCocoa
 - RxGesture
 - Snapkit
+- CoreData
 
 ## 구조
 - MVVM-C
