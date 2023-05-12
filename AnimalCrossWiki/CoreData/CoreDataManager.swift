@@ -19,7 +19,7 @@ class CoreDataManager {
     
     let modelName: String = "Entity"
     
-    func insertContent(content: AnimalModel) -> Bool {
+    func insertContent(content: AnimalModel) {
         print(#function)
         let entity = NSEntityDescription.entity(forEntityName: modelName, in: self.context!)
         
@@ -35,13 +35,9 @@ class CoreDataManager {
             
             do {
                 try self.context!.save()
-                return true
             } catch {
                 print(error.localizedDescription)
-                return false
             }
-        } else {
-            return false
         }
     }
     
@@ -50,7 +46,7 @@ class CoreDataManager {
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: modelName)
         let result = try! context.fetch(fetchRequest)
-        var dataToString = [AnimalModel]()
+        var dataToString: [AnimalModel] = []
 
         for data in result {
             let name = data.value(forKey: "name") as! String
@@ -66,6 +62,7 @@ class CoreDataManager {
                                             species: species,
                                             birthday_month: month,
                                             birthday_day: day))
+//            print(name)
         }
         
        return dataToString
@@ -80,6 +77,7 @@ class CoreDataManager {
         for data in result {
             let name = data.value(forKey: "name") as! String
             if animalName == name {
+                print(name)
                 return true
             }
         }
@@ -87,6 +85,7 @@ class CoreDataManager {
     }
     
     func delete(animalName: String) {
+        print(#function)
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: modelName)
@@ -96,6 +95,11 @@ class CoreDataManager {
             let name = data.value(forKey: "name") as! String
             if animalName == name {
                 context.delete(data)
+                do {
+                    try context.save()
+                } catch {
+                    print(error)
+                }
             }
         }
     }

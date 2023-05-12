@@ -63,6 +63,7 @@ class CitizenViewController: UIViewController {
                         CoreDataManager.shared.delete(animalName: item.name)
                         // 2.버튼의 색깔 바꾸기
                         cell.citizenFavoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
+                        
                     } else {
                         // 1.데이터를 추가
                         CoreDataManager.shared.insertContent(content: item)

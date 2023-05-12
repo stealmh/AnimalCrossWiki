@@ -63,7 +63,6 @@ class ViewModel {
         
         return Observable.create { emitter in
             if let cachedImage = ImageCacheManager.shared.object(forKey: cache) {
-                print("yes")
                 emitter.onNext(cachedImage)
                 emitter.onCompleted()
             }
