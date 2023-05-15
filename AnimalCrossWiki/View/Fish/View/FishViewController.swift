@@ -30,6 +30,7 @@ final class FishViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(fishView)
+        UITableView.appearance().sectionHeaderTopPadding = CGFloat(0)
         
         
         //MARK: 데이터 가져오기
