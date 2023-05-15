@@ -12,8 +12,9 @@ final class NewFishView: UIView {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var priceSortButton: UIButton!
     @IBOutlet weak var positionSortButton: UIButton!
+    @IBOutlet weak var clearButton: UIButton!
     
-//    override func awakeFromNib() {
+    //    override func awakeFromNib() {
 //    }
 
 }
