@@ -33,6 +33,21 @@ class CitizenViewController: UIViewController {
         
     }
     
+    func navigationSetting() {
+//        self.navigationController?.navigationBar.backgroundColor = UIColor(named: "sky")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .done, target: self, action: #selector(dd))
+        self.navigationController?.navigationBar.topItem?.title = "주민목록"
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+        self.navigationController?.navigationBar.layer.cornerRadius = 30
+        self.navigationController?.navigationBar.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.menuButton(self, action: #selector(dd), imageName: "popcat")
+        
+        
+//        let scaledImage = UIImage(named: "popcat")?.resizeImage(size: CGSize(width: 100, height: 100)).withRenderingMode(.alwaysOriginal)
+//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: scaledImage, style: .plain, target: self, action: #selector(dd))
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -41,13 +56,8 @@ class CitizenViewController: UIViewController {
         Task {
             try await viewModel.getData()
         }
-        self.navigationController?.navigationBar.backgroundColor = UIColor(named: "sky")
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .done, target: self, action: #selector(dd))
-        self.navigationController?.navigationBar.topItem?.title = "주민목록"
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
-        self.navigationController?.navigationBar.layer.cornerRadius = 30
-        self.navigationController?.navigationBar.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         
+        navigationSetting()
         
         citizenView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
