@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,7 +25,7 @@
                                     <rect key="frame" x="0.0" y="5.6666666666666714" width="103.33333333333333" height="34.333333333333336"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="전체보기">
-                                        <backgroundConfiguration key="background">
+                                        <backgroundConfiguration key="background" cornerRadius="10">
                                             <color key="backgroundColor" red="0.12478160113096237" green="0.48789745569229126" blue="0.94029605388641357" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </backgroundConfiguration>
                                         <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
@@ -37,7 +36,7 @@
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" title="가격"/>
                                     <buttonConfiguration key="configuration" style="plain" title="가격">
-                                        <backgroundConfiguration key="background">
+                                        <backgroundConfiguration key="background" cornerRadius="10">
                                             <color key="backgroundColor" systemColor="linkColor"/>
                                         </backgroundConfiguration>
                                         <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
@@ -48,7 +47,7 @@
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" title="위치"/>
                                     <buttonConfiguration key="configuration" style="plain" title="위치">
-                                        <backgroundConfiguration key="background">
+                                        <backgroundConfiguration key="background" cornerRadius="10">
                                             <color key="backgroundColor" systemColor="linkColor"/>
                                         </backgroundConfiguration>
                                         <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
@@ -87,42 +86,6 @@
                 <outlet property="tableView" destination="SIN-ET-aRB" id="vyG-3G-8dX"/>
             </connections>
             <point key="canvasLocation" x="1591" y="-12"/>
-        </view>
-        <view contentMode="scaleToFill" id="QWS-eV-qCv">
-            <rect key="frame" x="0.0" y="0.0" width="430" height="50"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eET-UX-Uzq">
-                    <rect key="frame" x="10" y="0.0" width="410" height="50"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2V-2x-qK9">
-                            <rect key="frame" x="0.0" y="8" width="131.33333333333334" height="34.333333333333336"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="filled" title="전체보기"/>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CtF-EZ-nwg">
-                            <rect key="frame" x="139.33333333333331" y="8" width="131.33333333333331" height="34.333333333333336"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="filled" title="가격순정렬"/>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Plj-Z1-WI0">
-                            <rect key="frame" x="278.66666666666669" y="8" width="131.33333333333331" height="34.333333333333336"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="filled" title="위치별정렬"/>
-                        </button>
-                    </subviews>
-                </stackView>
-            </subviews>
-            <viewLayoutGuide key="safeArea" id="Vp3-6a-Jac"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <constraints>
-                <constraint firstItem="Vp3-6a-Jac" firstAttribute="trailing" secondItem="eET-UX-Uzq" secondAttribute="trailing" constant="10" id="LAO-gs-wRN"/>
-                <constraint firstAttribute="bottom" secondItem="eET-UX-Uzq" secondAttribute="bottom" id="RnV-fm-YJN"/>
-                <constraint firstItem="eET-UX-Uzq" firstAttribute="leading" secondItem="Vp3-6a-Jac" secondAttribute="leading" constant="10" id="eig-xd-7C3"/>
-                <constraint firstItem="eET-UX-Uzq" firstAttribute="top" secondItem="QWS-eV-qCv" secondAttribute="top" id="k6Q-G3-wJH"/>
-            </constraints>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="2274" y="-262"/>
         </view>
     </objects>
     <resources>

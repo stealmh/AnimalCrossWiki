@@ -30,16 +30,12 @@ final class FishViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(fishView)
-        UITableView.appearance().sectionHeaderTopPadding = CGFloat(0)
-        
         
         //MARK: 데이터 가져오기
         Task {
             try await viewModel.getFish()
-//            viewModel.filterFish()
             viewModel.filterFish(value: self.viewModel.myData)
         }
-        
         //MARK: 레이아웃 구성
         fishView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
@@ -47,7 +43,6 @@ final class FishViewController: UIViewController {
         }
         //MARK: 테이블 뷰 관련 세팅
         tableViewSetting()
-        
         //MARK: 위치버튼 눌렀을 때 액션
         fishView.positionSortButton.rx.tap
             .bind {
@@ -57,7 +52,6 @@ final class FishViewController: UIViewController {
                 }
                 self.viewModel.myData.accept(sortValue)
             }.disposed(by: disposeBag)
-        
         //MARK: 가격버튼 눌렀을 때 액션
         fishView.priceSortButton.rx.tap
             .bind {_ in
@@ -78,7 +72,6 @@ final class FishViewController: UIViewController {
                     self.toggleCheck.toggle()
                 }
             }.disposed(by: disposeBag)
-        
         //MARK: 전체보기 버튼 눌렀을 때 액션
         fishView.clearButton.rx.tap
             .subscribe(onNext: {_ in

@@ -9,8 +9,8 @@ import UIKit
 
 class NewCitizenView: UIView {
     
-    @IBOutlet weak var testCheckButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var backgroundView: UIView!
     override class func awakeFromNib() {
         
     }

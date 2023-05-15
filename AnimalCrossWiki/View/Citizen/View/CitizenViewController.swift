@@ -27,7 +27,12 @@ class CitizenViewController: UIViewController {
         v.tableView.register(Item.nib, forCellReuseIdentifier: Item.reuseIdentifier)
         return v
     }()
-
+    
+    
+    @objc func dd() {
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -36,6 +41,13 @@ class CitizenViewController: UIViewController {
         Task {
             try await viewModel.getData()
         }
+        self.navigationController?.navigationBar.backgroundColor = UIColor(named: "sky")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .done, target: self, action: #selector(dd))
+        self.navigationController?.navigationBar.topItem?.title = "주민목록"
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+        self.navigationController?.navigationBar.layer.cornerRadius = 30
+        self.navigationController?.navigationBar.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        
         
         citizenView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
@@ -48,7 +60,7 @@ class CitizenViewController: UIViewController {
             cell.citizenLabel.text = "\(item.name)"
             cell.citizenTypeLabel.text = item.species
             cell.citizenFavoriteButton.setImage(UIImage(systemName: CoreDataManager.shared.fetch(animalName: item.name) ? "star.fill" : "star"), for: .normal)
-//            cell.citizenImage.setImageUrl(item.image_url)
+            //            cell.citizenImage.setImageUrl(item.image_url)
             
             let _ = self.viewModel.loadImage(item.image_url)
                 .observe(on: MainScheduler.instance)
@@ -71,7 +83,7 @@ class CitizenViewController: UIViewController {
                         cell.citizenFavoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
                     }
                 })
-
+            
         }.disposed(by: disposeBag)
         
         citizenView.tableView.rx.modelSelected(AnimalModel.self)
@@ -79,10 +91,10 @@ class CitizenViewController: UIViewController {
                 self.delegate?.didTapCell(self, data: data)
             }).disposed(by: disposeBag)
         
-        citizenView.testCheckButton.rx.tap
-            .subscribe(onNext: {_ in
-                self.viewModel.users.accept(CoreDataManager.shared.fetch())
-            }).disposed(by: disposeBag)
+        //        citizenView.testCheckButton.rx.tap
+        //            .subscribe(onNext: {_ in
+        //                self.viewModel.users.accept(CoreDataManager.shared.fetch())
+        //            }).disposed(by: disposeBag)
     }
 }
 
