@@ -36,7 +36,8 @@ final class FishViewController: UIViewController {
         //MARK: 데이터 가져오기
         Task {
             try await viewModel.getFish()
-            viewModel.filterFish()
+//            viewModel.filterFish()
+            viewModel.filterFish(value: self.viewModel.myData)
         }
         
         //MARK: 레이아웃 구성
@@ -77,6 +78,13 @@ final class FishViewController: UIViewController {
                     self.toggleCheck.toggle()
                 }
             }.disposed(by: disposeBag)
+        
+        //MARK: 전체보기 버튼 눌렀을 때 액션
+        fishView.clearButton.rx.tap
+            .subscribe(onNext: {_ in
+//                self.viewModel.myData.accept(self.viewModel.defaultData)
+                self.viewModel.filterFish(value: self.viewModel.defaultData)
+            }).disposed(by: disposeBag)
         
         
     }

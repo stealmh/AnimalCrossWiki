@@ -10,6 +10,7 @@ import RxCocoa
 final class FishViewModel {
     let parameter = "/nh/fish"
     let myData = BehaviorRelay<[Fish]>(value: [])
+    let defaultData = BehaviorRelay<[Fish]>(value: [])
     
     func getFish() async throws {
         print(#function)
@@ -25,11 +26,12 @@ final class FishViewModel {
         let result = try JSONDecoder().decode([Fish].self, from: data)
 
         myData.accept(result)
+        defaultData.accept(result)
     }
     
-    func filterFish() {
+    func filterFish(value: BehaviorRelay<[Fish]>) {
         
-        var fish1 = myData.value
+        var fish1 = value.value
         fish1.sort { $0.number < $1.number }
         var fish = fish1
         
@@ -57,6 +59,10 @@ final class FishViewModel {
         }
         myData.accept(fish)
     }
+    
+    
+    
+    
     
     func loadImage(_ url: String) -> Observable<UIImage?> {
         return Observable.create { emitter in
