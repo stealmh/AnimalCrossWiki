@@ -85,12 +85,11 @@ class CitizenViewController: UIViewController {
                 self.delegate?.didTapCell(self, data: data)
             }).disposed(by: disposeBag)
         
-        //        citizenView.testCheckButton.rx.tap
-        //            .subscribe(onNext: {_ in
-        //                self.viewModel.users.accept(CoreDataManager.shared.fetch())
-        //            }).disposed(by: disposeBag)
         
-        
+        self.navigationItem.rightBarButtonItem?.rx.tap
+            .subscribe(onNext: { _ in
+                self.viewModel.users.accept(CoreDataManager.shared.fetch())
+            }).disposed(by: disposeBag)
     }
     
     func navigationSetting() {
