@@ -34,7 +34,7 @@ extension CitizenCoordinator: CitizenViewControllerDelegate {
     
     func didTapCell(_ viewController: CitizenViewController,data: ControlEvent<AnimalModel>.Element) {
         print(#function)
-        let animalDetailView = AnimalDetailView()
+        let animalDetailView = AnimalDetailViewController()
         animalDetailView.modalTransitionStyle = .crossDissolve
         animalDetailView.modalPresentationStyle = .overFullScreen
         animalDetailView.detailInfo.accept(data)

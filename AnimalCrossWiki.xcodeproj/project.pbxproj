@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		163C5B2729C0E09B00A38F3E /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C5B2629C0E09B00A38F3E /* CustomImageView.swift */; };
-		167C8BA929C6EB6700727889 /* AnimalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167C8BA829C6EB6700727889 /* AnimalDetailView.swift */; };
+		167C8BA929C6EB6700727889 /* AnimalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167C8BA829C6EB6700727889 /* AnimalDetailViewController.swift */; };
 		16AA0B7A29C1D3B0002FB416 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AA0B7929C1D3AF002FB416 /* TabBarViewController.swift */; };
 		16C2457429C02D1000A937C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2457329C02D1000A937C7 /* AppDelegate.swift */; };
 		16C2457629C02D1000A937C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2457529C02D1000A937C7 /* SceneDelegate.swift */; };
@@ -67,7 +67,7 @@
 		017EAFB4E9B574160095B6CF /* Pods_AnimalCrossWiki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnimalCrossWiki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		11BEA51F67F1C1E246AF6C90 /* Pods-AnimalCrossWiki.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossWiki.release.xcconfig"; path = "Target Support Files/Pods-AnimalCrossWiki/Pods-AnimalCrossWiki.release.xcconfig"; sourceTree = "<group>"; };
 		163C5B2629C0E09B00A38F3E /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
-		167C8BA829C6EB6700727889 /* AnimalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalDetailView.swift; sourceTree = "<group>"; };
+		167C8BA829C6EB6700727889 /* AnimalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalDetailViewController.swift; sourceTree = "<group>"; };
 		16AA0B7929C1D3AF002FB416 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		16C2457029C02D1000A937C7 /* AnimalCrossWiki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimalCrossWiki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16C2457329C02D1000A937C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -291,7 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				16C2459229C02FF200A937C7 /* AnimalTableViewCell.swift */,
-				167C8BA829C6EB6700727889 /* AnimalDetailView.swift */,
+				167C8BA829C6EB6700727889 /* AnimalDetailViewController.swift */,
 				16C2457729C02D1000A937C7 /* ViewController.swift */,
 				5A8A0AB729F269F7005C831F /* CitizenTableViewCell.swift */,
 				5A8A0AB929F26A27005C831F /* CitizenTableViewCell.xib */,
@@ -562,7 +562,7 @@
 				5A8A0AC829F27069005C831F /* NewCitizenView.swift in Sources */,
 				5A68C60829E7DED300B7985D /* UITableViewCell+util.swift in Sources */,
 				5A9398162A08D766008CDDC5 /* CoreDataManager.swift in Sources */,
-				167C8BA929C6EB6700727889 /* AnimalDetailView.swift in Sources */,
+				167C8BA929C6EB6700727889 /* AnimalDetailViewController.swift in Sources */,
 				5A68C60A29E7DEFC00B7985D /* UITableViewHeaderFooterView+util.swift in Sources */,
 				16AA0B7A29C1D3B0002FB416 /* TabBarViewController.swift in Sources */,
 				16C2457429C02D1000A937C7 /* AppDelegate.swift in Sources */,

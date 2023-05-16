@@ -2,7 +2,7 @@
 //  Entity+CoreDataProperties.swift
 //  
 //
-//  Created by KindSoft on 2023/05/09.
+//  Created by 김민호 on 2023/05/09.
 //
 //
 

@@ -13,7 +13,7 @@ class BugCell: UICollectionViewCell {
     @IBOutlet weak var bugLabel: UILabel!
     
     enum Constant {
-      static let size: CGSize = .init(width: 85, height: 85)
+        static var size: CGSize = .init(width: 85, height: 85)
     }
     
     override func awakeFromNib() {

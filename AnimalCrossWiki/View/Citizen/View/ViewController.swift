@@ -76,7 +76,7 @@ class ViewController: UIViewController, UITableViewDelegate {
             .modelSelected(AnimalModel.self)
             .subscribe { data in
                 print("\(data)")
-                let detail = AnimalDetailView()
+                let detail = AnimalDetailViewController()
                 detail.modalTransitionStyle = .crossDissolve
                 detail.modalPresentationStyle = .overFullScreen
                 detail.detailInfo.accept(data)

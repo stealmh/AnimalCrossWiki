@@ -11,7 +11,7 @@ import RxCocoa
 import RxGesture
 import SnapKit
 
-class AnimalDetailView: UIViewController {
+class AnimalDetailViewController: UIViewController {
     
     let dispose = DisposeBag()
     let detailInfo: BehaviorRelay<AnimalModel> = BehaviorRelay(value: AnimalModel(name: "뽀삐", image_url: "https://dodo.ac/np/images/9/94/Ribbot_NH.png", gender: "남자", species: "개구리", birthday_month: "May", birthday_day: "5"))
@@ -182,6 +182,6 @@ class AnimalDetailView: UIViewController {
 import SwiftUI
 struct AnimalDetail_preview: PreviewProvider {
     static var previews: some View {
-        AnimalDetailView().toPreview()
+        AnimalDetailViewController().toPreview()
     }
 }

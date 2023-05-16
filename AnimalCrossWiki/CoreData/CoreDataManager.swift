@@ -2,7 +2,7 @@
 //  CoreDataManager.swift
 //  AnimalCrossWiki
 //
-//  Created by KindSoft on 2023/05/08.
+//  Created by 김민호 on 2023/05/08.
 //
 
 import UIKit
