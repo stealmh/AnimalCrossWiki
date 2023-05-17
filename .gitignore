@@ -8,6 +8,8 @@
 #           - Also handy if you have a large number of dependant pods
 #           - AS PER https://guides.cocoapods.org/using/using-cocoapods.html NEVER IGNORE THE LOCK FILE
 Pods/
+Podfile
+Podfile.lock
 
 ### Swift ###
 # Xcode
@@ -15,7 +17,7 @@ Pods/
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
 ## 모든경로에서 .Ds_Store 무시
-**/.DS_Store
+**.DS_Store
 *.xcuserstate
 
 ## Build generated
