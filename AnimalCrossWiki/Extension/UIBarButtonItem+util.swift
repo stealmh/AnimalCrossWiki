@@ -12,7 +12,7 @@ extension UIBarButtonItem {
     static func menuButton(_ target: Any?,
                            action: Selector,
                            imageName: String,
-                           size:CGSize = CGSize(width: 100, height: 50)) -> UIBarButtonItem
+                           size:CGSize = CGSize(width: 100, height: 40)) -> UIBarButtonItem
     {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: imageName)!.withRenderingMode(.alwaysOriginal), for: .normal)

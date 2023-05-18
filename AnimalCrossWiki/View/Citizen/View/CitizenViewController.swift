@@ -60,42 +60,48 @@ class CitizenViewController: UIViewController {
                 .observe(on: MainScheduler.instance)
                 .bind(to: cell.citizenImage.rx.image)
             
-            let _ = cell.citizenFavoriteButton.rx.tap
-                .map { CoreDataManager.shared.fetch(animalName: item.name) }
-                .subscribe(onNext: {isExist in
-                    if isExist {
-                        // 이미 즐겨찾기 한 상태에서 터치가 들어옴
-                        // 1.데이터를 삭제
-                        CoreDataManager.shared.delete(animalName: item.name)
-                        // 2.버튼의 색깔 바꾸기
-                        cell.citizenFavoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
-                        
-                    } else {
-                        // 1.데이터를 추가
-                        CoreDataManager.shared.insertContent(content: item)
-                        // 2.버튼의 색깔 바꾸기
-                        cell.citizenFavoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-                    }
-                })
+            
+            /// Todo : 즐겨찾기 수정하기
+//            let _ = cell.citizenFavoriteButton.rx.tap
+//                .map { CoreDataManager.shared.fetch(animalName: item.name) }
+//                .subscribe(onNext: {isExist in
+//                    if isExist {
+//                        // 이미 즐겨찾기 한 상태에서 터치가 들어옴
+//                        // 1.데이터를 삭제
+//                        print("\(item.name) 삭제 예정")
+//                        CoreDataManager.shared.delete(animalName: item.name)
+//                        // 2.버튼의 색깔 바꾸기
+//                        cell.citizenFavoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+//
+//                    } else {
+//                        // 1.데이터를 추가
+//                        print("\(item.name)번째 추가 예정")
+//                        CoreDataManager.shared.insertContent(content: item)
+//                        // 2.버튼의 색깔 바꾸기
+//                        cell.citizenFavoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+//                    }
+//                })
             
         }.disposed(by: disposeBag)
+        
+        /// 즐겨찾기 버튼 탭
+        self.navigationItem.rightBarButtonItem?.rx.tap
+            .subscribe(onNext: { _ in
+                self.viewModel.users.accept(CoreDataManager.shared.fetch())
+            }).disposed(by: disposeBag)
+        
         
         citizenView.tableView.rx.modelSelected(AnimalModel.self)
             .subscribe(onNext: {data in
                 self.delegate?.didTapCell(self, data: data)
             }).disposed(by: disposeBag)
-        
-        
-        self.navigationItem.rightBarButtonItem?.rx.tap
-            .subscribe(onNext: { _ in
-                self.viewModel.users.accept(CoreDataManager.shared.fetch())
-            }).disposed(by: disposeBag)
     }
     
     func navigationSetting() {
         self.navigationController?.navigationBar.barTintColor = .white
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.menuButton(self, action: #selector(dd), imageName: "popcat")
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart.fill"), style: .done, target: self, action: #selector(dd))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.menuButton(self, action: #selector(dd), imageName: "logo")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .done, target: self, action: #selector(dd))
+        self.navigationItem.rightBarButtonItem?.tintColor = .systemPink
         
         self.navigationItem.searchController = UISearchController()
         self.navigationItem.searchController?.searchBar.placeholder = "주민을 검색하세요!"
