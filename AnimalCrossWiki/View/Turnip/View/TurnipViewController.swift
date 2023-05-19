@@ -31,10 +31,6 @@ class TurnipViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(turnipView)
         view.addSubview(resultButton)
-//        turnipView.backgroundColor = .orange
-//        turnipView.backgroundColor = UIColor(patternImage: UIImage(named: "memo2")!)
-        turnipView.layer.borderColor = CGColor(red: 0, green: 30, blue: 0, alpha: 1)
-        turnipView.layer.borderWidth = 3
         
         turnipView.snp.makeConstraints {
             $0.left.right.equalToSuperview()

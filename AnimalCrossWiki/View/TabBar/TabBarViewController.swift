@@ -45,7 +45,9 @@ class TabBarViewController: UITabBarController {
         citizenViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 0)
         bugViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 1)
         fishViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .mostViewed, tag: 2)
-        turnipViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .mostRecent, tag: 3)
+//        turnipViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .mostRecent, tag: 3)
+        
+        turnipViewController.tabBarItem = UITabBarItem(title: "무 가격", image: UIImage(named: "turnip")!.withRenderingMode(.alwaysOriginal), tag: 3)
         
         citizenCoordinator.start()
         bugCoordinator.start()

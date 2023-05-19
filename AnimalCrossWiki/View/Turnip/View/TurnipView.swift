@@ -120,13 +120,7 @@ final class TurnipView: UIView {
     
     private let myBackgroundImageView: UIImageView = {
         let v = UIImageView()
-//        v.layer.borderColor = CGColor(red: 50, green: 0, blue: 0, alpha: 1)
-//        v.layer.borderWidth = 10
         v.transform = v.transform.rotated(by: .pi/20)
-        
-                v.layer.borderColor = CGColor(red: 50, green: 0, blue: 0, alpha: 1)
-                v.layer.borderWidth = 3
-//                v.transform = v.transform.rotated(by: .pi/20)
         v.image = UIImage(named: "memo2")!
         return v
     }()
