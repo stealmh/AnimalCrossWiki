@@ -63,6 +63,8 @@
 		5AD2695D2A00A2C9004DD22C /* FishCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD2695C2A00A2C9004DD22C /* FishCoordinator.swift */; };
 		5AD269602A00A5BA004DD22C /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD2695F2A00A5BA004DD22C /* ImageCacheManager.swift */; };
 		5AD269622A00A7ED004DD22C /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD269612A00A7ED004DD22C /* UIImageView+Extension.swift */; };
+		5AF51E032A17075F0065B9D4 /* TurnipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF51E022A17075F0065B9D4 /* TurnipView.swift */; };
+		5AF51E052A170A0A0065B9D4 /* TurnipResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF51E042A170A0A0065B9D4 /* TurnipResultViewController.swift */; };
 		77B60FFDFCB396667A77DB79 /* Pods_AnimalCrossWiki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 017EAFB4E9B574160095B6CF /* Pods_AnimalCrossWiki.framework */; };
 /* End PBXBuildFile section */
 
@@ -127,6 +129,8 @@
 		5AD2695C2A00A2C9004DD22C /* FishCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishCoordinator.swift; sourceTree = "<group>"; };
 		5AD2695F2A00A5BA004DD22C /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		5AD269612A00A7ED004DD22C /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		5AF51E022A17075F0065B9D4 /* TurnipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnipView.swift; sourceTree = "<group>"; };
+		5AF51E042A170A0A0065B9D4 /* TurnipResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnipResultViewController.swift; sourceTree = "<group>"; };
 		B169AF0D67EA066A5A5497FD /* Pods-AnimalCrossWiki.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossWiki.debug.xcconfig"; path = "Target Support Files/Pods-AnimalCrossWiki/Pods-AnimalCrossWiki.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -419,6 +423,8 @@
 			isa = PBXGroup;
 			children = (
 				5AB55E042A15DD1600C0D047 /* TurnipViewController.swift */,
+				5AF51E022A17075F0065B9D4 /* TurnipView.swift */,
+				5AF51E042A170A0A0065B9D4 /* TurnipResultViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -585,6 +591,7 @@
 				5AB55E052A15DD1600C0D047 /* TurnipViewController.swift in Sources */,
 				5A9B0C9129EFA03500737AED /* MyInfoSettingViewCell.swift in Sources */,
 				5A68C5FF29E7D3E300B7985D /* FishViewCell.swift in Sources */,
+				5AF51E052A170A0A0065B9D4 /* TurnipResultViewController.swift in Sources */,
 				5A3628CA29EF9D4D00D4CAB6 /* MyInfoSettingView.swift in Sources */,
 				5AB2E36629F2448900CA4DBF /* Bundle+util.swift in Sources */,
 				5A68C5FB29E7D36500B7985D /* UIView+nib.swift in Sources */,
@@ -592,6 +599,7 @@
 				163C5B2729C0E09B00A38F3E /* CustomImageView.swift in Sources */,
 				5AB55E072A15DD2500C0D047 /* TurnipViewMdoel.swift in Sources */,
 				5A8A0AB829F269F7005C831F /* CitizenTableViewCell.swift in Sources */,
+				5AF51E032A17075F0065B9D4 /* TurnipView.swift in Sources */,
 				5A6EEDD429EE94F500D79822 /* NewBugView.swift in Sources */,
 				5A8A0AC029F26C0A005C831F /* CitizenViewController.swift in Sources */,
 				5A6EEDCC29EE90BE00D79822 /* BugViewController.swift in Sources */,

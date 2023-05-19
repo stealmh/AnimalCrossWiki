@@ -6,25 +6,65 @@
 //
 
 import UIKit
+import SnapKit
+import RxCocoa
+import RxSwift
 
+
+///Only Programmatically
 class TurnipViewController: UIViewController {
+    
+    private let turnipView = TurnipView()
+    private let resultButton: UIButton = {
+        let v = UIButton()
+        v.setTitle("결과확인", for: .normal)
+        v.backgroundColor = UIColor(named: "sky")
+        return v
+    }()
+    
+    let disposeBag = DisposeBag()
+//    let turnipViewModel = TurnipVieModel()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        view.backgroundColor = .blue
+        view.backgroundColor = .white
+        view.addSubview(turnipView)
+        view.addSubview(resultButton)
+//        turnipView.backgroundColor = .orange
+//        turnipView.backgroundColor = UIColor(patternImage: UIImage(named: "memo2")!)
+        turnipView.layer.borderColor = CGColor(red: 0, green: 30, blue: 0, alpha: 1)
+        turnipView.layer.borderWidth = 3
+        
+        turnipView.snp.makeConstraints {
+            $0.left.right.equalToSuperview()
+            $0.centerX.centerY.equalToSuperview()
+            $0.height.equalToSuperview().dividedBy(2)
+        }
+        resultButton.snp.makeConstraints {
+            $0.top.equalTo(turnipView.snp.bottom).offset(10)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(100)
+        }
+        navigationSetting()
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+//MARK: -
+extension TurnipViewController {
+    func navigationSetting() {
+        self.navigationController?.navigationBar.barTintColor = .white
+        self.navigationItem.rightBarButtonItems =
+        [UIBarButtonItem.menuButton(name: "초기화", color: .black, cornerRadius: 20),
+         UIBarButtonItem.menuButton(name: "저장", color: .black, cornerRadius: 20)]
+    }
+}
+
+
+import SwiftUI
+struct ViewController2312_preview: PreviewProvider {
+    static var previews: some View {
+        TurnipViewController().toPreview()
+    }
+}
+

@@ -29,14 +29,14 @@ class TabBarViewController: UITabBarController {
     
     
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        object_setClass(self.tabBar, MyTabBar.self)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    init() {
+//        super.init(nibName: nil, bundle: nil)
+//        object_setClass(self.tabBar, MyTabBar.self)
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     
     override func viewDidLoad() {
@@ -54,23 +54,23 @@ class TabBarViewController: UITabBarController {
         
         self.viewControllers = [citizenViewController, bugViewController, fishViewController, turnipViewController]
         
-        setUpTabBar()
+//        setUpTabBar()
     }
     
-    func setUpTabBar() {
-    
-        tabBar.barTintColor = .cyan
-        tabBar.layer.cornerRadius = tabBar.frame.height * 0.41
-        tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-    }
-    
-    class MyTabBar: UITabBar {
-        override func sizeThatFits(_ size: CGSize) -> CGSize {
-            var sizeThatFits = super.sizeThatFits(size)
-            sizeThatFits.height = 80
-            return sizeThatFits
-        }
-    }
+//    func setUpTabBar() {
+//
+//        tabBar.barTintColor = .cyan
+//        tabBar.layer.cornerRadius = tabBar.frame.height * 0.41
+//        tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+//    }
+//
+//    class MyTabBar: UITabBar {
+//        override func sizeThatFits(_ size: CGSize) -> CGSize {
+//            var sizeThatFits = super.sizeThatFits(size)
+//            sizeThatFits.height = 80
+//            return sizeThatFits
+//        }
+//    }
 }
 
 
