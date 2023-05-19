@@ -24,6 +24,17 @@ class TurnipCoordinator: NavigationCoordinator {
     }
     
     func start() {
-         //
+        turnipViewController.delegate = self
     }
+}
+
+extension TurnipCoordinator: TurnipViewControllerDelegate {
+    func didTapResultButton(data: Turnip) {
+        print(#function)
+        let resultView = TurnipResultViewController()
+        resultView.detailInfo.accept(data)
+        navigator.push(resultView, animated: true)
+    }
+    
+    
 }

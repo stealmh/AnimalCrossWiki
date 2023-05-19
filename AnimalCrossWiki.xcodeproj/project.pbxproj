@@ -56,7 +56,7 @@
 		5AB2E36629F2448900CA4DBF /* Bundle+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB2E36529F2448900CA4DBF /* Bundle+util.swift */; };
 		5AB2E36929F2453A00CA4DBF /* FishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB2E36829F2453A00CA4DBF /* FishViewModel.swift */; };
 		5AB55E052A15DD1600C0D047 /* TurnipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB55E042A15DD1600C0D047 /* TurnipViewController.swift */; };
-		5AB55E072A15DD2500C0D047 /* TurnipViewMdoel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB55E062A15DD2500C0D047 /* TurnipViewMdoel.swift */; };
+		5AB55E072A15DD2500C0D047 /* TurnipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB55E062A15DD2500C0D047 /* TurnipViewModel.swift */; };
 		5AB55E092A15DD3500C0D047 /* TurnipCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB55E082A15DD3500C0D047 /* TurnipCoordinator.swift */; };
 		5AC3BD442A0A388500095FA4 /* CitizenList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3BD422A0A388500095FA4 /* CitizenList.xcdatamodeld */; };
 		5AD2695B2A009D6F004DD22C /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD2695A2A009D6F004DD22C /* String+Extension.swift */; };
@@ -122,7 +122,7 @@
 		5AB2E36529F2448900CA4DBF /* Bundle+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+util.swift"; sourceTree = "<group>"; };
 		5AB2E36829F2453A00CA4DBF /* FishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishViewModel.swift; sourceTree = "<group>"; };
 		5AB55E042A15DD1600C0D047 /* TurnipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnipViewController.swift; sourceTree = "<group>"; };
-		5AB55E062A15DD2500C0D047 /* TurnipViewMdoel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnipViewMdoel.swift; sourceTree = "<group>"; };
+		5AB55E062A15DD2500C0D047 /* TurnipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnipViewModel.swift; sourceTree = "<group>"; };
 		5AB55E082A15DD3500C0D047 /* TurnipCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnipCoordinator.swift; sourceTree = "<group>"; };
 		5AC3BD432A0A388500095FA4 /* CitizenList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CitizenList.xcdatamodel; sourceTree = "<group>"; };
 		5AD2695A2A009D6F004DD22C /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -432,7 +432,7 @@
 		5AB55E032A15DCFF00C0D047 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				5AB55E062A15DD2500C0D047 /* TurnipViewMdoel.swift */,
+				5AB55E062A15DD2500C0D047 /* TurnipViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -597,7 +597,7 @@
 				5A68C5FB29E7D36500B7985D /* UIView+nib.swift in Sources */,
 				16C2459129C02FE300A937C7 /* Model.swift in Sources */,
 				163C5B2729C0E09B00A38F3E /* CustomImageView.swift in Sources */,
-				5AB55E072A15DD2500C0D047 /* TurnipViewMdoel.swift in Sources */,
+				5AB55E072A15DD2500C0D047 /* TurnipViewModel.swift in Sources */,
 				5A8A0AB829F269F7005C831F /* CitizenTableViewCell.swift in Sources */,
 				5AF51E032A17075F0065B9D4 /* TurnipView.swift in Sources */,
 				5A6EEDD429EE94F500D79822 /* NewBugView.swift in Sources */,

@@ -46,3 +46,10 @@ struct Hemisphere: Codable {
     let months: String
     let months_array: [Int]
 }
+
+struct Turnip: Codable {
+    let minMaxPattern: [[Int]]
+    let avgPattern: [Double]
+    let minWeekValue: Int
+    let preview: String
+}

@@ -20,4 +20,10 @@ extension String {
             task.resume()
         }
     }
+    
+    var isValid: Bool {
+        let regex = "[0-9]{2,3}"
+        let p = NSPredicate(format: "SELF MATCHES %@", regex)
+        return p.evaluate(with: self)
+    }
 }

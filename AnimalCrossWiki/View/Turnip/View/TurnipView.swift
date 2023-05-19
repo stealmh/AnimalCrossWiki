@@ -15,8 +15,9 @@ final class TurnipView: UIView {
         v.textAlignment = .right
         return v
     }()
-    private let sunPrice: UITextField = {
+    let sunPrice: UITextField = {
         let v = UITextField()
+        v.keyboardType = .numberPad
         v.placeholder = "구매가격"
         return v
     }()
@@ -27,14 +28,16 @@ final class TurnipView: UIView {
         v.textAlignment = .right
         return v
     }()
-    private let monAmPrice: UITextField = {
+    let monAmPrice: UITextField = {
         let v = UITextField()
         v.placeholder = "월요일 오전"
+        v.keyboardType = .numberPad
         return v
     }()
-    private let monPmPrice: UITextField = {
+    let monPmPrice: UITextField = {
         let v = UITextField()
         v.placeholder = "월요일 오후"
+        v.keyboardType = .numberPad
         return v
     }()
     
@@ -44,14 +47,16 @@ final class TurnipView: UIView {
         v.textAlignment = .right
         return v
     }()
-    private let tueAmPrice: UITextField = {
+    let tueAmPrice: UITextField = {
         let v = UITextField()
         v.placeholder = "화요일 오전"
+        v.keyboardType = .numberPad
         return v
     }()
-    private let tuePmPrice: UITextField = {
+    let tuePmPrice: UITextField = {
         let v = UITextField()
         v.placeholder = "화요일 오후"
+        v.keyboardType = .numberPad
         return v
     }()
     
@@ -61,14 +66,16 @@ final class TurnipView: UIView {
         v.textAlignment = .right
         return v
     }()
-    private let wedAmPrice: UITextField = {
+    let wedAmPrice: UITextField = {
         let v = UITextField()
         v.placeholder = "수요일 오전"
+        v.keyboardType = .numberPad
         return v
     }()
-    private let wedPmPrice: UITextField = {
+    let wedPmPrice: UITextField = {
         let v = UITextField()
         v.placeholder = "수요일 오후"
+        v.keyboardType = .numberPad
         return v
     }()
     
@@ -78,14 +85,16 @@ final class TurnipView: UIView {
         v.textAlignment = .right
         return v
     }()
-    private let thurAmPrice: UITextField = {
+    let thurAmPrice: UITextField = {
         let v = UITextField()
         v.placeholder = "목요일 오전"
+        v.keyboardType = .numberPad
         return v
     }()
-    private let thurPmPrice: UITextField = {
+    let thurPmPrice: UITextField = {
         let v = UITextField()
         v.placeholder = "목요일 오후"
+        v.keyboardType = .numberPad
         return v
     }()
     
@@ -95,14 +104,16 @@ final class TurnipView: UIView {
         v.textAlignment = .right
         return v
     }()
-    private let friAmPrice: UITextField = {
+    let friAmPrice: UITextField = {
         let v = UITextField()
         v.placeholder = "금요일 오전"
+        v.keyboardType = .numberPad
         return v
     }()
-    private let friPmPrice: UITextField = {
+    let friPmPrice: UITextField = {
         let v = UITextField()
         v.placeholder = "금요일 오후"
+        v.keyboardType = .numberPad
         return v
     }()
     
@@ -112,9 +123,10 @@ final class TurnipView: UIView {
         v.textAlignment = .right
         return v
     }()
-    private let satAmPrice: UITextField = {
+    let satAmPrice: UITextField = {
         let v = UITextField()
         v.placeholder = "토요일 오전"
+        v.keyboardType = .numberPad
         return v
     }()
     
