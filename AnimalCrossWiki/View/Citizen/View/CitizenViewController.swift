@@ -119,6 +119,11 @@ class CitizenViewController: UIViewController {
                 }
             }).disposed(by: disposeBag)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("disappear")
+        ImageCacheManager.shared.removeAllObjects()
+    }
 }
 
 

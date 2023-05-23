@@ -42,6 +42,7 @@ final class FishViewController: UIViewController {
             make.left.bottom.right.equalToSuperview()
         }
         //MARK: 테이블 뷰 관련 세팅
+        fishView.tableView.rx.setDelegate(self).disposed(by: disposeBag)
         tableViewSetting()
         //MARK: 위치버튼 눌렀을 때 액션
         fishView.positionSortButton.rx.tap
@@ -82,8 +83,9 @@ final class FishViewController: UIViewController {
         
     }
     
+    
+    
     private func tableViewSetting() {
-        fishView.tableView.rx.setDelegate(self).disposed(by: disposeBag)
         viewModel.myData
             .bind(to: fishView.tableView.rx.items(cellIdentifier: Item.reuseIdentifier, cellType: Item.self)) {row, item, cell in
                 
@@ -97,6 +99,11 @@ final class FishViewController: UIViewController {
             cell.fishPriceLabel.text = "\(item.sell_nook)"
                 
         }.disposed(by: disposeBag)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("disappear")
+        ImageCacheManager.shared.removeAllObjects()
     }
 }
 
@@ -113,4 +120,3 @@ extension FishViewController: UITableViewDelegate {
         return Item.Constants.size.height
     }
 }
-
