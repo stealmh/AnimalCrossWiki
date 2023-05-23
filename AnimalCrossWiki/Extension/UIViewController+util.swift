@@ -21,9 +21,16 @@ extension UIViewController {
             }
         }
 
-        func toPreview() -> some View {
+    func toPreview() -> some View {
             Preview(viewController: self)
+    }
+    
+    func isScrolledToBottom(_ myPosition: CGPoint, _ tableView: UITableView) -> Bool {
+        if myPosition.y > tableView.contentSize.height - 100 - tableView.bounds.size.height {
+            return true
         }
+        return false
+    }
 }
 #endif
 

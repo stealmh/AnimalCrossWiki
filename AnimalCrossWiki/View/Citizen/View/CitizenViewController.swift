@@ -93,6 +93,25 @@ class CitizenViewController: UIViewController {
             
         }.disposed(by: disposeBag)
         
+        citizenView.tableView.rx.contentOffset
+            .map { self.isScrolledToBottom($0, self.citizenView.tableView) }
+            .subscribe(onNext: { data in
+                if data {
+                    guard !self.viewModel.isPaginating else { return }
+                    print("reload!!")
+                    self.viewModel.fetchData(pagination: true, completion: { [weak self] result in
+                        switch result {
+                        case .success(let moreData):
+                            for i in moreData {
+                                self?.viewModel.users.add(element: i)
+                            }
+                        default:
+                            return
+                        }
+                    })
+                }
+            }).disposed(by: disposeBag)
+        
         /// 즐겨찾기 버튼 탭
         self.navigationItem.rightBarButtonItem?.rx.tap
             .subscribe(onNext: { _ in
@@ -105,6 +124,22 @@ class CitizenViewController: UIViewController {
                 self.delegate?.didTapCell(self, data: data)
             }).disposed(by: disposeBag)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("disappear")
+        ImageCacheManager.shared.removeAllObjects()
+    }
+}
+
+
+extension CitizenViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Item.Constant.size.height
+    }
+}
+
+//MARK: Method
+extension CitizenViewController {
     
     func navigationSetting() {
         self.navigationController?.navigationBar.barTintColor = .white
@@ -127,40 +162,5 @@ class CitizenViewController: UIViewController {
                     try await self.viewModel.getData()
                 }
             }).disposed(by: disposeBag)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        print("disappear")
-        ImageCacheManager.shared.removeAllObjects()
-    }
-}
-
-
-extension CitizenViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Item.Constant.size.height
-    }
-}
-
-
-extension CitizenViewController {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        if citizenView.tableView.contentOffset.y > citizenView.tableView.contentSize.height - 100 - citizenView.tableView.bounds.size.height {
-            
-            guard !viewModel.isPaginating else { return }
-            print("reload!!")
-            viewModel.fetchData(pagination: true, completion: { [weak self] result in
-                switch result {
-                case .success(let moreData):
-                    for i in moreData {
-                        self?.viewModel.users.add(element: i)
-                    }
-                default:
-                    return
-                }
-            })
-            print("= is end =")
-        }
     }
 }

@@ -18,7 +18,7 @@
 		16C2458F29C02FDA00A937C7 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2458E29C02FDA00A937C7 /* ViewModel.swift */; };
 		16C2459129C02FE300A937C7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2459029C02FE300A937C7 /* Model.swift */; };
 		16C2459329C02FF200A937C7 /* AnimalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2459229C02FF200A937C7 /* AnimalTableViewCell.swift */; };
-		16C2459529C0387B00A937C7 /* UIViewController+preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2459429C0387B00A937C7 /* UIViewController+preview.swift */; };
+		16C2459529C0387B00A937C7 /* UIViewController+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2459429C0387B00A937C7 /* UIViewController+util.swift */; };
 		16E4331029C2BBAB004437D3 /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E4330F29C2BBAB004437D3 /* CustomHeaderView.swift */; };
 		5A27F7C22A1CAFEB00112755 /* Rx+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A27F7C12A1CAFEB00112755 /* Rx+Util.swift */; };
 		5A3628CA29EF9D4D00D4CAB6 /* MyInfoSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3628C929EF9D4D00D4CAB6 /* MyInfoSettingView.swift */; };
@@ -85,7 +85,7 @@
 		16C2458E29C02FDA00A937C7 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		16C2459029C02FE300A937C7 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		16C2459229C02FF200A937C7 /* AnimalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalTableViewCell.swift; sourceTree = "<group>"; };
-		16C2459429C0387B00A937C7 /* UIViewController+preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+preview.swift"; sourceTree = "<group>"; };
+		16C2459429C0387B00A937C7 /* UIViewController+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+util.swift"; sourceTree = "<group>"; };
 		16E4330F29C2BBAB004437D3 /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		5A27F7C12A1CAFEB00112755 /* Rx+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+Util.swift"; sourceTree = "<group>"; };
 		5A3628C929EF9D4D00D4CAB6 /* MyInfoSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoSettingView.swift; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				5AB2E36529F2448900CA4DBF /* Bundle+util.swift */,
-				16C2459429C0387B00A937C7 /* UIViewController+preview.swift */,
+				16C2459429C0387B00A937C7 /* UIViewController+util.swift */,
 				5A68C5FA29E7D36500B7985D /* UIView+nib.swift */,
 				5A68C60729E7DED300B7985D /* UITableViewCell+util.swift */,
 				5A68C60929E7DEFC00B7985D /* UITableViewHeaderFooterView+util.swift */,
@@ -607,7 +607,7 @@
 				5A6EEDD429EE94F500D79822 /* NewBugView.swift in Sources */,
 				5A8A0AC029F26C0A005C831F /* CitizenViewController.swift in Sources */,
 				5A6EEDCC29EE90BE00D79822 /* BugViewController.swift in Sources */,
-				16C2459529C0387B00A937C7 /* UIViewController+preview.swift in Sources */,
+				16C2459529C0387B00A937C7 /* UIViewController+util.swift in Sources */,
 				5AD269602A00A5BA004DD22C /* ImageCacheManager.swift in Sources */,
 				5AD269622A00A7ED004DD22C /* UIImageView+Extension.swift in Sources */,
 				5A68C61029E7EDD500B7985D /* NewFishView.swift in Sources */,
