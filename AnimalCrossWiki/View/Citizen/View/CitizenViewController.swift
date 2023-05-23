@@ -38,8 +38,17 @@ class CitizenViewController: UIViewController {
         view.addSubview(citizenView)
         
         Task {
-            try await viewModel.getData()
+            try await viewModel.getData1()
         }
+        
+        viewModel.fetchData(pagination: false, completion: {[weak self] result in
+            switch result {
+            case .success(let data):
+                self?.viewModel.users.accept(data)
+            default:
+                return
+            }
+        })
         
         navigationSetting()
         
@@ -130,5 +139,28 @@ class CitizenViewController: UIViewController {
 extension CitizenViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Item.Constant.size.height
+    }
+}
+
+
+extension CitizenViewController {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        if citizenView.tableView.contentOffset.y > citizenView.tableView.contentSize.height - 100 - citizenView.tableView.bounds.size.height {
+            
+            guard !viewModel.isPaginating else { return }
+            print("reload!!")
+            viewModel.fetchData(pagination: true, completion: { [weak self] result in
+                switch result {
+                case .success(let moreData):
+                    for i in moreData {
+                        self?.viewModel.users.add(element: i)
+                    }
+                default:
+                    return
+                }
+            })
+            print("= is end =")
+        }
     }
 }
