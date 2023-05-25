@@ -6,19 +6,15 @@
 //
 
 import UIKit
-import SnapKit
-import RxCocoa
-import RxSwift
 
 protocol TurnipViewControllerDelegate: AnyObject {
     func didTapResultButton(data: Turnip)
 }
 
 ///Only Programmatically
-class TurnipViewController: UIViewController {
+class TurnipViewController: BaseViewController{
     
     weak var delegate: TurnipViewControllerDelegate?
-    let disposeBag = DisposeBag()
     var simpleData: String = ""
     let viewModel = TurnipViewModel()
     

@@ -39,16 +39,16 @@ class CitizenViewController: UIViewController {
         
         Task {
             try await viewModel.getData1()
+            viewModel.fetchData(pagination: false, completion: {[weak self] result in
+                switch result {
+                case .success(let data):
+                    self?.viewModel.users.accept(data)
+                default:
+                    return
+                }
+            })
         }
         
-        viewModel.fetchData(pagination: false, completion: {[weak self] result in
-            switch result {
-            case .success(let data):
-                self?.viewModel.users.accept(data)
-            default:
-                return
-            }
-        })
         
         navigationSetting()
         
