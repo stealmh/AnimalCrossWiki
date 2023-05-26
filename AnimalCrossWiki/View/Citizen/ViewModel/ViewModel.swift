@@ -81,11 +81,6 @@ class ViewModel {
         
     }
 
-    
-    
-    
-    
-    
     func urlToUIImage(myURL: String) async throws -> UIImage? {
         guard let url = URL(string: myURL) else {return nil}
         let (data, _) = try await URLSession.shared.data(from: url)
@@ -116,6 +111,7 @@ class ViewModel {
         
         return Observable.create { emitter in
             if let cachedImage = ImageCacheManager.shared.object(forKey: cache) {
+                print(cachedImage)
                 emitter.onNext(cachedImage)
                 emitter.onCompleted()
             }

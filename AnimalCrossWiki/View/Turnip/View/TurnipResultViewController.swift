@@ -32,13 +32,24 @@ class TurnipResultViewController: UIViewController {
             $0.height.equalToSuperview().dividedBy(2)
         }
         
-        loadImage(detailInfo.value.preview)
-            .map { $0! }
-            .bind(to: self.preview.rx.image)
+         let img = loadImage(detailInfo.value.preview).asDriver(onErrorJustReturn: UIImage(named: "popcat"))
+
+        img.map { $0! }
+            .drive(self.preview.rx.image)
             .disposed(by: disposeBag)
+        
+        
+//        loadImage(detailInfo.value.preview)
+//            .map { $0! }
+//            .asDr
+//            .bind(to: self.preview.rx.image)
+//            .disposed(by: disposeBag)
 
     }
-    
+}
+
+// MARK: - Method
+extension TurnipResultViewController {
     func loadImage(_ url: String) -> Observable<UIImage?> {
         return Observable.create { emitter in
             let myUrl = URL(string: url)!

@@ -11,7 +11,7 @@ import RxSwift
 
 class CitizenTableViewCell:UITableViewCell {
     
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     
     @IBOutlet weak var citizenImage: UIImageView!
     @IBOutlet weak var citizenLabel: UILabel!
@@ -25,6 +25,17 @@ class CitizenTableViewCell:UITableViewCell {
     override class func awakeFromNib() {
         
     }
+    
+    override func prepareForReuse() {
+        self.citizenImage.image = nil
+        self.citizenLabel.text = nil
+        self.citizenTypeLabel.text = nil
+    }
+//    
+//    func updateLayout() {
+//        self.setNeedsLayout()
+//        self.layoutIfNeeded()
+//    }
     
 }
 

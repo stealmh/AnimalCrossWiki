@@ -15,7 +15,7 @@ class TurnipViewModel {
         
         let (data, _) = try await URLSession.shared.data(for: request)
         let result = try JSONDecoder().decode(Turnip.self, from: data)
-        print()
+        print(result)
         return result
     }
 }

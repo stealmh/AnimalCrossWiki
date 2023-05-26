@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SnapKit
+import Kingfisher
 
 protocol CitizenViewControllerDelegate: AnyObject {
     func didTapCell(_ viewController: CitizenViewController, data: ControlEvent<AnimalModel>.Element)
@@ -34,28 +35,10 @@ class CitizenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        view.addSubview(citizenView)
-        
-        Task {
-            try await viewModel.getData1()
-            viewModel.fetchData(pagination: false, completion: {[weak self] result in
-                switch result {
-                case .success(let data):
-                    self?.viewModel.users.accept(data)
-                default:
-                    return
-                }
-            })
-        }
-        
-        
+        getData()
+        viewSetting()
         navigationSetting()
-        
-        citizenView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.left.right.bottom.equalToSuperview()
-        }
+        addfavoriteCitizen()
         
         citizenView.tableView.rx.setDelegate(self).disposed(by: disposeBag)
         
@@ -63,33 +46,31 @@ class CitizenViewController: UIViewController {
             cell.citizenLabel.text = "\(item.name)"
             cell.citizenTypeLabel.text = item.species
             cell.citizenFavoriteButton.setImage(UIImage(systemName: CoreDataManager.shared.fetch(animalName: item.name) ? "heart.fill" : "heart"), for: .normal)
-            //            cell.citizenImage.setImageUrl(item.image_url)
             
-            let _ = self.viewModel.loadImage(item.image_url)
-                .observe(on: MainScheduler.instance)
-                .bind(to: cell.citizenImage.rx.image)
+            cell.citizenImage.kf.indicatorType = .activity
+            cell.citizenImage.kf.setImage(with: URL(string: item.image_url))
+
             
             
             /// Todo : 즐겨찾기 수정하기
-//            let _ = cell.citizenFavoriteButton.rx.tap
-//                .map { CoreDataManager.shared.fetch(animalName: item.name) }
-//                .subscribe(onNext: {isExist in
-//                    if isExist {
-//                        // 이미 즐겨찾기 한 상태에서 터치가 들어옴
-//                        // 1.데이터를 삭제
-//                        print("\(item.name) 삭제 예정")
-//                        CoreDataManager.shared.delete(animalName: item.name)
-//                        // 2.버튼의 색깔 바꾸기
-//                        cell.citizenFavoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
-//
-//                    } else {
-//                        // 1.데이터를 추가
-//                        print("\(item.name)번째 추가 예정")
-//                        CoreDataManager.shared.insertContent(content: item)
-//                        // 2.버튼의 색깔 바꾸기
-//                        cell.citizenFavoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-//                    }
-//                })
+            let _ = cell.citizenFavoriteButton.rx.tap
+                .map { CoreDataManager.shared.fetch(animalName: item.name) }
+                .subscribe(onNext: {isExist in
+                    if isExist {
+                        // 이미 즐겨찾기 한 상태에서 터치가 들어옴
+                        // 1.데이터를 삭제
+                        CoreDataManager.shared.delete(animalName: item.name)
+                        // 2.버튼의 색깔 바꾸기
+                        cell.citizenFavoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                        
+                    } else {
+                        // 1.데이터를 추가
+                        CoreDataManager.shared.insertContent(content: item)
+                        // 2.버튼의 색깔 바꾸기
+                        cell.citizenFavoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                    }
+                })
+            
             
         }.disposed(by: disposeBag)
         
@@ -125,10 +106,10 @@ class CitizenViewController: UIViewController {
             }).disposed(by: disposeBag)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        print("disappear")
-        ImageCacheManager.shared.removeAllObjects()
-    }
+    //    override func viewWillDisappear(_ animated: Bool) {
+    //        print("disappear")
+    //        ImageCacheManager.shared.removeAllObjects()
+    //    }
 }
 
 
@@ -140,6 +121,30 @@ extension CitizenViewController: UITableViewDelegate {
 
 //MARK: Method
 extension CitizenViewController {
+    
+    func getData() {
+        Task {
+            try await viewModel.getData1()
+            viewModel.fetchData(pagination: false, completion: {[weak self] result in
+                switch result {
+                case .success(let data):
+                    self?.viewModel.users.accept(data)
+                default:
+                    return
+                }
+            })
+        }
+    }
+    
+    func viewSetting() {
+        view.backgroundColor = .white
+        view.addSubview(citizenView)
+        
+        citizenView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.left.right.bottom.equalToSuperview()
+        }
+    }
     
     func navigationSetting() {
         self.navigationController?.navigationBar.barTintColor = .white
@@ -163,4 +168,20 @@ extension CitizenViewController {
                 }
             }).disposed(by: disposeBag)
     }
+    
+    func addfavoriteCitizen() {
+        
+    }
 }
+
+extension CitizenViewController {
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Item.reuseIdentifier, for: indexPath) as? Item else { return }
+        cell.disposeBag = DisposeBag()
+        cell.citizenImage.image = nil
+        cell.citizenLabel.text = nil
+        cell.citizenTypeLabel.text = nil
+        cell.citizenFavoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+    }
+}
+
