@@ -22,20 +22,25 @@ class CitizenTableViewCell:UITableViewCell {
         static let size: CGSize = .init(width: 60, height: 55)
     }
     
-    override class func awakeFromNib() {
-        
+    override func awakeFromNib() {
+        super.awakeFromNib()
     }
     
     override func prepareForReuse() {
-        self.citizenImage.image = nil
-        self.citizenLabel.text = nil
-        self.citizenTypeLabel.text = nil
+        super.prepareForReuse()
+//        print(disposeBag)
+        self.disposeBag = DisposeBag()
+        citizenImage.image = nil
+        citizenLabel.text = nil
+        citizenTypeLabel.text = nil
+        citizenFavoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        updateLayout()
     }
-//    
-//    func updateLayout() {
-//        self.setNeedsLayout()
-//        self.layoutIfNeeded()
-//    }
+    
+    func updateLayout() {
+        self.setNeedsLayout()
+        self.layoutIfNeeded()
+    }
     
 }
 

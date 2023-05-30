@@ -53,7 +53,7 @@ class CitizenViewController: UIViewController {
             
             
             /// Todo : 즐겨찾기 수정하기
-            let _ = cell.citizenFavoriteButton.rx.tap
+            cell.citizenFavoriteButton.rx.tap
                 .map { CoreDataManager.shared.fetch(animalName: item.name) }
                 .subscribe(onNext: {isExist in
                     if isExist {
@@ -62,14 +62,14 @@ class CitizenViewController: UIViewController {
                         CoreDataManager.shared.delete(animalName: item.name)
                         // 2.버튼의 색깔 바꾸기
                         cell.citizenFavoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
-                        
+
                     } else {
                         // 1.데이터를 추가
                         CoreDataManager.shared.insertContent(content: item)
                         // 2.버튼의 색깔 바꾸기
                         cell.citizenFavoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                     }
-                })
+                }).disposed(by: cell.disposeBag)
             
             
         }.disposed(by: disposeBag)
@@ -102,7 +102,8 @@ class CitizenViewController: UIViewController {
         
         citizenView.tableView.rx.modelSelected(AnimalModel.self)
             .subscribe(onNext: {data in
-                self.delegate?.didTapCell(self, data: data)
+//                self.delegate?.didTapCell(self, data: data)
+                print(data.name)
             }).disposed(by: disposeBag)
     }
     
@@ -174,14 +175,15 @@ extension CitizenViewController {
     }
 }
 
-extension CitizenViewController {
-    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Item.reuseIdentifier, for: indexPath) as? Item else { return }
-        cell.disposeBag = DisposeBag()
-        cell.citizenImage.image = nil
-        cell.citizenLabel.text = nil
-        cell.citizenTypeLabel.text = nil
-        cell.citizenFavoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
-    }
-}
+//extension CitizenViewController {
+//    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: Item.reuseIdentifier, for: indexPath) as? Item else { return }
+//        print(self.disposeBag)
+//        cell.disposeBag = DisposeBag()
+//        cell.citizenImage.image = nil
+//        cell.citizenLabel.text = nil
+//        cell.citizenTypeLabel.text = nil
+//        cell.citizenFavoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+//    }
+//}
 
