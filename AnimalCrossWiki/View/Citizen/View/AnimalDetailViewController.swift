@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import RxGesture
 import SnapKit
+import Kingfisher
 
 class AnimalDetailViewController: UIViewController {
     
@@ -39,38 +40,15 @@ class AnimalDetailViewController: UIViewController {
         button.setTitle("닫기", for: .normal)
         return button
     }()
-    
-    let animalPhoto: CustomImageView = {
-        let photo = CustomImageView()
-        photo.image = UIImage(systemName: "person")
-        photo.translatesAutoresizingMaskIntoConstraints = false
-        return photo
-    }()
-    
-    let genderLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    let speciesLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    let birthday_month: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    let birthday_day: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+
+    private let animalPhoto = CustomImageView(image: UIImage(systemName: "person"))
+    private let genderLabel = UILabel()
+    private let speciesLabel = UILabel()
+    private let birthday_month = UILabel()
+    private let birthday_day = UILabel()
     
     let contentsStack: UIStackView = {
         let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.distribution = .fillEqually
         return stack
@@ -119,14 +97,10 @@ class AnimalDetailViewController: UIViewController {
             .bind { _ in self.dismiss(animated: true) }
             .disposed(by: dispose)
         
-        loadImage(detailInfo.value.image_url)
-            .map { $0! }
-            .bind(to: self.animalPhoto.rx.image)
-            .disposed(by: dispose)
+        self.animalPhoto.kf.setImage(with: URL(string: detailInfo.value.image_url))
         
-        detailInfo
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: {data in
+        detailInfo.asDriver()
+            .drive(onNext: {data in
                 self.animalName.text = data.name
                 self.genderLabel.text = data.gender
                 self.speciesLabel.text = data.species
@@ -148,33 +122,6 @@ class AnimalDetailViewController: UIViewController {
         
         view.addSubview(detailView)
     }
-    
-    func loadImage(_ imageUrl: String) async throws -> UIImage? {
-        guard let url = URL(string: imageUrl) else {return nil}
-        let (data, _) = try await URLSession.shared.data(from: url)
-        guard let image = UIImage(data: data) else {return nil}
-        return image
-    }
-    
-    func loadImage(_ url: String) -> Observable<UIImage?> {
-        return Observable.create { emitter in
-            let myUrl = URL(string: url)!
-            let task = URLSession.shared.dataTask(with: myUrl) { data, response, error in
-                guard let data else {
-                    emitter.onError(error!)
-                    return
-                }
-                let image = UIImage(data: data)
-                emitter.onNext(image)
-                emitter.onCompleted()
-            }
-            task.resume()
-            return Disposables.create {
-                task.cancel()
-            }
-        }
-    }
-    
 
 }
 

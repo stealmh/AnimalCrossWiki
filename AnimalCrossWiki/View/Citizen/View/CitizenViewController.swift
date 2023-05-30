@@ -102,7 +102,7 @@ class CitizenViewController: UIViewController {
         
         citizenView.tableView.rx.modelSelected(AnimalModel.self)
             .subscribe(onNext: {data in
-//                self.delegate?.didTapCell(self, data: data)
+                self.delegate?.didTapCell(self, data: data)
                 print(data.name)
             }).disposed(by: disposeBag)
     }
