@@ -22,6 +22,7 @@
 		16E4331029C2BBAB004437D3 /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E4330F29C2BBAB004437D3 /* CustomHeaderView.swift */; };
 		5A27F7C22A1CAFEB00112755 /* Rx+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A27F7C12A1CAFEB00112755 /* Rx+Util.swift */; };
 		5A34A85E2A25AD31000748DB /* UIStackView+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A34A85D2A25AD31000748DB /* UIStackView+util.swift */; };
+		5A34A8602A25AF41000748DB /* UIColor+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A34A85F2A25AF41000748DB /* UIColor+util.swift */; };
 		5A3628CA29EF9D4D00D4CAB6 /* MyInfoSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3628C929EF9D4D00D4CAB6 /* MyInfoSettingView.swift */; };
 		5A3628CC29EF9D6D00D4CAB6 /* MyInfoSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3628CB29EF9D6D00D4CAB6 /* MyInfoSettingView.xib */; };
 		5A555A082A1F531300233210 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A555A072A1F531300233210 /* BaseViewController.swift */; };
@@ -65,7 +66,7 @@
 		5AD2695B2A009D6F004DD22C /* String+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD2695A2A009D6F004DD22C /* String+util.swift */; };
 		5AD2695D2A00A2C9004DD22C /* FishCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD2695C2A00A2C9004DD22C /* FishCoordinator.swift */; };
 		5AD269602A00A5BA004DD22C /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD2695F2A00A5BA004DD22C /* ImageCacheManager.swift */; };
-		5AD269622A00A7ED004DD22C /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD269612A00A7ED004DD22C /* UIImageView+Extension.swift */; };
+		5AD269622A00A7ED004DD22C /* UIImageView+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD269612A00A7ED004DD22C /* UIImageView+util.swift */; };
 		5AF51E032A17075F0065B9D4 /* TurnipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF51E022A17075F0065B9D4 /* TurnipView.swift */; };
 		5AF51E052A170A0A0065B9D4 /* TurnipResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF51E042A170A0A0065B9D4 /* TurnipResultViewController.swift */; };
 		77B60FFDFCB396667A77DB79 /* Pods_AnimalCrossWiki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 017EAFB4E9B574160095B6CF /* Pods_AnimalCrossWiki.framework */; };
@@ -91,6 +92,7 @@
 		16E4330F29C2BBAB004437D3 /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		5A27F7C12A1CAFEB00112755 /* Rx+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+Util.swift"; sourceTree = "<group>"; };
 		5A34A85D2A25AD31000748DB /* UIStackView+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+util.swift"; sourceTree = "<group>"; };
+		5A34A85F2A25AF41000748DB /* UIColor+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+util.swift"; sourceTree = "<group>"; };
 		5A3628C929EF9D4D00D4CAB6 /* MyInfoSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoSettingView.swift; sourceTree = "<group>"; };
 		5A3628CB29EF9D6D00D4CAB6 /* MyInfoSettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyInfoSettingView.xib; sourceTree = "<group>"; };
 		5A555A072A1F531300233210 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -134,7 +136,7 @@
 		5AD2695A2A009D6F004DD22C /* String+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+util.swift"; sourceTree = "<group>"; };
 		5AD2695C2A00A2C9004DD22C /* FishCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishCoordinator.swift; sourceTree = "<group>"; };
 		5AD2695F2A00A5BA004DD22C /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
-		5AD269612A00A7ED004DD22C /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		5AD269612A00A7ED004DD22C /* UIImageView+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+util.swift"; sourceTree = "<group>"; };
 		5AF51E022A17075F0065B9D4 /* TurnipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnipView.swift; sourceTree = "<group>"; };
 		5AF51E042A170A0A0065B9D4 /* TurnipResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnipResultViewController.swift; sourceTree = "<group>"; };
 		B169AF0D67EA066A5A5497FD /* Pods-AnimalCrossWiki.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossWiki.debug.xcconfig"; path = "Target Support Files/Pods-AnimalCrossWiki/Pods-AnimalCrossWiki.debug.xcconfig"; sourceTree = "<group>"; };
@@ -203,10 +205,11 @@
 				5A68C60929E7DEFC00B7985D /* UITableViewHeaderFooterView+util.swift */,
 				5A6EEDD129EE921800D79822 /* UICollectionViewCell+util.swift */,
 				5AD2695A2A009D6F004DD22C /* String+util.swift */,
-				5AD269612A00A7ED004DD22C /* UIImageView+Extension.swift */,
+				5AD269612A00A7ED004DD22C /* UIImageView+util.swift */,
 				5A7B600F2A122477003D4376 /* UIBarButtonItem+util.swift */,
 				5A27F7C12A1CAFEB00112755 /* Rx+Util.swift */,
 				5A34A85D2A25AD31000748DB /* UIStackView+util.swift */,
+				5A34A85F2A25AF41000748DB /* UIColor+util.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -616,6 +619,7 @@
 				163C5B2729C0E09B00A38F3E /* CustomImageView.swift in Sources */,
 				5A27F7C22A1CAFEB00112755 /* Rx+Util.swift in Sources */,
 				5AB55E072A15DD2500C0D047 /* TurnipViewModel.swift in Sources */,
+				5A34A8602A25AF41000748DB /* UIColor+util.swift in Sources */,
 				5A8A0AB829F269F7005C831F /* CitizenTableViewCell.swift in Sources */,
 				5AF51E032A17075F0065B9D4 /* TurnipView.swift in Sources */,
 				5A6EEDD429EE94F500D79822 /* NewBugView.swift in Sources */,
@@ -624,7 +628,7 @@
 				16C2459529C0387B00A937C7 /* UIViewController+util.swift in Sources */,
 				5A555A082A1F531300233210 /* BaseViewController.swift in Sources */,
 				5AD269602A00A5BA004DD22C /* ImageCacheManager.swift in Sources */,
-				5AD269622A00A7ED004DD22C /* UIImageView+Extension.swift in Sources */,
+				5AD269622A00A7ED004DD22C /* UIImageView+util.swift in Sources */,
 				5A68C61029E7EDD500B7985D /* NewFishView.swift in Sources */,
 				5A6EEDD229EE921800D79822 /* UICollectionViewCell+util.swift in Sources */,
 				16C2457829C02D1000A937C7 /* ViewController.swift in Sources */,
