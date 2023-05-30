@@ -29,8 +29,9 @@ class CitizenViewController: UIViewController {
         return v
     }()
     
-    
+    /// 로고 버튼 탭
     @objc func dd() {
+        self.viewModel.users.accept(self.viewModel.forLogoTouchData)
     }
     
     override func viewDidLoad() {
@@ -38,7 +39,6 @@ class CitizenViewController: UIViewController {
         getData()
         viewSetting()
         navigationSetting()
-        addfavoriteCitizen()
         
         citizenView.tableView.rx.setDelegate(self).disposed(by: disposeBag)
         
@@ -97,10 +97,9 @@ class CitizenViewController: UIViewController {
         /// 즐겨찾기 버튼 탭
         self.navigationItem.rightBarButtonItem?.rx.tap
             .subscribe(onNext: { _ in
-                self.viewModel.isPaginating = true
+                self.viewModel.forLogoTouchData = self.viewModel.users.value
                 self.viewModel.users.accept(CoreDataManager.shared.fetch())
             }).disposed(by: disposeBag)
-        
         
         citizenView.tableView.rx.modelSelected(AnimalModel.self)
             .subscribe(onNext: {data in

@@ -16,6 +16,7 @@ class ViewModel {
     var end = 14
     // 482 - 488
     var data: [AnimalModel] = []
+    var forLogoTouchData: [AnimalModel] = []
     var filterGender = BehaviorSubject(value:"")
     var users = BehaviorRelay(value: [AnimalModel]())
     let parameter = "/villagers"
