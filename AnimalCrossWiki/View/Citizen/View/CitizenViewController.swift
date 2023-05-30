@@ -76,6 +76,7 @@ class CitizenViewController: UIViewController {
         
         citizenView.tableView.rx.contentOffset
             .map { self.isScrolledToBottom($0, self.citizenView.tableView) }
+            .distinctUntilChanged()
             .subscribe(onNext: { data in
                 if data {
                     guard !self.viewModel.isPaginating else { return }
@@ -96,6 +97,7 @@ class CitizenViewController: UIViewController {
         /// 즐겨찾기 버튼 탭
         self.navigationItem.rightBarButtonItem?.rx.tap
             .subscribe(onNext: { _ in
+                self.viewModel.isPaginating = true
                 self.viewModel.users.accept(CoreDataManager.shared.fetch())
             }).disposed(by: disposeBag)
         
@@ -169,21 +171,6 @@ extension CitizenViewController {
                 }
             }).disposed(by: disposeBag)
     }
-    
-    func addfavoriteCitizen() {
-        
-    }
 }
 
-//extension CitizenViewController {
-//    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: Item.reuseIdentifier, for: indexPath) as? Item else { return }
-//        print(self.disposeBag)
-//        cell.disposeBag = DisposeBag()
-//        cell.citizenImage.image = nil
-//        cell.citizenLabel.text = nil
-//        cell.citizenTypeLabel.text = nil
-//        cell.citizenFavoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
-//    }
-//}
 
