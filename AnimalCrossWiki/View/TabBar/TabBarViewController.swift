@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class TabBarViewController: UITabBarController {
     
     private let citizenCoordinator = CitizenCoordinator()
@@ -41,7 +42,6 @@ class TabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         citizenViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 0)
         bugViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 1)
         fishViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .mostViewed, tag: 2)

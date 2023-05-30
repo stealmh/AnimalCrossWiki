@@ -47,6 +47,8 @@ class AnimalDetailViewController: UIViewController {
     private let birthday_month = UILabel()
     private let birthday_day = UILabel()
     
+    
+    
     let contentsStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
@@ -60,8 +62,37 @@ class AnimalDetailViewController: UIViewController {
         view.isOpaque = false
         
         addViewList()
+        layoutConfigure()
+        
+        //MARK: Rx
+        closeButton.rx.tap.bind { _ in
+            self.dismiss(animated: true)
+        }.disposed(by: dispose)
+        
+        view.rx.tapGesture()
+            .when(.recognized)
+            .bind { _ in self.dismiss(animated: true) }
+            .disposed(by: dispose)
+        
+        self.animalPhoto.kf.setImage(with: URL(string: detailInfo.value.image_url))
+        
+        detailInfo.asDriver()
+            .drive(onNext: {data in
+                self.animalName.text = data.name
+                self.genderLabel.text = data.gender
+                self.speciesLabel.text = data.species
+                self.birthday_day.text = data.birthday_day
+                self.birthday_month.text = data.birthday_month
+            }).disposed(by: dispose)
+    }
 
-        //MARK: Layout
+}
+
+// MARK: Method
+extension AnimalDetailViewController {
+    
+    //MARK: Layout
+    func layoutConfigure() {
         detailView.snp.makeConstraints {
             $0.left.right.equalToSuperview().inset(40)
             $0.centerX.centerY.equalToSuperview()
@@ -86,45 +117,15 @@ class AnimalDetailViewController: UIViewController {
             $0.top.equalTo(animalPhoto.snp.bottom).inset(10)
             $0.bottom.equalTo(detailView.snp.bottom).inset(10)
         }
-        
-        //MARK: Rx
-        closeButton.rx.tap.bind { _ in
-            self.dismiss(animated: true)
-        }.disposed(by: dispose)
-        
-        view.rx.tapGesture()
-            .when(.recognized)
-            .bind { _ in self.dismiss(animated: true) }
-            .disposed(by: dispose)
-        
-        self.animalPhoto.kf.setImage(with: URL(string: detailInfo.value.image_url))
-        
-        detailInfo.asDriver()
-            .drive(onNext: {data in
-                self.animalName.text = data.name
-                self.genderLabel.text = data.gender
-                self.speciesLabel.text = data.species
-                self.birthday_day.text = data.birthday_day
-                self.birthday_month.text = data.birthday_month
-            }).disposed(by: dispose)
     }
     
+    //MARK: Add View
     func addViewList() {
-        detailView.addSubview(closeButton)
-        detailView.addSubview(animalPhoto)
-        
-        contentsStack.addArrangedSubview(animalName)
-        contentsStack.addArrangedSubview(genderLabel)
-        contentsStack.addArrangedSubview(speciesLabel)
-        contentsStack.addArrangedSubview(birthday_day)
-        contentsStack.addArrangedSubview(birthday_month)
-        detailView.addSubview(contentsStack)
-        
+        contentsStack.addArrangedSubviews(animalName, genderLabel, speciesLabel, birthday_day, birthday_month)
+        detailView.addSubViews(closeButton, animalPhoto, contentsStack)
         view.addSubview(detailView)
     }
-
 }
-
 
 import SwiftUI
 struct AnimalDetail_preview: PreviewProvider {

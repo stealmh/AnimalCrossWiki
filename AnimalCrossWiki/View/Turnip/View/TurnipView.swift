@@ -151,26 +151,26 @@ final class TurnipView: UIView {
 
 extension TurnipView {
     func configureSubViews() {
-        self.addSubview(myBackgroundImageView)
-        self.addSubview(sunLabel)
-        self.addSubview(sunPrice)
-        self.addSubview(monLabel)
-        self.addSubview(monAmPrice)
-        self.addSubview(monPmPrice)
-        self.addSubview(tueLabel)
-        self.addSubview(tueAmPrice)
-        self.addSubview(tuePmPrice)
-        self.addSubview(wedLabel)
-        self.addSubview(wedAmPrice)
-        self.addSubview(wedPmPrice)
-        self.addSubview(thurLabel)
-        self.addSubview(thurAmPrice)
-        self.addSubview(thurPmPrice)
-        self.addSubview(friLabel)
-        self.addSubview(friAmPrice)
-        self.addSubview(friPmPrice)
-        self.addSubview(satLabel)
-        self.addSubview(satAmPrice)
+        self.addSubViews(myBackgroundImageView,
+                         sunLabel,
+                         sunPrice,
+                         monLabel,
+                         monAmPrice,
+                         monPmPrice,
+                         tueLabel,
+                         tueAmPrice,
+                         tuePmPrice,
+                         wedLabel,
+                         wedAmPrice,
+                         wedPmPrice,
+                         thurLabel,
+                         thurAmPrice,
+                         thurPmPrice,
+                         friLabel,
+                         friAmPrice,
+                         friPmPrice,
+                         satLabel,
+                         satAmPrice)
     }
     
     func configureUI() {

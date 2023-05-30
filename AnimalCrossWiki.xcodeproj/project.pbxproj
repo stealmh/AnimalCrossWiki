@@ -21,10 +21,11 @@
 		16C2459529C0387B00A937C7 /* UIViewController+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2459429C0387B00A937C7 /* UIViewController+util.swift */; };
 		16E4331029C2BBAB004437D3 /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E4330F29C2BBAB004437D3 /* CustomHeaderView.swift */; };
 		5A27F7C22A1CAFEB00112755 /* Rx+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A27F7C12A1CAFEB00112755 /* Rx+Util.swift */; };
+		5A34A85E2A25AD31000748DB /* UIStackView+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A34A85D2A25AD31000748DB /* UIStackView+util.swift */; };
 		5A3628CA29EF9D4D00D4CAB6 /* MyInfoSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3628C929EF9D4D00D4CAB6 /* MyInfoSettingView.swift */; };
 		5A3628CC29EF9D6D00D4CAB6 /* MyInfoSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3628CB29EF9D6D00D4CAB6 /* MyInfoSettingView.xib */; };
 		5A555A082A1F531300233210 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A555A072A1F531300233210 /* BaseViewController.swift */; };
-		5A68C5FB29E7D36500B7985D /* UIView+nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C5FA29E7D36500B7985D /* UIView+nib.swift */; };
+		5A68C5FB29E7D36500B7985D /* UIView+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C5FA29E7D36500B7985D /* UIView+util.swift */; };
 		5A68C5FD29E7D3D500B7985D /* FishViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C5FC29E7D3D500B7985D /* FishViewHeader.swift */; };
 		5A68C5FF29E7D3E300B7985D /* FishViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C5FE29E7D3E300B7985D /* FishViewCell.swift */; };
 		5A68C60129E7D3EF00B7985D /* FishViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A68C60029E7D3EF00B7985D /* FishViewHeader.xib */; };
@@ -89,10 +90,11 @@
 		16C2459429C0387B00A937C7 /* UIViewController+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+util.swift"; sourceTree = "<group>"; };
 		16E4330F29C2BBAB004437D3 /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		5A27F7C12A1CAFEB00112755 /* Rx+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+Util.swift"; sourceTree = "<group>"; };
+		5A34A85D2A25AD31000748DB /* UIStackView+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+util.swift"; sourceTree = "<group>"; };
 		5A3628C929EF9D4D00D4CAB6 /* MyInfoSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoSettingView.swift; sourceTree = "<group>"; };
 		5A3628CB29EF9D6D00D4CAB6 /* MyInfoSettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyInfoSettingView.xib; sourceTree = "<group>"; };
 		5A555A072A1F531300233210 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		5A68C5FA29E7D36500B7985D /* UIView+nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+nib.swift"; sourceTree = "<group>"; };
+		5A68C5FA29E7D36500B7985D /* UIView+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+util.swift"; sourceTree = "<group>"; };
 		5A68C5FC29E7D3D500B7985D /* FishViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishViewHeader.swift; sourceTree = "<group>"; };
 		5A68C5FE29E7D3E300B7985D /* FishViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishViewCell.swift; sourceTree = "<group>"; };
 		5A68C60029E7D3EF00B7985D /* FishViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FishViewHeader.xib; sourceTree = "<group>"; };
@@ -196,7 +198,7 @@
 			children = (
 				5AB2E36529F2448900CA4DBF /* Bundle+util.swift */,
 				16C2459429C0387B00A937C7 /* UIViewController+util.swift */,
-				5A68C5FA29E7D36500B7985D /* UIView+nib.swift */,
+				5A68C5FA29E7D36500B7985D /* UIView+util.swift */,
 				5A68C60729E7DED300B7985D /* UITableViewCell+util.swift */,
 				5A68C60929E7DEFC00B7985D /* UITableViewHeaderFooterView+util.swift */,
 				5A6EEDD129EE921800D79822 /* UICollectionViewCell+util.swift */,
@@ -204,6 +206,7 @@
 				5AD269612A00A7ED004DD22C /* UIImageView+Extension.swift */,
 				5A7B600F2A122477003D4376 /* UIBarButtonItem+util.swift */,
 				5A27F7C12A1CAFEB00112755 /* Rx+Util.swift */,
+				5A34A85D2A25AD31000748DB /* UIStackView+util.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -608,7 +611,7 @@
 				5AF51E052A170A0A0065B9D4 /* TurnipResultViewController.swift in Sources */,
 				5A3628CA29EF9D4D00D4CAB6 /* MyInfoSettingView.swift in Sources */,
 				5AB2E36629F2448900CA4DBF /* Bundle+util.swift in Sources */,
-				5A68C5FB29E7D36500B7985D /* UIView+nib.swift in Sources */,
+				5A68C5FB29E7D36500B7985D /* UIView+util.swift in Sources */,
 				16C2459129C02FE300A937C7 /* Model.swift in Sources */,
 				163C5B2729C0E09B00A38F3E /* CustomImageView.swift in Sources */,
 				5A27F7C22A1CAFEB00112755 /* Rx+Util.swift in Sources */,
@@ -647,6 +650,7 @@
 				5A68C5FD29E7D3D500B7985D /* FishViewHeader.swift in Sources */,
 				5A6EEDC829EE8EB700D79822 /* BugCell.swift in Sources */,
 				5A854EAB29FA13FF00282A08 /* CitizenCoordinator.swift in Sources */,
+				5A34A85E2A25AD31000748DB /* UIStackView+util.swift in Sources */,
 				16C2457629C02D1000A937C7 /* SceneDelegate.swift in Sources */,
 				5A6EEDD829EE98E400D79822 /* BugViewModel.swift in Sources */,
 			);
