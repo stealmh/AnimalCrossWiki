@@ -28,51 +28,77 @@ class TabBarViewController: UITabBarController {
         return turnipCoordinator.rootViewController
     }
     
-    
-    
-//    init() {
-//        super.init(nibName: nil, bundle: nil)
-//        object_setClass(self.tabBar, MyTabBar.self)
-//    }
-//    
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 15.0, *) {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = .black
+            tabBar.standardAppearance = appearance
+            tabBar.scrollEdgeAppearance = tabBar.standardAppearance
+        } else {
+            tabBar.barTintColor = .black
+        }
+
         citizenViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 0)
         bugViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 1)
         fishViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .mostViewed, tag: 2)
-//        turnipViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .mostRecent, tag: 3)
-        
         turnipViewController.tabBarItem = UITabBarItem(title: "무 가격", image: UIImage(named: "turnip")!.withRenderingMode(.alwaysOriginal), tag: 3)
         
         citizenCoordinator.start()
         bugCoordinator.start()
         fishCoordinator.start()
         turnipCoordinator.start()
-        
+        self.changeRadius(cornerRadius: 40)
+        self.setSelectedItemColor(selectedColor: .white, unSelectedcolor: .black)
         self.viewControllers = [citizenViewController, bugViewController, fishViewController, turnipViewController]
-        
-//        setUpTabBar()
+    }
+}
+
+// MARK: - Method
+extension TabBarViewController {
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.changedHeightOfTabBar(setHeight: 80)
     }
     
-//    func setUpTabBar() {
-//
-//        tabBar.barTintColor = .cyan
-//        tabBar.layer.cornerRadius = tabBar.frame.height * 0.41
-//        tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-//    }
-//
-//    class MyTabBar: UITabBar {
-//        override func sizeThatFits(_ size: CGSize) -> CGSize {
-//            var sizeThatFits = super.sizeThatFits(size)
-//            sizeThatFits.height = 80
-//            return sizeThatFits
+    private func changedHeightOfTabBar(setHeight: Double) {
+//        if UIDevice().userInterfaceIdiom == .phone {
+            var tabFrame = tabBar.frame
+            tabFrame.size.height = setHeight
+            tabFrame.origin.y = view.frame.size.height - setHeight
+            tabBar.frame = tabFrame
 //        }
-//    }
+    }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        self.annimationWhenSelectItem(item)
+    }
+    
+    private func annimationWhenSelectItem(_ item: UITabBarItem) {
+        guard let barItemView = item.value(forKey: "view") as? UIView else { return }
+        
+        let timeInterval: TimeInterval = 0.5
+        let propertyAnimator = UIViewPropertyAnimator(duration: timeInterval, dampingRatio: 0.5) {
+            barItemView.transform = CGAffineTransform.identity.scaledBy(x: 1.2, y: 1.2)
+        }
+        propertyAnimator.addAnimations({ barItemView.transform = .identity }, delayFactor: CGFloat(timeInterval))
+        propertyAnimator.startAnimation()
+    }
+    
+    private func setSelectedItemColor(selectedColor: UIColor? ,unSelectedcolor: UIColor?) {
+        self.tabBar.unselectedItemTintColor = unSelectedcolor ?? .black
+        tabBar.tintColor = selectedColor ?? .white
+    }
+    
+    private func changeRadius(cornerRadius: CGFloat) {
+        self.tabBar.layer.masksToBounds = true
+        self.tabBar.isTranslucent = true
+        self.tabBar.layer.cornerRadius = cornerRadius
+        self.tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    }
+    
 }
 
 
