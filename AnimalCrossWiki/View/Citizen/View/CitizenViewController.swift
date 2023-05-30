@@ -30,7 +30,8 @@ class CitizenViewController: UIViewController {
     }()
     
     /// 로고 버튼 탭
-    @objc func dd() {
+    @objc func didLogoTapped() {
+        self.viewModel.isPaginating = false
         self.viewModel.users.accept(self.viewModel.forLogoTouchData)
     }
     
@@ -97,6 +98,7 @@ class CitizenViewController: UIViewController {
         /// 즐겨찾기 버튼 탭
         self.navigationItem.rightBarButtonItem?.rx.tap
             .subscribe(onNext: { _ in
+                self.viewModel.isPaginating = true
                 self.viewModel.forLogoTouchData = self.viewModel.users.value
                 self.viewModel.users.accept(CoreDataManager.shared.fetch())
             }).disposed(by: disposeBag)
@@ -150,8 +152,8 @@ extension CitizenViewController {
     
     func navigationSetting() {
         self.navigationController?.navigationBar.barTintColor = .white
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.menuButton(self, action: #selector(dd), imageName: "logo")
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .done, target: self, action: #selector(dd))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.menuButton(self, action: #selector(didLogoTapped), imageName: "logo")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .done, target: self, action: #selector(didLogoTapped))
         self.navigationItem.rightBarButtonItem?.tintColor = .systemPink
         
         self.navigationItem.searchController = UISearchController()
