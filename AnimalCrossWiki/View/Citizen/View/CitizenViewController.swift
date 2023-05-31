@@ -75,25 +75,6 @@ class CitizenViewController: UIViewController {
             
         }.disposed(by: disposeBag)
         
-        citizenView.tableView.rx.contentOffset
-            .map { self.isScrolledToBottom($0, self.citizenView.tableView) }
-            .distinctUntilChanged()
-            .subscribe(onNext: { data in
-                if data {
-                    guard !self.viewModel.isPaginating else { return }
-                    print("reload!!")
-                    self.viewModel.fetchData(pagination: true, completion: { [weak self] result in
-                        switch result {
-                        case .success(let moreData):
-                            for i in moreData {
-                                self?.viewModel.users.add(element: i)
-                            }
-                        default:
-                            return
-                        }
-                    })
-                }
-            }).disposed(by: disposeBag)
         
         /// 즐겨찾기 버튼 탭
         self.navigationItem.rightBarButtonItem?.rx.tap
@@ -109,6 +90,8 @@ class CitizenViewController: UIViewController {
                 print(data.name)
             }).disposed(by: disposeBag)
     }
+    
+    
     
     //    override func viewWillDisappear(_ animated: Bool) {
     //        print("disappear")
@@ -137,7 +120,29 @@ extension CitizenViewController {
                     return
                 }
             })
+            
+            citizenView.tableView.rx.contentOffset
+                .map { self.isScrolledToBottom($0, self.citizenView.tableView) }
+                .distinctUntilChanged()
+                .subscribe(onNext: { data in
+                    if data {
+                        guard !self.viewModel.isPaginating else { return }
+                        print("reload!!")
+                        self.viewModel.fetchData(pagination: true, completion: { [weak self] result in
+                            switch result {
+                            case .success(let moreData):
+                                for i in moreData {
+                                    self?.viewModel.users.add(element: i)
+                                }
+                            default:
+                                return
+                            }
+                        })
+                    }
+                }).disposed(by: disposeBag)
         }
+        
+        
     }
     
     func viewSetting() {
