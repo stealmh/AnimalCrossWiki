@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 
-class ViewModel {
+class CitizenViewModel {
     var isPaginating = false
     var start = 0
     var end = 14
@@ -82,57 +82,5 @@ class ViewModel {
         
     }
 
-    func urlToUIImage(myURL: String) async throws -> UIImage? {
-        guard let url = URL(string: myURL) else {return nil}
-        let (data, _) = try await URLSession.shared.data(from: url)
-        let image = UIImage(data: data)
-        return image
-    }
-    
-    
-    func loadImageAsyncRx(url: String) -> Observable<UIImage> {
-        return Observable.create { emitter in
-            let task = Task {
-                do {
-                    guard let image = try await self.urlToUIImage(myURL: url) else {return}
-                    emitter.onNext(image)
-                } catch {
-                    emitter.onError(error)
-                }
-            }
-            return Disposables.create {
-                task.cancel()
-            }
-        }
-    }
-
-    func loadImage(_ url: String) -> Observable<UIImage?> {
-        
-        let cache = NSString(string: url)
-        
-        return Observable.create { emitter in
-            if let cachedImage = ImageCacheManager.shared.object(forKey: cache) {
-//                print(cachedImage)
-                emitter.onNext(cachedImage)
-                emitter.onCompleted()
-            }
-            
-            let myUrl = URL(string: url)!
-            let task = URLSession.shared.dataTask(with: myUrl) { data, response, error in
-                guard let data else {
-                    emitter.onError(error!)
-                    return
-                }
-                let image = UIImage(data: data)
-                ImageCacheManager.shared.setObject(image!, forKey: cache)
-                emitter.onNext(image)
-                emitter.onCompleted()
-            }
-            task.resume()
-            return Disposables.create {
-                task.cancel()
-            }
-        }
-    }
 }
 
