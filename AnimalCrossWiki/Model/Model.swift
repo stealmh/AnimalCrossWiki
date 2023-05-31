@@ -53,3 +53,26 @@ struct Turnip: Codable {
     let minWeekValue: Int
     let preview: String
 }
+
+//MARK: - Creature
+struct Creature: Codable {
+    let name: String
+    let number: Int
+    let image_url: String
+    let shadow_size: String
+    let shadow_movement: String
+    let sell_nook: Int
+    let north: CreatureNorth
+}
+
+struct CreatureNorth: Codable {
+    let availability_array: [AvailabilityArray]
+    let times_by_month: [String: String]
+    let months: String
+    let months_array: [Int]
+}
+
+struct AvailabilityArray: Codable {
+    let months: String
+    let time: String
+}
