@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import Then
 
 protocol TurnipViewControllerDelegate: AnyObject {
     func didTapResultButton(data: Turnip)
@@ -21,18 +22,17 @@ class TurnipViewController: UIViewController{
     let viewModel = TurnipViewModel()
     
     private let turnipView = TurnipView()
-    private let resultButton: UIButton = {
-        let v = UIButton()
-        v.setTitle("결과확인", for: .normal)
-        v.backgroundColor = UIColor(named: "sky")
-        return v
-    }()
+    private let resultButton = UIButton().then {
+        $0.setTitle("결과확인", for: .normal)
+        $0.backgroundColor = UIColor(named: "sky")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(turnipView)
         view.addSubview(resultButton)
+        
         
         turnipView.snp.makeConstraints {
             $0.left.right.equalToSuperview()

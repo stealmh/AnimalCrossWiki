@@ -6,137 +6,110 @@
 //
 
 import UIKit
+import Then
+
 
 final class TurnipView: UIView {
     
-    private let sunLabel: UILabel = {
-        let v = UILabel()
-        v.text = "일요일"
-        v.textAlignment = .right
-        return v
-    }()
-    let sunPrice: UITextField = {
-        let v = UITextField()
-        v.keyboardType = .numberPad
-        v.placeholder = "구매가격"
-        return v
-    }()
+    private let sunLabel = UILabel().then {
+        $0.text = "일요일"
+        $0.textAlignment = .right
+    }
     
-    private let monLabel: UILabel = {
-        let v = UILabel()
-        v.text = "월요일"
-        v.textAlignment = .right
-        return v
-    }()
-    let monAmPrice: UITextField = {
-        let v = UITextField()
-        v.placeholder = "월요일 오전"
-        v.keyboardType = .numberPad
-        return v
-    }()
-    let monPmPrice: UITextField = {
-        let v = UITextField()
-        v.placeholder = "월요일 오후"
-        v.keyboardType = .numberPad
-        return v
-    }()
+    let sunPrice = UITextField().then {
+        $0.keyboardType = .numberPad
+        $0.placeholder = "구매가격"
+    }
     
-    private let tueLabel: UILabel = {
-        let v = UILabel()
-        v.text = "화요일"
-        v.textAlignment = .right
-        return v
-    }()
-    let tueAmPrice: UITextField = {
-        let v = UITextField()
-        v.placeholder = "화요일 오전"
-        v.keyboardType = .numberPad
-        return v
-    }()
-    let tuePmPrice: UITextField = {
-        let v = UITextField()
-        v.placeholder = "화요일 오후"
-        v.keyboardType = .numberPad
-        return v
-    }()
+    private let monLabel = UILabel().then {
+        $0.text = "월요일"
+        $0.textAlignment = .right
+    }
     
-    private let wedLabel: UILabel = {
-        let v = UILabel()
-        v.text = "수요일"
-        v.textAlignment = .right
-        return v
-    }()
-    let wedAmPrice: UITextField = {
-        let v = UITextField()
-        v.placeholder = "수요일 오전"
-        v.keyboardType = .numberPad
-        return v
-    }()
-    let wedPmPrice: UITextField = {
-        let v = UITextField()
-        v.placeholder = "수요일 오후"
-        v.keyboardType = .numberPad
-        return v
-    }()
+    let monAmPrice = UITextField().then {
+        $0.placeholder = "월요일 오전"
+        $0.keyboardType = .numberPad
+    }
     
-    private let thurLabel: UILabel = {
-        let v = UILabel()
-        v.text = "목요일"
-        v.textAlignment = .right
-        return v
-    }()
-    let thurAmPrice: UITextField = {
-        let v = UITextField()
-        v.placeholder = "목요일 오전"
-        v.keyboardType = .numberPad
-        return v
-    }()
-    let thurPmPrice: UITextField = {
-        let v = UITextField()
-        v.placeholder = "목요일 오후"
-        v.keyboardType = .numberPad
-        return v
-    }()
+    let monPmPrice = UITextField().then {
+        $0.placeholder = "월요일 오후"
+        $0.keyboardType = .numberPad
+    }
     
-    private let friLabel: UILabel = {
-        let v = UILabel()
-        v.text = "금요일"
-        v.textAlignment = .right
-        return v
-    }()
-    let friAmPrice: UITextField = {
-        let v = UITextField()
-        v.placeholder = "금요일 오전"
-        v.keyboardType = .numberPad
-        return v
-    }()
-    let friPmPrice: UITextField = {
-        let v = UITextField()
-        v.placeholder = "금요일 오후"
-        v.keyboardType = .numberPad
-        return v
-    }()
+    private let tueLabel = UILabel().then {
+        $0.text = "화요일"
+        $0.textAlignment = .right
+    }
     
-    private let satLabel: UILabel = {
-        let v = UILabel()
-        v.text = "토요일"
-        v.textAlignment = .right
-        return v
-    }()
-    let satAmPrice: UITextField = {
-        let v = UITextField()
-        v.placeholder = "토요일 오전"
-        v.keyboardType = .numberPad
-        return v
-    }()
+    let tueAmPrice = UITextField().then {
+        $0.placeholder = "화요일 오전"
+        $0.keyboardType = .numberPad
+    }
     
-    private let myBackgroundImageView: UIImageView = {
-        let v = UIImageView()
-        v.transform = v.transform.rotated(by: .pi/20)
-        v.image = UIImage(named: "memo2")!
-        return v
-    }()
+    let tuePmPrice = UITextField().then {
+        $0.placeholder = "화요일 오후"
+        $0.keyboardType = .numberPad
+    }
     
+    private let wedLabel = UILabel().then {
+        $0.text = "수요일"
+        $0.textAlignment = .right
+    }
+    
+    let wedAmPrice = UITextField().then {
+        $0.placeholder = "수요일 오전"
+        $0.keyboardType = .numberPad
+    }
+    
+    let wedPmPrice = UITextField().then {
+        $0.placeholder = "수요일 오후"
+        $0.keyboardType = .numberPad
+    }
+    
+    private let thurLabel = UILabel().then {
+        $0.text = "목요일"
+        $0.textAlignment = .right
+    }
+    
+    let thurAmPrice = UITextField().then {
+        $0.placeholder = "목요일 오전"
+        $0.keyboardType = .numberPad
+    }
+    
+    let thurPmPrice = UITextField().then {
+        $0.placeholder = "목요일 오후"
+        $0.keyboardType = .numberPad
+    }
+    
+    private let friLabel = UILabel().then {
+        $0.text = "금요일"
+        $0.textAlignment = .right
+    }
+    
+    let friAmPrice = UITextField().then {
+        $0.placeholder = "금요일 오전"
+        $0.keyboardType = .numberPad
+    }
+    
+    let friPmPrice = UITextField().then {
+        $0.placeholder = "금요일 오후"
+        $0.keyboardType = .numberPad
+    }
+    
+    private let satLabel = UILabel().then {
+        $0.text = "토요일"
+        $0.textAlignment = .right
+    }
+    
+    let satAmPrice = UITextField().then {
+        $0.placeholder = "토요일 오전"
+        $0.keyboardType = .numberPad
+    }
+    
+    private let myBackgroundImageView = UIImageView().then {
+        $0.transform = $0.transform.rotated(by: .pi/20)
+        $0.image = UIImage(named: "memo2")!
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -11,6 +11,7 @@ import RxCocoa
 import RxGesture
 import SnapKit
 import Kingfisher
+import Then
 
 class AnimalDetailViewController: UIViewController {
     
@@ -22,24 +23,19 @@ class AnimalDetailViewController: UIViewController {
         return act
     }()
     
-    let animalName: UILabel = {
-        let label = UILabel()
-        label.text = "뽀삐"
-        return label
-    }()
     
-    let detailView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        return view
-    }()
+    let animalName = UILabel().then {
+        $0.text = "뽀삐"
+    }
     
-    let closeButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .blue
-        button.setTitle("닫기", for: .normal)
-        return button
-    }()
+    let detailView = UIView().then {
+        $0.backgroundColor = .white
+    }
+    
+    let closeButton = UIButton().then {
+        $0.backgroundColor = .blue
+        $0.setTitle("닫기", for: .normal)
+    }
 
     private let animalPhoto = CustomImageView(image: UIImage(systemName: "person"))
     private let genderLabel = UILabel()
@@ -47,14 +43,10 @@ class AnimalDetailViewController: UIViewController {
     private let birthday_month = UILabel()
     private let birthday_day = UILabel()
     
-    
-    
-    let contentsStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.distribution = .fillEqually
-        return stack
-    }()
+    let contentsStack = UIStackView().then {
+        $0.axis = .vertical
+        $0.distribution = .fillEqually
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
