@@ -9,6 +9,10 @@ import Foundation
 
 class AddressConstants {
     static let shared = AddressConstants()
-    static let version: String = "1.5.0"
+    static let version = "1.5.0"
     static let url = "https://api.nookipedia.com"
+    
+    static let creatureParameter = "/nh/sea"
+    static let bugParameter = "/nh/bugs"
+    static let fishParameter = "/nh/fish"
 }
