@@ -17,7 +17,7 @@ protocol CitizenViewControllerDelegate: AnyObject {
 
 class CitizenViewController: UIViewController {
     let disposeBag = DisposeBag()
-    let viewModel = ViewModel()
+    let viewModel = CitizenViewModel()
     
     weak var delegate: CitizenViewControllerDelegate?
     
@@ -87,7 +87,6 @@ class CitizenViewController: UIViewController {
         citizenView.tableView.rx.modelSelected(AnimalModel.self)
             .subscribe(onNext: {data in
                 self.delegate?.didTapCell(self, data: data)
-                print(data.name)
             }).disposed(by: disposeBag)
     }
     

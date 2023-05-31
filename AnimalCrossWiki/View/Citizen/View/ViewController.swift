@@ -14,7 +14,7 @@ import DropDown
 //MARK: Legacy
 class ViewController: UIViewController, UITableViewDelegate {
 
-    private let viewModel = ViewModel()
+    private let viewModel = CitizenViewModel()
     let disposebag = DisposeBag()
     
     

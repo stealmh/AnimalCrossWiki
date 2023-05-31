@@ -15,7 +15,7 @@
 		16C2457829C02D1000A937C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2457729C02D1000A937C7 /* ViewController.swift */; };
 		16C2457D29C02D1300A937C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16C2457C29C02D1300A937C7 /* Assets.xcassets */; };
 		16C2458029C02D1300A937C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16C2457E29C02D1300A937C7 /* LaunchScreen.storyboard */; };
-		16C2458F29C02FDA00A937C7 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2458E29C02FDA00A937C7 /* ViewModel.swift */; };
+		16C2458F29C02FDA00A937C7 /* CitizenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2458E29C02FDA00A937C7 /* CitizenViewModel.swift */; };
 		16C2459129C02FE300A937C7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2459029C02FE300A937C7 /* Model.swift */; };
 		16C2459329C02FF200A937C7 /* AnimalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2459229C02FF200A937C7 /* AnimalTableViewCell.swift */; };
 		16C2459529C0387B00A937C7 /* UIViewController+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2459429C0387B00A937C7 /* UIViewController+util.swift */; };
@@ -72,6 +72,9 @@
 		5AF654552A26F9560006637A /* CreatureCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF654542A26F9560006637A /* CreatureCoordinator.swift */; };
 		5AF654572A26F96A0006637A /* CreatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF654562A26F96A0006637A /* CreatureViewController.swift */; };
 		5AF654592A26F9730006637A /* CreatureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF654582A26F9730006637A /* CreatureViewModel.swift */; };
+		5AF6545B2A2705640006637A /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6545A2A2705640006637A /* BaseViewModel.swift */; };
+		5AF6545D2A27186C0006637A /* CreatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6545C2A27186C0006637A /* CreatureCell.swift */; };
+		5AF6545F2A27188D0006637A /* CreatureCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6545E2A27188D0006637A /* CreatureCellHeader.swift */; };
 		77B60FFDFCB396667A77DB79 /* Pods_AnimalCrossWiki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 017EAFB4E9B574160095B6CF /* Pods_AnimalCrossWiki.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,7 +91,7 @@
 		16C2457C29C02D1300A937C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16C2457F29C02D1300A937C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		16C2458129C02D1300A937C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		16C2458E29C02FDA00A937C7 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		16C2458E29C02FDA00A937C7 /* CitizenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitizenViewModel.swift; sourceTree = "<group>"; };
 		16C2459029C02FE300A937C7 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		16C2459229C02FF200A937C7 /* AnimalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalTableViewCell.swift; sourceTree = "<group>"; };
 		16C2459429C0387B00A937C7 /* UIViewController+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+util.swift"; sourceTree = "<group>"; };
@@ -145,6 +148,9 @@
 		5AF654542A26F9560006637A /* CreatureCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureCoordinator.swift; sourceTree = "<group>"; };
 		5AF654562A26F96A0006637A /* CreatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureViewController.swift; sourceTree = "<group>"; };
 		5AF654582A26F9730006637A /* CreatureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureViewModel.swift; sourceTree = "<group>"; };
+		5AF6545A2A2705640006637A /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		5AF6545C2A27186C0006637A /* CreatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureCell.swift; sourceTree = "<group>"; };
+		5AF6545E2A27188D0006637A /* CreatureCellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureCellHeader.swift; sourceTree = "<group>"; };
 		B169AF0D67EA066A5A5497FD /* Pods-AnimalCrossWiki.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossWiki.debug.xcconfig"; path = "Target Support Files/Pods-AnimalCrossWiki/Pods-AnimalCrossWiki.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -260,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				5A555A072A1F531300233210 /* BaseViewController.swift */,
+				5AF6545A2A2705640006637A /* BaseViewModel.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -423,7 +430,7 @@
 		5AB2E36729F244D500CA4DBF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				16C2458E29C02FDA00A937C7 /* ViewModel.swift */,
+				16C2458E29C02FDA00A937C7 /* CitizenViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -495,6 +502,8 @@
 			isa = PBXGroup;
 			children = (
 				5AF654562A26F96A0006637A /* CreatureViewController.swift */,
+				5AF6545C2A27186C0006637A /* CreatureCell.swift */,
+				5AF6545E2A27188D0006637A /* CreatureCellHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -647,7 +656,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AF6545D2A27186C0006637A /* CreatureCell.swift in Sources */,
 				5A854EA929FA136300282A08 /* AppCoordinator.swift in Sources */,
+				5AF6545B2A2705640006637A /* BaseViewModel.swift in Sources */,
 				5A68C60529E7DE0900B7985D /* FishViewController.swift in Sources */,
 				5AB55E052A15DD1600C0D047 /* TurnipViewController.swift in Sources */,
 				5A9B0C9129EFA03500737AED /* MyInfoSettingViewCell.swift in Sources */,
@@ -688,11 +699,12 @@
 				5A9B0C9529EFA2A900737AED /* MyInfoViewController.swift in Sources */,
 				5AD2695D2A00A2C9004DD22C /* FishCoordinator.swift in Sources */,
 				5A9B0C9729EFCFDD00737AED /* AddressConstants.swift in Sources */,
+				5AF6545F2A27188D0006637A /* CreatureCellHeader.swift in Sources */,
 				16C2459329C02FF200A937C7 /* AnimalTableViewCell.swift in Sources */,
 				5A854EAD29FA5B3200282A08 /* BugCoordinator.swift in Sources */,
 				5AC3BD442A0A388500095FA4 /* CitizenList.xcdatamodeld in Sources */,
 				16E4331029C2BBAB004437D3 /* CustomHeaderView.swift in Sources */,
-				16C2458F29C02FDA00A937C7 /* ViewModel.swift in Sources */,
+				16C2458F29C02FDA00A937C7 /* CitizenViewModel.swift in Sources */,
 				5A7B60102A122477003D4376 /* UIBarButtonItem+util.swift in Sources */,
 				5AF654592A26F9730006637A /* CreatureViewModel.swift in Sources */,
 				5A68C5FD29E7D3D500B7985D /* FishViewHeader.swift in Sources */,
