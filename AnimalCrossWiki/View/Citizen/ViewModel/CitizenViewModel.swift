@@ -76,9 +76,9 @@ class CitizenViewModel {
             if pagination {
                 self.isPaginating = false
             }
+            self.start += 15
+            self.end += 15
         })
-        self.start += 15
-        self.end += 15
         
     }
 

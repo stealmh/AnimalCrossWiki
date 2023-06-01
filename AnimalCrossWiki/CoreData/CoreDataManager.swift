@@ -77,7 +77,7 @@ class CoreDataManager {
         for data in result {
             let name = data.value(forKey: "name") as! String
             if animalName == name {
-                print(name)
+//                print(name)
                 return true
             }
         }

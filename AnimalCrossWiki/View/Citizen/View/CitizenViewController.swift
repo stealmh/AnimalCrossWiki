@@ -52,14 +52,16 @@ class CitizenViewController: UIViewController {
         
         citizenView.tableView.rx.setDelegate(self).disposed(by: disposeBag)
         
-        viewModel.users.bind(to: citizenView.tableView.rx.items(cellIdentifier: Item.reuseIdentifier,cellType: Item.self)) { row, item, cell in
+        viewModel.users
+            .distinctUntilChanged()
+            .bind(to: citizenView.tableView.rx.items(cellIdentifier: Item.reuseIdentifier,cellType: Item.self)) { row, item, cell in
+                
             cell.citizenLabel.text = "\(item.name)"
             cell.citizenTypeLabel.text = item.species
             cell.citizenFavoriteButton.setImage(UIImage(systemName: CoreDataManager.shared.fetch(animalName: item.name) ? "heart.fill" : "heart"), for: .normal)
             
             cell.citizenImage.kf.indicatorType = .activity
             cell.citizenImage.kf.setImage(with: URL(string: item.image_url))
-
             
             
             /// Todo : 즐겨찾기 수정하기
@@ -97,6 +99,7 @@ class CitizenViewController: UIViewController {
             .subscribe(onNext: {data in
                 self.delegate?.didTapCell(self, data: data)
             }).disposed(by: disposeBag)
+        
     }
 }
 
@@ -112,11 +115,13 @@ extension CitizenViewController {
     
     func getData() {
         Task {
+            LoadingIndicator.showLoading()
             try await viewModel.getData1()
             viewModel.fetchData(pagination: false, completion: {[weak self] result in
                 switch result {
                 case .success(let data):
                     self?.viewModel.users.accept(data)
+                    LoadingIndicator.hideLoading()
                 default:
                     return
                 }
@@ -124,7 +129,6 @@ extension CitizenViewController {
             
             citizenView.tableView.rx.contentOffset
                 .map { self.isScrolledToBottom($0, self.citizenView.tableView) }
-                .distinctUntilChanged()
                 .subscribe(onNext: { data in
                     if data {
                         guard !self.viewModel.isPaginating else { return }
@@ -132,7 +136,10 @@ extension CitizenViewController {
                         self.viewModel.fetchData(pagination: true, completion: { [weak self] result in
                             switch result {
                             case .success(let moreData):
-                                for i in moreData {
+                                let array = Array(Set(moreData).sorted { $0.name < $1.name })
+                                
+                                for i in array {
+                                    print(i.name)
                                     self?.viewModel.users.add(element: i)
                                 }
                             default:

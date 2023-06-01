@@ -62,6 +62,7 @@
 		5AB55E052A15DD1600C0D047 /* TurnipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB55E042A15DD1600C0D047 /* TurnipViewController.swift */; };
 		5AB55E072A15DD2500C0D047 /* TurnipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB55E062A15DD2500C0D047 /* TurnipViewModel.swift */; };
 		5AB55E092A15DD3500C0D047 /* TurnipCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB55E082A15DD3500C0D047 /* TurnipCoordinator.swift */; };
+		5AB8F80B2A28911700E6705A /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB8F80A2A28911700E6705A /* LoadingIndicator.swift */; };
 		5AC3BD442A0A388500095FA4 /* CitizenList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3BD422A0A388500095FA4 /* CitizenList.xcdatamodeld */; };
 		5AD2695B2A009D6F004DD22C /* String+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD2695A2A009D6F004DD22C /* String+util.swift */; };
 		5AD2695D2A00A2C9004DD22C /* FishCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD2695C2A00A2C9004DD22C /* FishCoordinator.swift */; };
@@ -138,6 +139,7 @@
 		5AB55E042A15DD1600C0D047 /* TurnipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnipViewController.swift; sourceTree = "<group>"; };
 		5AB55E062A15DD2500C0D047 /* TurnipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnipViewModel.swift; sourceTree = "<group>"; };
 		5AB55E082A15DD3500C0D047 /* TurnipCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnipCoordinator.swift; sourceTree = "<group>"; };
+		5AB8F80A2A28911700E6705A /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		5AC3BD432A0A388500095FA4 /* CitizenList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CitizenList.xcdatamodel; sourceTree = "<group>"; };
 		5AD2695A2A009D6F004DD22C /* String+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+util.swift"; sourceTree = "<group>"; };
 		5AD2695C2A00A2C9004DD22C /* FishCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishCoordinator.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 			children = (
 				5A555A072A1F531300233210 /* BaseViewController.swift */,
 				5AF6545A2A2705640006637A /* BaseViewModel.swift */,
+				5AB8F80A2A28911700E6705A /* LoadingIndicator.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -706,6 +709,7 @@
 				16E4331029C2BBAB004437D3 /* CustomHeaderView.swift in Sources */,
 				16C2458F29C02FDA00A937C7 /* CitizenViewModel.swift in Sources */,
 				5A7B60102A122477003D4376 /* UIBarButtonItem+util.swift in Sources */,
+				5AB8F80B2A28911700E6705A /* LoadingIndicator.swift in Sources */,
 				5AF654592A26F9730006637A /* CreatureViewModel.swift in Sources */,
 				5A68C5FD29E7D3D500B7985D /* FishViewHeader.swift in Sources */,
 				5A6EEDC829EE8EB700D79822 /* BugCell.swift in Sources */,
