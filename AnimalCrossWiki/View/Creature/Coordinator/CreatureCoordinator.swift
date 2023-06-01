@@ -17,7 +17,7 @@ class CreatureCoordinator: NavigationCoordinator {
     private let creatureViewController: CreatureViewController
     
     init() {
-        creatureViewController = CreatureViewController()
+        creatureViewController = CreatureViewController(viewModel: CreatureViewModel())
         let navigationController = UINavigationController(rootViewController: creatureViewController)
         self.navigator = Navigator(navigationController: navigationController)
         self.rootViewController = navigationController

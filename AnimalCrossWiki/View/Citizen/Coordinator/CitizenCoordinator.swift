@@ -19,7 +19,7 @@ class CitizenCoordinator: NavigationCoordinator {
     private let citizenViewController: CitizenViewController
     
     init() {
-        citizenViewController = CitizenViewController()
+        citizenViewController = CitizenViewController(viewModel: CitizenViewModel())
         let navigationController = UINavigationController(rootViewController: citizenViewController)
         self.navigator = Navigator(navigationController: navigationController)
         self.rootViewController = navigationController

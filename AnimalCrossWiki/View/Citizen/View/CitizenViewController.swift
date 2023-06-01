@@ -17,7 +17,7 @@ protocol CitizenViewControllerDelegate: AnyObject {
 
 class CitizenViewController: UIViewController {
     let disposeBag = DisposeBag()
-    let viewModel = CitizenViewModel()
+    let viewModel: CitizenViewModel
     
     weak var delegate: CitizenViewControllerDelegate?
     
@@ -28,6 +28,15 @@ class CitizenViewController: UIViewController {
         v.tableView.register(Item.nib, forCellReuseIdentifier: Item.reuseIdentifier)
         return v
     }()
+    
+    init(viewModel: CitizenViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     /// 로고 버튼 탭
     @objc func didLogoTapped() {
@@ -89,13 +98,6 @@ class CitizenViewController: UIViewController {
                 self.delegate?.didTapCell(self, data: data)
             }).disposed(by: disposeBag)
     }
-    
-    
-    
-    //    override func viewWillDisappear(_ animated: Bool) {
-    //        print("disappear")
-    //        ImageCacheManager.shared.removeAllObjects()
-    //    }
 }
 
 

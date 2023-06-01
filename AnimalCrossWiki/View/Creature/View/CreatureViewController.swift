@@ -26,12 +26,21 @@ class CreatureViewController: UIViewController {
                                                   collectionViewLayout: CreatureViewController.createLayout())
     
     let disposeBag = DisposeBag()
-    let viewModel = CreatureViewModel()
+    let viewModel: CreatureViewModel
     
     let sections: [Int] = [10,10,5]
     var tagList: [String] = ["파이썬","자바","스위프트"]
     
     weak var delegate: CreatureViewControllerDelegate?
+    
+    init(viewModel: CreatureViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +83,7 @@ class CreatureViewController: UIViewController {
                     widthDimension: .fractionalWidth(1/5),
                     heightDimension: .fractionalHeight(1/5)),
                 subitem: item,
-                count: 1)
+                count: 2)
             
             let section = NSCollectionLayoutSection(group: group)
             
@@ -189,7 +198,7 @@ struct ContentView_Previews: PreviewProvider {
     }
     struct Container: UIViewControllerRepresentable {
         func makeUIViewController(context: Context) -> UIViewController {
-            return UINavigationController(rootViewController: CreatureViewController())
+            return UINavigationController(rootViewController: CreatureViewController(viewModel: CreatureViewModel()))
         }
         func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
         }
