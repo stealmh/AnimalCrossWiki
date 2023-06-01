@@ -51,6 +51,7 @@ class CreatureViewController: UIViewController {
         //        collectionView.frame = view.bounds
         collectionView.backgroundColor = .white
         collectionView.dataSource = self
+        collectionView.isScrollEnabled = false
         collectionViewLayout()
         navigationSetting()
         
@@ -60,9 +61,15 @@ class CreatureViewController: UIViewController {
     
     func collectionViewLayout() {
         collectionView.snp.makeConstraints {
-            $0.left.equalToSuperview().inset(10)
-            $0.right.equalToSuperview().inset(10)
-            $0.top.equalTo(view.safeAreaLayoutGuide)
+//            $0.width.equalToSuperview()
+//            $0.height.equalToSuperview()
+            $0.left.right.equalToSuperview().inset(10)
+            
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview()
+            
+            
+            $0.top.equalTo(view.safeAreaLayoutGuide).inset(20)
             $0.bottom.equalToSuperview()
         }
     }
@@ -76,7 +83,7 @@ class CreatureViewController: UIViewController {
                 layoutSize: NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(1),
                     heightDimension: .fractionalHeight(1)))
-            item.contentInsets = NSDirectionalEdgeInsets(top: 3, leading: 3, bottom: 3, trailing: 3)
+            item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
             
             let group = NSCollectionLayoutGroup.vertical(
                 layoutSize: NSCollectionLayoutSize(
@@ -92,7 +99,7 @@ class CreatureViewController: UIViewController {
             let header = NSCollectionLayoutBoundarySupplementaryItem(
                 layoutSize: footerHeaderSize,
                 elementKind: UICollectionView.elementKindSectionHeader,
-                alignment: .topLeading)
+                alignment: .topTrailing)
             section.boundarySupplementaryItems = [header]
             section.orthogonalScrollingBehavior = .groupPaging
             
@@ -188,8 +195,6 @@ extension CreatureViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.menuButton(self, action: #selector(didLogoTapped), imageName: "logo")
     }
 }
-
-
 
 import SwiftUI
 struct ContentView_Previews: PreviewProvider {

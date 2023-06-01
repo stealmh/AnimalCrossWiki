@@ -14,6 +14,12 @@ class CollectionViewCell: UICollectionViewCell {
         let v = UIImageView()
         v.clipsToBounds = true
         v.contentMode = .scaleAspectFill
+        
+        ///Todo: 이미지 명함 줄지 말지.. 고민중
+//        v.layer.shadowOffset = CGSize(width: 5, height: 5)
+//        v.layer.shadowOpacity = 0.7
+//        v.layer.shadowRadius = 5
+//        v.layer.shadowColor = UIColor.gray.cgColor
         return v
     }()
     
@@ -31,6 +37,6 @@ class CollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        imageView.frame = contentView.bounds
+        imageView.frame = contentView.bounds.insetBy(dx: 10, dy: 10)
     }
 }
