@@ -37,7 +37,8 @@ class TabBarViewController: UITabBarController {
         }
 
         citizenViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 0)
-        creatureViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .mostViewed, tag: 1)
+        creatureViewController.tabBarItem = UITabBarItem(title: "도감", image: UIImage(named: "leaf")!.withRenderingMode(.alwaysOriginal), tag: 1)
+        
         turnipViewController.tabBarItem = UITabBarItem(title: "무 가격", image: UIImage(named: "turnip")!.withRenderingMode(.alwaysOriginal), tag: 2)
         
         citizenCoordinator.start()
