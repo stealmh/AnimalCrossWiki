@@ -9,9 +9,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SnapKit
+import Kingfisher
 
 final class FishViewController: UIViewController {
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     let viewModel = FishViewModel()
     
     private var toggleCheck: Bool = false
@@ -89,10 +90,8 @@ final class FishViewController: UIViewController {
         viewModel.myData
             .bind(to: fishView.tableView.rx.items(cellIdentifier: Item.reuseIdentifier, cellType: Item.self)) {row, item, cell in
                 
-//            let _ = self.viewModel.loadImage(item.image_url)
-//                .observe(on: MainScheduler.instance)
-//                .bind(to: cell.fishImageView.rx.image)
-            cell.fishImageView.setImageUrl(item.image_url)
+            cell.fishImageView.kf.indicatorType = .activity
+            cell.fishImageView.kf.setImage(with: URL(string: item.image_url))
             cell.numberLabel.text = "\(item.number)"
             cell.fishLocationLabel.text = item.location
             cell.fishNameLabel.text = item.name
@@ -102,7 +101,7 @@ final class FishViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        print("disappear")
+        disposeBag = DisposeBag()
         ImageCacheManager.shared.removeAllObjects()
     }
 }
