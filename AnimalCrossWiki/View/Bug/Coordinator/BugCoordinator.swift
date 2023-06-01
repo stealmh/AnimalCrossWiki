@@ -12,24 +12,18 @@ class BugCoordinator: NavigationCoordinator {
     
     var childCoordinators: [Coordinator] = []
     var navigator: NavigatorType
-    var rootViewController: UINavigationController
+    var rootViewController = BugViewController()
     
-    private let bugViewController: BugViewController
-    
-    init() {
-        bugViewController = BugViewController()
-        let navigationController = UINavigationController(rootViewController: bugViewController)
-        self.navigator = Navigator(navigationController: navigationController)
-        self.rootViewController = navigationController
+    init(navigator: NavigatorType) {
+        self.navigator = navigator
     }
     
     func start() {
-        bugViewController.delegate = self
+        rootViewController.delegate = self
     }
 }
 
 extension BugCoordinator: BugViewControllerDelegate {
-
     func didTapSetting(_ viewController: BugViewController) {
         let detail = MyInfoViewController()
         detail.modalTransitionStyle = .crossDissolve

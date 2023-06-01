@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 import Then
 
 class CreatureCellHeader: UICollectionReusableView {
     static let identifier = "CreatureCellHeader"
-    
+    let disposeBag = DisposeBag()
     let label = UILabel()
     let button = UIButton().then {
         $0.setTitle("더보기", for: .normal)

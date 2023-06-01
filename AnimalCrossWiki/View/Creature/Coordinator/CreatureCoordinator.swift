@@ -13,7 +13,7 @@ class CreatureCoordinator: NavigationCoordinator {
     var childCoordinators: [Coordinator] = []
     var navigator: NavigatorType
     var rootViewController: UIViewController
-    
+
     private let creatureViewController: CreatureViewController
     
     init() {
@@ -24,6 +24,22 @@ class CreatureCoordinator: NavigationCoordinator {
     }
     
     func start() {
-        
+        creatureViewController.delegate = self
+    }
+}
+
+extension CreatureCoordinator: CreatureViewControllerDelegate {
+    func didTapCreatureCell(_ viewController: CreatureViewController) {
+        ///Todo: 해산물 뷰 만들기
+    }
+    
+    func didTapFishCell(_ viewController: CreatureViewController) {
+        let fishVC = FishViewController()
+        navigator.push(fishVC, animated: true)
+    }
+    
+    func didTapBugCell(_ viewController: CreatureViewController) {
+        let coordinator = BugCoordinator(navigator: navigator)
+        pushCoordinator(coordinator, animated: true)
     }
 }

@@ -11,6 +11,13 @@ import RxSwift
 import SnapKit
 import Kingfisher
 
+
+protocol CreatureViewControllerDelegate: AnyObject {
+    func didTapCreatureCell(_ viewController: CreatureViewController)
+    func didTapFishCell(_ viewController: CreatureViewController)
+    func didTapBugCell(_ viewController: CreatureViewController)
+}
+
 class CreatureViewController: UIViewController {
     
     typealias Item = CollectionViewCell
@@ -24,6 +31,8 @@ class CreatureViewController: UIViewController {
     let sections: [Int] = [10,10,5]
     var tagList: [String] = ["파이썬","자바","스위프트"]
     
+    weak var delegate: CreatureViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -35,7 +44,8 @@ class CreatureViewController: UIViewController {
         collectionView.dataSource = self
         collectionViewLayout()
         navigationSetting()
-
+        
+        
         
     }
     
@@ -100,9 +110,9 @@ extension CreatureViewController: UICollectionViewDataSource {
         switch divider {
         case 0:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Item.identifier, for: indexPath) as! Item
-
+            
             Task { let data = try await viewModel.getCreature(parameter: AddressConstants.creatureParameter,
-                                                   Creature.self)
+                                                              Creature.self)
                 cell.imageView.kf.indicatorType = .activity
                 cell.imageView.kf.setImage(with: URL(string: data[indexPath.row].image_url))
             }
@@ -110,7 +120,7 @@ extension CreatureViewController: UICollectionViewDataSource {
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Item.identifier, for: indexPath) as! Item
             Task { let data = try await viewModel.getCreature(parameter: AddressConstants.fishParameter,
-                                                   Fish.self)
+                                                              Fish.self)
                 cell.imageView.kf.indicatorType = .activity
                 cell.imageView.kf.setImage(with: URL(string: data[indexPath.row].image_url))
             }
@@ -118,7 +128,7 @@ extension CreatureViewController: UICollectionViewDataSource {
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Item.identifier, for: indexPath) as! Item
             Task { let data = try await viewModel.getCreature(parameter: AddressConstants.bugParameter,
-                                                   Bug.self)
+                                                              Bug.self)
                 cell.imageView.kf.indicatorType = .activity
                 cell.imageView.kf.setImage(with: URL(string: data[indexPath.row].image_url))
             }
@@ -137,12 +147,24 @@ extension CreatureViewController: UICollectionViewDelegateFlowLayout {
         switch divider {
         case 0:
             headerView.label.text = "해산물"
+            headerView.button.rx.tap
+                .subscribe(onNext: {_ in
+                    self.delegate?.didTapCreatureCell(self)
+                }).disposed(by: headerView.disposeBag)
             return headerView
         case 1:
             headerView.label.text = "물고기"
+            headerView.button.rx.tap
+                .subscribe(onNext: {_ in
+                    self.delegate?.didTapFishCell(self)
+                }).disposed(by: headerView.disposeBag)
             return headerView
         case 2:
             headerView.label.text = "곤충"
+            headerView.button.rx.tap
+                .subscribe(onNext: {_ in
+                    self.delegate?.didTapBugCell(self)
+                }).disposed(by: headerView.disposeBag)
             return headerView
         default:
             return headerView
