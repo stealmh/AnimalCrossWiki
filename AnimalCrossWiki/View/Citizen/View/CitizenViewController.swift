@@ -131,6 +131,7 @@ extension CitizenViewController {
                 .map { self.isScrolledToBottom($0, self.citizenView.tableView) }
                 .subscribe(onNext: { data in
                     if data {
+                        LoadingIndicator.showLoading()
                         guard !self.viewModel.isPaginating else { return }
                         print("reload!!")
                         self.viewModel.fetchData(pagination: true, completion: { [weak self] result in
@@ -141,6 +142,7 @@ extension CitizenViewController {
                                 for i in array {
                                     print(i.name)
                                     self?.viewModel.users.add(element: i)
+                                    LoadingIndicator.hideLoading()
                                 }
                             default:
                                 return
