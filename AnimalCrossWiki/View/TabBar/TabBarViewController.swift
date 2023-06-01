@@ -11,19 +11,11 @@ import UIKit
 class TabBarViewController: UITabBarController {
     
     private let citizenCoordinator = CitizenCoordinator()
-    private let bugCoordinator = BugCoordinator()
-    private let fishCoordinator = FishCoordinator()
     private let turnipCoordinator = TurnipCoordinator()
     private let creatureCoordinator = CreatureCoordinator()
     
     private var citizenViewController: UIViewController {
         return citizenCoordinator.rootViewController
-    }
-    private var bugViewController: UIViewController {
-        return bugCoordinator.rootViewController
-    }
-    private var fishViewController: UIViewController {
-        return fishCoordinator.rootViewController
     }
     private var creatureViewController: UIViewController {
         return creatureCoordinator.rootViewController
@@ -45,22 +37,16 @@ class TabBarViewController: UITabBarController {
         }
 
         citizenViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 0)
-        bugViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 1)
-        fishViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .mostViewed, tag: 2)
-        creatureViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .mostViewed, tag: 3)
-        turnipViewController.tabBarItem = UITabBarItem(title: "무 가격", image: UIImage(named: "turnip")!.withRenderingMode(.alwaysOriginal), tag: 4)
+        creatureViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .mostViewed, tag: 1)
+        turnipViewController.tabBarItem = UITabBarItem(title: "무 가격", image: UIImage(named: "turnip")!.withRenderingMode(.alwaysOriginal), tag: 2)
         
         citizenCoordinator.start()
-        bugCoordinator.start()
-        fishCoordinator.start()
         creatureCoordinator.start()
         turnipCoordinator.start()
         self.changeRadius(cornerRadius: 40)
         self.setSelectedItemColor(selectedColor: .white, unSelectedcolor: .black)
         
         self.viewControllers = [citizenViewController,
-                                bugViewController,
-                                fishViewController,
                                 creatureViewController,
                                 turnipViewController]
     }
