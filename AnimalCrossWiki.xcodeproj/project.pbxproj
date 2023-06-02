@@ -76,6 +76,7 @@
 		5AF6545B2A2705640006637A /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6545A2A2705640006637A /* BaseViewModel.swift */; };
 		5AF6545D2A27186C0006637A /* CreatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6545C2A27186C0006637A /* CreatureCell.swift */; };
 		5AF6545F2A27188D0006637A /* CreatureCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6545E2A27188D0006637A /* CreatureCellHeader.swift */; };
+		5AFEB9972A29DB7600BE2FBA /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFEB9962A29DB7600BE2FBA /* LoadingViewController.swift */; };
 		77B60FFDFCB396667A77DB79 /* Pods_AnimalCrossWiki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 017EAFB4E9B574160095B6CF /* Pods_AnimalCrossWiki.framework */; };
 /* End PBXBuildFile section */
 
@@ -153,6 +154,7 @@
 		5AF6545A2A2705640006637A /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		5AF6545C2A27186C0006637A /* CreatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureCell.swift; sourceTree = "<group>"; };
 		5AF6545E2A27188D0006637A /* CreatureCellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureCellHeader.swift; sourceTree = "<group>"; };
+		5AFEB9962A29DB7600BE2FBA /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		B169AF0D67EA066A5A5497FD /* Pods-AnimalCrossWiki.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossWiki.debug.xcconfig"; path = "Target Support Files/Pods-AnimalCrossWiki/Pods-AnimalCrossWiki.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -346,6 +348,7 @@
 				5A8A0ABF29F26C0A005C831F /* CitizenViewController.swift */,
 				5A8A0AC529F27061005C831F /* NewCitizenView.xib */,
 				5A8A0AC729F27069005C831F /* NewCitizenView.swift */,
+				5AFEB9962A29DB7600BE2FBA /* LoadingViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -686,6 +689,7 @@
 				5AD269602A00A5BA004DD22C /* ImageCacheManager.swift in Sources */,
 				5AD269622A00A7ED004DD22C /* UIImageView+util.swift in Sources */,
 				5A68C61029E7EDD500B7985D /* NewFishView.swift in Sources */,
+				5AFEB9972A29DB7600BE2FBA /* LoadingViewController.swift in Sources */,
 				5A6EEDD229EE921800D79822 /* UICollectionViewCell+util.swift in Sources */,
 				16C2457829C02D1000A937C7 /* ViewController.swift in Sources */,
 				5AB2E36929F2453A00CA4DBF /* FishViewModel.swift in Sources */,

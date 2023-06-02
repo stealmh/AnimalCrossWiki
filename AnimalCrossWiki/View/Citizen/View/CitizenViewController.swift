@@ -117,13 +117,19 @@ extension CitizenViewController {
     
     func getData() {
         Task {
-            LoadingIndicator.showLoading()
+//            LoadingIndicator.showLoading()
+            
+            let a = LoadingViewController()
+            a.modalPresentationStyle = .fullScreen
+            self.present(a, animated: false)
             try await viewModel.getData1()
             viewModel.fetchData(pagination: false, completion: {[weak self] result in
                 switch result {
                 case .success(let data):
                     self?.viewModel.users.accept(data)
-                    LoadingIndicator.hideLoading()
+                    DispatchQueue.main.async {
+                        self?.dismiss(animated: false)
+                    }
                 default:
                     return
                 }

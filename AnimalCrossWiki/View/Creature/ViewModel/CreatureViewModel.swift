@@ -12,7 +12,6 @@ class CreatureViewModel {
     var creatureList: [Creature] = []
     var fishList: [Fish] = []
     var bugList: [Bug] = []
-    
     func getCreature<T: Decodable>(parameter: String, _ type: T.Type) async throws -> [T] {
         
         let url = URL(string: AddressConstants.url + parameter)

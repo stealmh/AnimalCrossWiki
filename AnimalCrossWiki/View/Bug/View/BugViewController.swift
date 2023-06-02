@@ -46,14 +46,8 @@ class BugViewController: UIViewController {
             .disposed(by: disposeBag)
         //MARK: cell 구성
         viewModel.users.bind(to: bugView.collectionView.rx.items(cellIdentifier: Item.resueIdentifier, cellType: Item.self)) { row, item, cell in
+            
             cell.bugLabel.text = "\(item.name)"
-            
-            
-//            let _ = self.viewModel.loadImage(item.image_url)
-//                .observe(on: MainScheduler.instance)
-//                .subscribe(onNext: {data in
-//                    cell.bugImage.image = data
-//                })
             cell.bugImage.kf.indicatorType = .activity
             cell.bugImage.kf.setImage(with: URL(string: item.image_url))
             
@@ -91,7 +85,7 @@ extension BugViewController: UICollectionViewDelegateFlowLayout {
 
 extension BugViewController: BugDelegate {
     func returnValue(vc: MyInfoViewController, south: Bool?, idx: Int?) {
-        vc.dismiss(animated: true, completion: {[weak self] in
+        vc.dismiss(animated: true, completion: { [weak self] in
             if let south = south, let idx = idx {
                 if south {
                     let a = self?.viewModel.users_copy.filter { $0.south.months_array.contains(idx + 1) }

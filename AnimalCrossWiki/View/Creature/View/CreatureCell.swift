@@ -15,7 +15,7 @@ class CollectionViewCell: UICollectionViewCell {
         v.clipsToBounds = true
         v.contentMode = .scaleAspectFill
         
-        ///Todo: 이미지 명함 줄지 말지.. 고민중
+        ///Todo: 이미지 명암 줄지 말지.. 고민중
 //        v.layer.shadowOffset = CGSize(width: 5, height: 5)
 //        v.layer.shadowOpacity = 0.7
 //        v.layer.shadowRadius = 5
