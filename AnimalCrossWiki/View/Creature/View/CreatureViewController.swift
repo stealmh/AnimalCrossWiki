@@ -146,7 +146,10 @@ extension CreatureViewController: UICollectionViewDataSource {
             Task { let data = try await viewModel.getCreature(parameter: AddressConstants.bugParameter,
                                                               Bug.self)
                 cell.imageView.kf.indicatorType = .activity
-                cell.imageView.kf.setImage(with: URL(string: data[indexPath.row].image_url))
+//                cell.imageView.kf.setImage(with: URL(string: data[indexPath.row].image_url))
+                let url = data[indexPath.row].image_url
+//                cell.imageView.setImage(with: url)
+                cell.imageView.setImageUrl(url)
             }
             return cell
         default:
