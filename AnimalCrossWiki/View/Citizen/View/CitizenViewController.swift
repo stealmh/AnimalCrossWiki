@@ -49,56 +49,58 @@ class CitizenViewController: UIViewController {
         getData()
         viewSetting()
         navigationSetting()
-        
+        bindViewModel()
         citizenView.tableView.rx.setDelegate(self).disposed(by: disposeBag)
         
         viewModel.users
             .distinctUntilChanged()
             .bind(to: citizenView.tableView.rx.items(cellIdentifier: Item.reuseIdentifier,cellType: Item.self)) { row, item, cell in
                 
-            cell.citizenLabel.text = "\(item.name)"
-            cell.citizenTypeLabel.text = item.species
-            cell.citizenFavoriteButton.setImage(UIImage(systemName: CoreDataManager.shared.fetch(animalName: item.name) ? "heart.fill" : "heart"), for: .normal)
-            
-            cell.citizenImage.kf.indicatorType = .activity
-            cell.citizenImage.kf.setImage(with: URL(string: item.image_url))
-            
-            
-            /// Todo : 즐겨찾기 수정하기
-            cell.citizenFavoriteButton.rx.tap
-                .map { CoreDataManager.shared.fetch(animalName: item.name) }
-                .subscribe(onNext: {isExist in
-                    if isExist {
-                        // 이미 즐겨찾기 한 상태에서 터치가 들어옴
-                        // 1.데이터를 삭제
-                        CoreDataManager.shared.delete(animalName: item.name)
-                        // 2.버튼의 색깔 바꾸기
-                        cell.citizenFavoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
-
-                    } else {
-                        // 1.데이터를 추가
-                        CoreDataManager.shared.insertContent(content: item)
-                        // 2.버튼의 색깔 바꾸기
-                        cell.citizenFavoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-                    }
-                }).disposed(by: cell.disposeBag)
-            
-            
-        }.disposed(by: disposeBag)
-        
-        
-        /// 즐겨찾기 버튼 탭
-        self.navigationItem.rightBarButtonItem?.rx.tap
-            .subscribe(onNext: { _ in
-                self.viewModel.isPaginating = true
-                self.viewModel.forLogoTouchData = self.viewModel.users.value
-                self.viewModel.users.accept(CoreDataManager.shared.fetch())
-            }).disposed(by: disposeBag)
+                cell.citizenLabel.text = "\(item.name)"
+                cell.citizenTypeLabel.text = item.species
+                cell.citizenFavoriteButton.setImage(UIImage(systemName: CoreDataManager.shared.fetch(animalName: item.name) ? "heart.fill" : "heart"), for: .normal)
+                
+                cell.citizenImage.kf.indicatorType = .activity
+                cell.citizenImage.kf.setImage(with: URL(string: item.image_url))
+                
+                
+                /// Todo : 즐겨찾기 수정하기
+                cell.citizenFavoriteButton.rx.tap
+                    .map { CoreDataManager.shared.fetch(animalName: item.name) }
+                    .subscribe(onNext: {isExist in
+                        if isExist {
+                            // 이미 즐겨찾기 한 상태에서 터치가 들어옴
+                            // 1.데이터를 삭제
+                            CoreDataManager.shared.delete(animalName: item.name)
+                            // 2.버튼의 색깔 바꾸기
+                            cell.citizenFavoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                            
+                        } else {
+                            // 1.데이터를 추가
+                            CoreDataManager.shared.insertContent(content: item)
+                            // 2.버튼의 색깔 바꾸기
+                            cell.citizenFavoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                        }
+                    }).disposed(by: cell.disposeBag)
+                
+                
+            }.disposed(by: disposeBag)
         
         citizenView.tableView.rx.modelSelected(AnimalModel.self)
             .subscribe(onNext: {data in
                 self.delegate?.didTapCell(self, data: data)
             }).disposed(by: disposeBag)
+        
+    }
+    
+    func bindViewModel() {
+        let input = CitizenViewModel.Input(showFavoriteButtonTapped: self.navigationItem.rightBarButtonItem!.rx.tap)
+
+        let output = viewModel.transform(input: input)
+        
+        output.showFavoriteButtonTapped.bind(onNext: {data in
+            self.viewModel.users.accept(data)
+        }).disposed(by: disposeBag)
         
     }
 }
@@ -131,7 +133,7 @@ extension CitizenViewController {
                 .map { self.isScrolledToBottom($0, self.citizenView.tableView) }
                 .subscribe(onNext: { data in
                     if data {
-                        LoadingIndicator.showLoading()
+//                        LoadingIndicator.showLoading()
                         guard !self.viewModel.isPaginating else { return }
                         print("reload!!")
                         self.viewModel.fetchData(pagination: true, completion: { [weak self] result in
@@ -142,7 +144,7 @@ extension CitizenViewController {
                                 for i in array {
                                     print(i.name)
                                     self?.viewModel.users.add(element: i)
-                                    LoadingIndicator.hideLoading()
+//                                    LoadingIndicator.hideLoading()
                                 }
                             default:
                                 return

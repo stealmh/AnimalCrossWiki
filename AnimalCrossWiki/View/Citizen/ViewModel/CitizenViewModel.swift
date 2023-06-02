@@ -11,6 +11,8 @@ import RxCocoa
 
 
 class CitizenViewModel {
+    
+    var disposeBag = DisposeBag()
     var isPaginating = false
     var start = 0
     var end = 14
@@ -79,8 +81,25 @@ class CitizenViewModel {
             self.start += 15
             self.end += 15
         })
-        
     }
-
 }
 
+
+extension CitizenViewModel: ViewModel {
+    
+    struct Input {
+        let showFavoriteButtonTapped: ControlEvent<Void>
+    }
+    struct Output {
+        let showFavoriteButtonTapped: Observable<[AnimalModel]>
+    }
+    
+    func transform(input: Input) -> Output {
+        let showFavoriteButtonTapped = input.showFavoriteButtonTapped
+            .map { self.isPaginating = true }
+            .map { self.forLogoTouchData = self.users.value }
+            .map { CoreDataManager.shared.fetch() }
+        
+        return Output(showFavoriteButtonTapped: showFavoriteButtonTapped)
+    }
+}
