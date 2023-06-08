@@ -173,6 +173,7 @@
 		16AA0B7E29C1DC4D002FB416 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5AFEB9982A29DDC700BE2FBA /* Splash */,
 				5A9398082A08D48F008CDDC5 /* Artwork */,
 				5A854EB729FA5CE300282A08 /* Custrom */,
 				5AB2E36329F2439B00CA4DBF /* TabBar */,
@@ -348,7 +349,6 @@
 				5A8A0ABF29F26C0A005C831F /* CitizenViewController.swift */,
 				5A8A0AC529F27061005C831F /* NewCitizenView.xib */,
 				5A8A0AC729F27069005C831F /* NewCitizenView.swift */,
-				5AFEB9962A29DB7600BE2FBA /* LoadingViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -520,6 +520,14 @@
 				5AF654542A26F9560006637A /* CreatureCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		5AFEB9982A29DDC700BE2FBA /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				5AFEB9962A29DB7600BE2FBA /* LoadingViewController.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		A31861F58882D811F3EBF057 /* Pods */ = {

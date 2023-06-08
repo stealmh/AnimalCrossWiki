@@ -117,7 +117,6 @@ extension CitizenViewController {
     
     func getData() {
         Task {
-//            LoadingIndicator.showLoading()
             
             let a = LoadingViewController()
             a.modalPresentationStyle = .fullScreen

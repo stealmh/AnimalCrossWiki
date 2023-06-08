@@ -33,11 +33,13 @@ extension CreatureCoordinator: CreatureViewControllerDelegate {
         ///Todo: 해산물 뷰 만들기
     }
     
+    //단일 뷰
     func didTapFishCell(_ viewController: CreatureViewController) {
         let fishVC = FishViewController()
         navigator.push(fishVC, animated: true)
     }
     
+    //다중 뷰
     func didTapBugCell(_ viewController: CreatureViewController) {
         let coordinator = BugCoordinator(navigator: navigator)
         pushCoordinator(coordinator, animated: true)

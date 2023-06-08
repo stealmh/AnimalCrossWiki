@@ -9,10 +9,34 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class BugViewModel {
+class BugViewModel: ViewModel {
     var users: BehaviorRelay<[Bug]> = BehaviorRelay(value: [Bug]())
     private(set) var users_copy: [Bug] = []
     let parameter: String = "/nh/bugs"
+    var disposeBag = DisposeBag()
+    
+    struct Input {
+        let allButtonTapped: ControlEvent<Void>
+    }
+    struct Output {
+        let allButtonTappedResult: Observable<[Bug]>
+        let items = BehaviorRelay<[Bug]>(value: [])
+    }
+    
+    
+    func transform(input: Input) -> Output {
+        
+        let allButtonTappedResult = input.allButtonTapped
+            .map { self.users.value != self.users_copy }
+            .filter { $0 == true }
+            .map { _ in self.users_copy }
+        
+        return Output(allButtonTappedResult: allButtonTappedResult)
+    }
+    
+    
+    
+    
     
     func getData() async throws{
         let version = AddressConstants.version
