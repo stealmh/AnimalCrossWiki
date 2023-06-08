@@ -37,6 +37,8 @@ class CitizenViewModel {
         let result = try JSONDecoder().decode([AnimalModel].self, from: data)
         print("== Count: \(result.count) ==")
         let a = Array(result[0...30])
+        start = 0
+        end = 14
         self.data = result
         self.users.accept(a)
     }
@@ -89,17 +91,42 @@ extension CitizenViewModel: ViewModel {
     
     struct Input {
         let showFavoriteButtonTapped: ControlEvent<Void>
+        let searchText: Observable<String>
     }
+    
     struct Output {
-        let showFavoriteButtonTapped: Observable<[AnimalModel]>
+
     }
     
     func transform(input: Input) -> Output {
-        let showFavoriteButtonTapped = input.showFavoriteButtonTapped
+        input.showFavoriteButtonTapped
             .map { self.isPaginating = true }
             .map { self.forLogoTouchData = self.users.value }
             .map { CoreDataManager.shared.fetch() }
+            .subscribe(onNext: { data in
+                self.users.accept(data)
+            }).disposed(by: disposeBag)
         
-        return Output(showFavoriteButtonTapped: showFavoriteButtonTapped)
+        input.searchText
+            .throttle(.milliseconds(800), scheduler: MainScheduler.instance)
+            .map({ data in
+                self.data.filter { $0.name.contains(data) }
+            })
+            .distinctUntilChanged()
+            .subscribe(onNext: {data in
+                self.users.accept(data)
+            }).disposed(by: disposeBag)
+        
+        return Output()
     }
 }
+
+//self.navigationItem.searchController?.searchBar.rx.text.orEmpty
+//    .throttle(.milliseconds(800), scheduler: MainScheduler.instance)
+//    .map({ data in
+//        self.viewModel.data.filter { $0.name.contains(data) }
+//    })
+//    .distinctUntilChanged()
+//    .subscribe(onNext: {data in
+//        self.viewModel.users.accept(data)
+//    }).disposed(by: disposeBag)

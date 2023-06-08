@@ -90,17 +90,25 @@ class CitizenViewController: UIViewController {
             .subscribe(onNext: {data in
                 self.delegate?.didTapCell(self, data: data)
             }).disposed(by: disposeBag)
+
+        self.navigationItem.searchController?.searchBar.rx.cancelButtonClicked
+            .subscribe(onNext: { _ in
+                Task {
+                    try await self.viewModel.getData()
+                }
+            }).disposed(by: disposeBag)
         
     }
     
     func bindViewModel() {
-        let input = CitizenViewModel.Input(showFavoriteButtonTapped: self.navigationItem.rightBarButtonItem!.rx.tap)
+        let input = CitizenViewModel.Input(showFavoriteButtonTapped: self.navigationItem.rightBarButtonItem!.rx.tap,
+                                           searchText: navigationItem.searchController!.searchBar.rx.text.orEmpty.asObservable())
 
         let output = viewModel.transform(input: input)
         
-        output.showFavoriteButtonTapped.bind(onNext: {data in
-            self.viewModel.users.accept(data)
-        }).disposed(by: disposeBag)
+//        output.showFavoriteButtonTapped.bind(onNext: {data in
+//            self.viewModel.users.accept(data)
+//        }).disposed(by: disposeBag)
         
     }
 }
@@ -145,10 +153,12 @@ extension CitizenViewController {
                             switch result {
                             case .success(let moreData):
                                 let array = Array(Set(moreData).sorted { $0.name < $1.name })
-                                
                                 for i in array {
-                                    print(i.name)
-                                    self?.viewModel.users.add(element: i)
+//                                    print(i.name)
+                                    guard let self else {return}
+                                    if !self.viewModel.users.value.contains(i) {
+                                        self.viewModel.users.add(element: i)
+                                    }
 //                                    LoadingIndicator.hideLoading()
                                 }
                             default:
@@ -180,19 +190,6 @@ extension CitizenViewController {
         
         self.navigationItem.searchController = UISearchController()
         self.navigationItem.searchController?.searchBar.placeholder = "주민을 검색하세요!"
-        self.navigationItem.searchController?.searchBar.rx.text.orEmpty
-            .throttle(.milliseconds(800), scheduler: MainScheduler.instance)
-            .distinctUntilChanged()
-            .subscribe(onNext: {data in
-                self.viewModel.users.accept(self.viewModel.data.filter { $0.name.contains(data) })
-            }).disposed(by: disposeBag)
-        
-        self.navigationItem.searchController?.searchBar.rx.cancelButtonClicked
-            .subscribe(onNext: { _ in
-                Task {
-                    try await self.viewModel.getData()
-                }
-            }).disposed(by: disposeBag)
     }
 }
 
