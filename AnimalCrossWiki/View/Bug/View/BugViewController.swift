@@ -11,10 +11,6 @@ import RxCocoa
 import SnapKit
 import Kingfisher
 
-protocol BugViewControllerDelegate: AnyObject {
-    func didTapSetting(_ viewController: BugViewController)
-}
-
 class BugViewController: UIViewController {
     var disposeBag = DisposeBag()
     let viewModel: BugViewModel!
@@ -71,10 +67,10 @@ class BugViewController: UIViewController {
         
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        disposeBag = DisposeBag()
-        ImageCacheManager.shared.removeAllObjects()
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        disposeBag = DisposeBag()
+//        ImageCacheManager.shared.removeAllObjects()
+//    }
     
 }
 

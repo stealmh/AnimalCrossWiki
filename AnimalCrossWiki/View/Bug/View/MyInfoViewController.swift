@@ -10,19 +10,13 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
-protocol BugDelegate: AnyObject {
-    func returnValue(vc: MyInfoViewController, south: Bool?, idx: Int?)
-}
-
-
 class MyInfoViewController: UIViewController {
     let dispose = DisposeBag()
     
     let defaultMonths = Observable.just(["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"])
     var buttonSelectOb: BehaviorRelay<Bool> = BehaviorRelay(value: false)
     var selectedIndex = BehaviorRelay<Int>(value: 0)
-    
-//    weak var delegate: BugDelegate?
+
     weak var delegate: BugDelegate?
     
     typealias Item = MyInfoSettingViewCell

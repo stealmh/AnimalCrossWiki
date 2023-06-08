@@ -8,6 +8,14 @@
 import UIKit
 import SwiftCoordinator
 
+protocol BugViewControllerDelegate: AnyObject {
+    func didTapSetting(_ viewController: BugViewController)
+}
+
+protocol BugDelegate: AnyObject {
+    func returnValue(vc: MyInfoViewController, south: Bool?, idx: Int?)
+}
+
 class BugCoordinator: NavigationCoordinator {
     var childCoordinators: [Coordinator] = []
     var navigator: NavigatorType
@@ -35,6 +43,8 @@ extension BugCoordinator: BugViewControllerDelegate {
 extension BugCoordinator: BugDelegate {
         func returnValue(vc: MyInfoViewController, south: Bool?, idx: Int?) {
             vc.dismiss(animated: true, completion: { [weak self] in
+                
+                ///Todo :  1. 비즈니스 로직 뷰모델로 이동시켜야댐
                 if let south = south, let idx = idx {
                     if south {
                         let a = self?.rootViewController.viewModel.users_copy.filter { $0.south.months_array.contains(idx + 1) }
