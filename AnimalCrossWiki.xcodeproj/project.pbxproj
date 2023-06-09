@@ -52,6 +52,7 @@
 		5A8A0AC029F26C0A005C831F /* CitizenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8A0ABF29F26C0A005C831F /* CitizenViewController.swift */; };
 		5A8A0AC629F27061005C831F /* NewCitizenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8A0AC529F27061005C831F /* NewCitizenView.xib */; };
 		5A8A0AC829F27069005C831F /* NewCitizenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8A0AC729F27069005C831F /* NewCitizenView.swift */; };
+		5A8A61EA2A32B5AB008AEAB8 /* AnimalWikiAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8A61E92A32B5AB008AEAB8 /* AnimalWikiAPI.swift */; };
 		5A9398162A08D766008CDDC5 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9398152A08D766008CDDC5 /* CoreDataManager.swift */; };
 		5A9B0C9129EFA03500737AED /* MyInfoSettingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9B0C9029EFA03500737AED /* MyInfoSettingViewCell.swift */; };
 		5A9B0C9329EFA04200737AED /* MyInfoSettingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A9B0C9229EFA04200737AED /* MyInfoSettingViewCell.xib */; };
@@ -130,6 +131,7 @@
 		5A8A0ABF29F26C0A005C831F /* CitizenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitizenViewController.swift; sourceTree = "<group>"; };
 		5A8A0AC529F27061005C831F /* NewCitizenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewCitizenView.xib; sourceTree = "<group>"; };
 		5A8A0AC729F27069005C831F /* NewCitizenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCitizenView.swift; sourceTree = "<group>"; };
+		5A8A61E92A32B5AB008AEAB8 /* AnimalWikiAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalWikiAPI.swift; sourceTree = "<group>"; };
 		5A9398152A08D766008CDDC5 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5A9B0C9029EFA03500737AED /* MyInfoSettingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoSettingViewCell.swift; sourceTree = "<group>"; };
 		5A9B0C9229EFA04200737AED /* MyInfoSettingViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyInfoSettingViewCell.xib; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 		16C2457229C02D1000A937C7 /* AnimalCrossWiki */ = {
 			isa = PBXGroup;
 			children = (
+				5A8A61E82A32B599008AEAB8 /* Network */,
 				5A93980C2A08D5F3008CDDC5 /* CoreData */,
 				5AD2695E2A00A5A8004DD22C /* Manager */,
 				16AA0B8129C1DC85002FB416 /* Application */,
@@ -398,6 +401,14 @@
 				16E4330F29C2BBAB004437D3 /* CustomHeaderView.swift */,
 			);
 			path = Custrom;
+			sourceTree = "<group>";
+		};
+		5A8A61E82A32B599008AEAB8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				5A8A61E92A32B5AB008AEAB8 /* AnimalWikiAPI.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		5A9398082A08D48F008CDDC5 /* Artwork */ = {
@@ -720,6 +731,7 @@
 				5AC3BD442A0A388500095FA4 /* CitizenList.xcdatamodeld in Sources */,
 				16E4331029C2BBAB004437D3 /* CustomHeaderView.swift in Sources */,
 				16C2458F29C02FDA00A937C7 /* CitizenViewModel.swift in Sources */,
+				5A8A61EA2A32B5AB008AEAB8 /* AnimalWikiAPI.swift in Sources */,
 				5A7B60102A122477003D4376 /* UIBarButtonItem+util.swift in Sources */,
 				5AB8F80B2A28911700E6705A /* LoadingIndicator.swift in Sources */,
 				5AF654592A26F9730006637A /* CreatureViewModel.swift in Sources */,

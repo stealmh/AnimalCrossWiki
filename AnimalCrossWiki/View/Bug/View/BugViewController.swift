@@ -10,11 +10,11 @@ import RxSwift
 import RxCocoa
 import SnapKit
 import Kingfisher
+import Moya
 
 class BugViewController: UIViewController {
     var disposeBag = DisposeBag()
     let viewModel: BugViewModel!
-    
     weak var delegate: BugViewControllerDelegate?
     
     typealias Item = BugCell
@@ -38,8 +38,7 @@ class BugViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(bugView)
-        //MARK: 곤충데이터 불러오기
-        Task { try await viewModel.getData() }
+    
         //MARK: 레이아웃 구성
         bugView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
@@ -87,9 +86,15 @@ extension BugViewController {
         let output = viewModel.transform(input: input)
         
         output.allButtonTappedResult.bind(onNext: {data in
-            print(data)
             self.viewModel.users.accept(data)
         }).disposed(by: disposeBag)
+        
+        output.getData.subscribe(onSuccess: {data in
+            self.viewModel.users_copy = data
+            self.viewModel.users.accept(data)
+        }).disposed(by: disposeBag)
+
+
     }
 }
 
